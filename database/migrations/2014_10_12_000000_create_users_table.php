@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('classification');
             $table->string('company');
             $table->string('blood_group');
-            $table->string('api_token');
+            $table->string('api_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -91,6 +91,7 @@ class UserController extends Controller
             'classification' => $request->input('classification'),
             'company' => $request->input('company'),
             'blood_group' => $request->input('blood_group'),
+            'api_token' => Str::random(60),
         ]);
 
         return response()->json(["message" => "User created succesfully"], 201);

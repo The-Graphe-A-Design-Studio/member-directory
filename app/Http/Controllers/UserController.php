@@ -41,7 +41,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $rules = [
-            'IM_no' => 'required',
+            'IM_no' => 'required|unique:users',
             'name' => 'required',
             'phone' => 'required|max:13|unique:users',
             'email' => 'required|email|unique:users',

@@ -102,7 +102,7 @@ class UserController extends Controller
         $api_token = $request->api_token;
         $user = User::where('api_token', $api_token)->first();
 
-        if(!$user){
+        if(is_null($user)){
             return response()->json(['status' => 'error', 'messege' => 'Not Logged in'], 401);
         }
 

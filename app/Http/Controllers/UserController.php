@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use App\User;
 use Validator;
+use App\User;
 
 class UserController extends Controller
 {
@@ -97,6 +97,20 @@ class UserController extends Controller
         return response()->json(["message" => "User created succesfully"], 201);
     }
 
+    public function logout(Request $request)
+    {
+        $api_token = $request->api_token;
+        $user = User::where('api_token', $api_token)->first();
+
+        if(!$user){
+            return response()->json(['status' => 'error', 'messege' => 'Not Logged in'], 401);
+        }
+
+        $user->api_token = null;
+        $user->save();
+        return response()->json(['status' => 'success', 'messege' => 'Logged out'], 200);
+    }
+
     /**
      * Display the specified resource.
      *
@@ -146,7 +160,8 @@ class UserController extends Controller
         //
     }
     
-    public function regapp(Request $request){
+    public function regapp(Request $request)
+    {
 
         $this->validate($request, [
             'IM_no' => 'required',
@@ -203,7 +218,8 @@ class UserController extends Controller
         return response()->json(['status' => 'success', 'message' => 'User registered'], 200);
     }
 
-    public function simple(){
+    public function simple()
+    {
         $csrf = csrf_token();
         return "Hello";
     }

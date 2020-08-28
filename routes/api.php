@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/userapi', function (Request $request) {
 
 Route::post('/reg', 'UserController@regapp');
 Route::resource('users', 'UserController');
+Route::post('/logout', 'UserController@logout')->name('logout');

@@ -107,8 +107,10 @@ class UserController extends Controller
         }
 
         $user->api_token = null;
-        $user->save();
-        return response()->json(['status' => 'success', 'messege' => 'Logged out'], 200);
+        if($user->save()){
+            return response()->json(['status' => 'success', 'messege' => 'Logged out'], 200);
+        }
+        return response()->json(['status' => 'error', 'messege' => 'User does not exist'], 401);
     }
 
     /**

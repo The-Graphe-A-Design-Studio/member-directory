@@ -99,6 +99,15 @@ class UserController extends Controller
 
     public function logout(Request $request)
     {
+        $rules = [
+            'api_token' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            return response()->json($validator->errors(), 400);
+        }
+
         $api_token = $request->api_token;
         $user = User::where('api_token', $api_token)->first();
 
@@ -107,10 +116,8 @@ class UserController extends Controller
         }
 
         $user->api_token = null;
-        if($user->save()){
-            return response()->json(['status' => 'success', 'messege' => 'Logged out'], 200);
-        }
-        return response()->json(['status' => 'error', 'messege' => 'User does not exist'], 401);
+        $user->save();
+        return response()->json(['status' => 'success', 'messege' => 'Logged out'], 200);
     }
 
     /**

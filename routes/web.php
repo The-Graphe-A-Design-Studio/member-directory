@@ -13,15 +13,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::post('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-Route::resource('users', 'UserController');
 
 Route::prefix('/admin')->group( function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

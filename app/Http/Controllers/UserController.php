@@ -156,4 +156,24 @@ class UserController extends Controller
         
         return response()->json(['status' => 'success', 'messege' => 'User updated'], 200);
     }
+
+    public function search(Request $request){
+        $rules = [
+            'term' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if($validator->fails()){
+            return response()->json($validator->errors(), 400);
+        }
+
+        $term = $request->get('term');
+        $users = User::where('phone', $term)
+                        ->orWhere('name', $term)
+                        ->orWhere('email', $term)
+                        ->orWhere('designation', $term)
+                        ->orWhere('classification', $term)
+                        ->orWhere('company', $term)->get();
+        return $users;
+    }
 }

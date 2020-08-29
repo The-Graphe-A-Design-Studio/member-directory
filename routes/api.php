@@ -25,5 +25,6 @@ Route::prefix('/user')->group( function(){
     Route::post('/reg', 'UserController@register')->name('register');
     Route::get('/details/{id}', 'UserController@show')->name('details');
     Route::post('/logout', 'UserController@logout')->name('logout');
-    Route::post('/update', 'UserController@updateUser');
+    Route::post('/update', 'UserController@updateUser')->name('update');
+    Route::post('/search', 'UserController@search')->name('search');
 });

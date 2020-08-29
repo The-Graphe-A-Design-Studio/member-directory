@@ -20,5 +20,10 @@ Route::middleware('auth:api')->get('/userapi', function (Request $request) {
 });
 
 Route::post('/reg', 'UserController@regapp');
-Route::resource('users', 'UserController');
-Route::post('/logout', 'UserController@logout')->name('logout');
+
+Route::prefix('/user')->group( function(){
+    Route::post('/reg', 'UserController@register')->name('register');
+    Route::get('/details/{id}', 'UserController@show')->name('details');
+    Route::post('/logout', 'UserController@logout')->name('logout');
+    Route::post('/update', 'UserController@updateUser');
+});

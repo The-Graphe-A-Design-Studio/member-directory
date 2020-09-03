@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Storage;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -51,8 +52,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'IM_no' => ['required', 'unique:users'],
+            'name' => ['required', 'string', 'regex:/^[a-zA-Z ]+$/', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'phone' => ['required', 'regex:/^[0-9]+$/', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
@@ -63,38 +66,41 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
-        // if(is_uploaded_file($data['photo'])){
-        //     $file = $data['photo'];
-        //     //Get file name with the extension
-        //     $fileNameWithExt = $file->getClientOriginalName();
-        //     // echo $fileNameWithExt;
+        if($request->hasFile('photo')){
+            $file = $request->photo;
+            //Get file name with the extension
+            $fileNameWithExt = $file->getClientOriginalName();
+            // echo $fileNameWithExt;
 
-        //     //Get just Filename
-        //     $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            //Get just Filename
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
 
-        //     //Get just Extension
-        //     $extension = $file->getClientOriginalExtension();
+            //Get just Extension
+            $extension = $file->getClientOriginalExtension();
 
-        //     // Filename to store
-        //     $fileNameToStore = $filename.'_'.time().'.'.$extension;
+            // Filename to store
+            $fileNameToStore = $filename.'_'.time().'.'.$extension;
 
-        //     //Upload Image
-        //     Storage::disk('local')->putFileAs('profile_pic', $file, $fileNameToStore);
-        // }
+            //Upload Image
+            Storage::disk('local')->putFileAs('profile_pic', $file, $fileNameToStore);
+        }
         return User::create([
-            'IM_no' => $data['IM_no'],
-            'name' => $data['name'],
-            'phone' => $data['phone'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'gender' => $data['gender'],
-            'photo' => "fileNameToStore",
-            'designation' => $data['designation'],
-            'classification' => $data['classification'],
-            'company' => $data['company'],
-            'blood_group' => $data['blood_group'],
+            'IM_no' => $request->get('IM_no'),
+            'name' => $request->get('name'),
+            'dob' => $request->get('dob'),
+            'phone' => $request->get('phone'),
+            'email' => $request->get('email'),
+            'password' => Hash::make($request->get('password')),
+            'gender' => $request->get('gender'),
+            'photo' => $fileNameToStore,
+            'designation' => $request->get('designation'),
+            'classification' => $request->get('classification'),
+            'company' => $request->get('company'),
+            'blood_group' => $request->get('blood_group'),
+            // 'group_id' => $request->get('group_id'),
+            // 'sponsorer' => $request->get('sponsorer'),
         ]);
     }
 }

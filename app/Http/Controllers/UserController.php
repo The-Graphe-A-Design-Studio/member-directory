@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Validator;
 use App\User;
+use Auth;
 
 class UserController extends Controller
 {
@@ -16,8 +17,8 @@ class UserController extends Controller
     {
         $rules = [
             'IM_no' => 'required|unique:users',
-            'name' => 'required',
-            'phone' => 'required|max:13|unique:users',
+            'name' => 'required|regex:/^[a-zA-Z ]+$/',
+            'phone' => 'required|min:8|max:10|regex:/^[0-9]+$/|unique:users',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8|confirmed',
             'gender' => 'required',
@@ -157,7 +158,8 @@ class UserController extends Controller
         return response()->json(['status' => 'success', 'messege' => 'User updated'], 200);
     }
 
-    public function search(Request $request){
+    public function search(Request $request)
+    {
         $rules = [
             'term' => 'required',
         ];
@@ -175,5 +177,11 @@ class UserController extends Controller
                         ->orWhere('classification', $term)
                         ->orWhere('company', $term)->get();
         return $users;
+    }
+
+    public function init(){
+        $user = Auth::user();
+        
+        return response()->json(['user' => $user], 200);
     }
 }

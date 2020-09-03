@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Auth;
 use Illuminate\Http\Request;
+// use Illuminate\Support\Facades\Response;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -44,8 +45,14 @@ class LoginController extends Controller
     {
         Auth::guard('web')->logout();
 
-        return $request->wantsJson()
-            ? new Response('', 204)
-            : redirect('/');
+        if($request->wantsJson()){
+            return response('', 204);
+        } else {
+            return redirect('/');
+        }
+
+        // return $request->wantsJson()
+        //     ? new Response('', 204)
+        //     : redirect('/');
     }
 }

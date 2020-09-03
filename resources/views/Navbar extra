@@ -1,0 +1,101 @@
+<div class="container">
+        <router-link class="nav-link" to="/home">Icon</router-link>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          -expanded="false"
+          aria-label="'Toggle navigation"
+          v-on:click.prevent="toggleNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Left Side Of Navbar -->
+          <ul class="navbar-nav mr-auto"></ul>
+
+          <!-- Right Side Of Navbar -->
+          @php
+          $url = url()->current();
+          @endphp
+          <ul class="navbar-nav ml-auto">
+            <!-- Authentication Links -->
+            @guest
+            <li class="nav-item">
+              <router-link class="nav-link" to="/login">
+                <i class="fas fa-compass"></i> Series
+              </router-link>
+            </li>@if (Route::has('register'))
+            <li class="nav-item">
+              <router-link class="nav-link" to="/register">
+                <i class="fas fa-compass"></i> Series
+              </router-link>
+            </li>@endif
+            @else
+            @if(strpos($url, 'admin') !== false)
+            <router-link class="btn btn-dark" to="/admin/logout">Logout</router-link>
+            <form
+              id="logout-form"
+              @submit.prevent="adminLogout()"
+              method="POST"
+              style="display: none;"
+            >@csrf</form>@else
+            <router-link class="btn btn-light" to="/user/logout">Logout</router-link>
+            <form
+              id="logout-form"
+              @submit.prevent="userLogout()"
+              method="POST"
+              style="display: none;"
+            >@csrf</form>@endif
+            @endguest
+          </ul>
+        </div>
+      </div>
+
+
+
+
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          -expanded="false"
+          aria-label="'Toggle navigation"
+          v-on:click.prevent="toggleNavbar"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <!-- Left Side Of Navbar -->
+          <ul class="navbar-nav mr-auto"></ul>
+
+          <!-- Right Side Of Navbar -->
+
+          <ul class="navbar-nav ml-auto" v-if="isguest == 401">
+            <!-- Authentication Links -->
+            <!-- <li class="nav-item">
+              <router-link class="nav-link" to="/login">Login</router-link>
+            </li>
+            <li class="nav-item">
+              <router-link class="nav-link" to="/register">Register</router-link>
+            </li>-->
+            <h2>Is guest</h2>
+          </ul>
+
+          <ul class="navbar-nav ml-auto" v-else>
+            <!-- <router-link class="btn btn-light" to="/user/logout">Logout</router-link>
+            <form
+              id="logout-form"
+              @submit.prevent="userLogout()"
+              method="POST"
+              style="display: none;"
+            ></form>-->
+            <h2>Is not guest</h2>
+          </ul>
+        </div>

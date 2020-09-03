@@ -43,6 +43,6 @@
     <script>
         var BASE_URL = "{{ URL::to('/') }}";
     </script>
-    <script src="{{mix(asset('js/app.js')}}"></script>
+    <script src="{{mix(asset('js/app.js'))}}"></script>
     <!-- <script src="{{asset('js/app.js')}}"></script> -->
 </html>

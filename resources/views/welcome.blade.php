@@ -41,7 +41,7 @@
         </div>
     </body>
     <script>
-        var BASE_URL = "{{ URL::to('/') }}";
+        var BASE_URL = "{{ URL::to('/member-directory/') }}";
     </script>
     <script src="{{asset('js/app.js')}}"></script>
 </html>

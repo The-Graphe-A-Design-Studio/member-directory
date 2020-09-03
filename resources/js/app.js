@@ -14,10 +14,10 @@ const router = new VueRouter({
 });
 
 import App from './App.vue'
-import Admin from './Admin.vue'
+// import Admin from './Admin.vue'
 new Vue({
     // el: '#app',
     router,
     render: h => h(App),
-    render: h => h(Admin)
+    // render: h => h(Admin)
 }).$mount('#app');

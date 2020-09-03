@@ -43,6 +43,5 @@
     <script>
         var BASE_URL = "{{ URL::to('/') }}";
     </script>
-    <!-- <script src="{{mix('member-directory/js/app.js')}}"></script> -->
     <script src="{{mix('js/app.js')}}"></script>
 </html>

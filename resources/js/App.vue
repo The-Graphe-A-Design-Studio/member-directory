@@ -22,8 +22,19 @@ export default {
     };
   },
   mounted() {
-    this.init();
+    // this.init();
     console.log("Calling initialisation api");
+    this.loading = true;
+    axios
+      .get("https://developers.thegraphe.com/member-directory/user/init")
+      .then((response) => {
+        this.user = response.data.user;
+        this.loading = false;
+        this.initiatiated = true;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   methods: {
     init() {

@@ -23,6 +23,7 @@ export default {
   },
   mounted() {
     this.init();
+    console.log("Calling initialisation api");
   },
   methods: {
     init() {

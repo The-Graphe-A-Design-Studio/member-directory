@@ -1939,7 +1939,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.app.req.get("/user/init").then(function (response) {
+      axios.get("https://developers.thegraphe.com/member-directory/user/init").then(function (response) {
         _this.user = response.data.user;
         _this.loading = false;
         _this.initiatiated = true;

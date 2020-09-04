@@ -43,12 +43,10 @@ export default {
   methods: {
     userLogout() {
       // axios.post("/users/logout");
-      axios
-        .post("https://developers.thegraphe.com/member-directory/users/logout")
-        .then(() => {
-          this.app.user = null;
-          this.$router.push("/login");
-        });
+      this.app.req.post("/users/logout").then(() => {
+        this.app.user = null;
+        this.$router.push("/login");
+      });
     },
     adminLogout() {
       axios.post("/admin/logout");

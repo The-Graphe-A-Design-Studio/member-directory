@@ -66,7 +66,7 @@ export default {
           email: this.email,
           password: this.password,
         };
-        axios
+        this.app.req
           .post("login", data)
           .then((response) => {
             this.app.user = response.data;

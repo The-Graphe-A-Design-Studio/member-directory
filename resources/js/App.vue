@@ -16,6 +16,9 @@ export default {
       user: null,
       loading: false,
       initiatiated: false,
+      req: axios.create({
+        baseUrl: BASE_URL,
+      }),
     };
   },
   mounted() {
@@ -24,13 +27,11 @@ export default {
   methods: {
     init() {
       this.loading = true;
-      axios
-        .get("https://developers.thegraphe.com/member-directory/user/init")
-        .then((response) => {
-          this.user = response.data.user;
-          this.loading = false;
-          this.initiatiated = true;
-        });
+      this.req.get("/user/init").then((response) => {
+        this.user = response.data.user;
+        this.loading = false;
+        this.initiatiated = true;
+      });
     },
   },
 };

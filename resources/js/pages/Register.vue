@@ -294,7 +294,7 @@ export default {
         formData.append("classification", this.classification);
         formData.append("company", this.company);
         formData.append("blood_group", this.blood_group);
-        axios
+        this.app.req
           .post("register", formData, {
             headers: {
               accept: "application/json",

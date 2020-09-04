@@ -43,9 +43,6 @@
     <script>
         var BASE_URL = "https://developers.thegraphe.com/member-directory";
         // Vue.axios.defaults.baseURL = "https://developers.thegraphe.com/member-directory/";
-        // req: axios.create({
-      //   baseUrl: BASE_URL,
-      // }),
     </script>
     <script src="{{asset('js/app.js')}}"></script>
 </html>

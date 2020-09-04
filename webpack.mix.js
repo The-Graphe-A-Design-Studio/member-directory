@@ -11,7 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'js');
+mix.js(['vue.config.js', 'resources/js/app.js'], 'js');
 // mix.styles([
 //     'public/css/main.css',
 //     'public/css/style2.css'

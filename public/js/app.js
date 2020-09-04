@@ -1932,19 +1932,14 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.init();
-  },
-  methods: {
-    init: function init() {
-      var _this = this;
+    var _this = this;
 
-      this.loading = true;
-      axios.get("https://developers.thegraphe.com/member-directory/user/init").then(function (response) {
-        _this.user = response.data.user;
-        _this.loading = false;
-        _this.initiatiated = true;
-      });
-    }
+    this.loading = true;
+    axios.get("https://developers.thegraphe.com/member-directory/user/init").then(function (response) {
+      _this.user = response.data.user;
+      _this.loading = false;
+      _this.initiatiated = true;
+    });
   }
 });
 

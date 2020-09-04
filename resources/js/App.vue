@@ -22,19 +22,14 @@ export default {
     };
   },
   mounted() {
-    this.init();
-  },
-  methods: {
-    init() {
-      this.loading = true;
-      axios
-        .get("https://developers.thegraphe.com/member-directory/user/init")
-        .then((response) => {
-          this.user = response.data.user;
-          this.loading = false;
-          this.initiatiated = true;
-        });
-    },
+    this.loading = true;
+    axios
+      .get("https://developers.thegraphe.com/member-directory/user/init")
+      .then((response) => {
+        this.user = response.data.user;
+        this.loading = false;
+        this.initiatiated = true;
+      });
   },
 };
 </script>

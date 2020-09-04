@@ -1925,10 +1925,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       user: null,
       loading: false,
-      initiatiated: false,
-      req: axios.create({
-        baseUrl: BASE_URL
-      })
+      initiatiated: false
     };
   },
   mounted: function mounted() {
@@ -1939,7 +1936,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.loading = true;
-      this.req.get("/user/init").then(function (response) {
+      axios.get("https://developers.thegraphe.com/member-directory/user/init").then(function (response) {
         _this.user = response.data.user;
         _this.loading = false;
         _this.initiatiated = true;
@@ -2004,7 +2001,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       // axios.post("/users/logout");
-      this.app.req.post("/users/logout").then(function () {
+      axios.post("https://developers.thegraphe.com/member-directory/users/logout").then(function () {
         _this.app.user = null;
 
         _this.$router.push("/login");
@@ -2116,7 +2113,7 @@ __webpack_require__.r(__webpack_exports__);
           email: this.email,
           password: this.password
         };
-        this.app.req.post("login", data).then(function (response) {
+        axios.post("login", data).then(function (response) {
           _this.app.user = response.data;
 
           _this.$router.push("/");
@@ -2444,7 +2441,7 @@ __webpack_require__.r(__webpack_exports__);
         formData.append("classification", this.classification);
         formData.append("company", this.company);
         formData.append("blood_group", this.blood_group);
-        this.app.req.post("register", formData, {
+        axios.post("register", formData, {
           headers: {
             accept: "application/json",
             "Accept-Language": "en-US,en;q=0.8",

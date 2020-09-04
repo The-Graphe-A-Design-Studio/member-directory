@@ -43,7 +43,7 @@ export default {
   methods: {
     userLogout() {
       // axios.post("/users/logout");
-      this.app.req.post("/users/logout").then(() => {
+      axios.post("/users/logout").then(() => {
         this.app.user = null;
         this.$router.push("/login");
       });

@@ -41,7 +41,8 @@
         </div>
     </body>
     <script>
-        var BASE_URL = "{{ URL::to('/member-directory') }}";
+        // var BASE_URL = "{{ URL::to('/member-directory') }}";
+        Vue.axios.defaults.baseURL = "https://developers.thegraphe.com/member-directory/";
     </script>
     <script src="{{asset('js/app.js')}}"></script>
 </html>

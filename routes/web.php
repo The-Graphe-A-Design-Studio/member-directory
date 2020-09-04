@@ -20,7 +20,7 @@ Route::get('/', function () {
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::post('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
+Route::post('/member-directory/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
 
 Route::prefix('/admin')->group( function(){
 //     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

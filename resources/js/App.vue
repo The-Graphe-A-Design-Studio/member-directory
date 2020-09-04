@@ -16,9 +16,9 @@ export default {
       user: null,
       loading: false,
       initiatiated: false,
-      req: axios.create({
-        baseUrl: BASE_URL,
-      }),
+      // req: axios.create({
+      //   baseUrl: BASE_URL,
+      // }),
     };
   },
   mounted() {

@@ -27,7 +27,7 @@ export default {
   methods: {
     init() {
       this.loading = true;
-      this.req.get("/user/init").then((response) => {
+      this.app.req.get("/user/init").then((response) => {
         this.user = response.data.user;
         this.loading = false;
         this.initiatiated = true;

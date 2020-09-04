@@ -42,7 +42,7 @@ export default {
   props: ["app"],
   methods: {
     userLogout() {
-      axios.post("/users/logout").then(() => {
+      axios.post(BASE_URL + "/users/logout").then(() => {
         this.app.user = null;
         this.$router.push("/login");
       });

@@ -1998,7 +1998,7 @@ __webpack_require__.r(__webpack_exports__);
     userLogout: function userLogout() {
       var _this = this;
 
-      axios.post("/users/logout").then(function () {
+      axios.post(BASE_URL + "/users/logout").then(function () {
         _this.app.user = null;
 
         _this.$router.push("/login");

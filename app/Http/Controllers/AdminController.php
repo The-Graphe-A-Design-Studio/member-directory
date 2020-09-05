@@ -124,7 +124,7 @@ class AdminController extends Controller
 
     public function aboutusadmapp(){
         $admin = Admin::first();
-        $img = "http://developers.thegraphe.com/ecommerce/storage/app/about_us/" . $admin->about_us_img;
+        $img = "https://developers.thegraphe.com/ecommerce/storage/app/about_us/" . $admin->about_us_img;
         return response()->json(['about_us'=>$admin->about_us , 'about_us_img'=>$img]);
     }
 }

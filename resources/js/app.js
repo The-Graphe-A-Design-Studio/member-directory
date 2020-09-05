@@ -10,9 +10,10 @@ Vue.use(VueRouter)
 
 import routes from './routes'
 const router = new VueRouter({
-    routes,
     mode: 'history',
-    hash: false,
+    // hash: false,
+    history: true,
+    routes,
 });
 
 import App from './App.vue'

@@ -54458,6 +54458,7 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); // Vue.component('n
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
+  hash: false,
   routes: _routes__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 
@@ -54963,6 +54964,9 @@ __webpack_require__.r(__webpack_exports__);
   path: '/admin',
   component: _pages_admin_Admin__WEBPACK_IMPORTED_MODULE_1__["default"],
   name: 'admin'
+}, {
+  path: '*',
+  redirect: '/'
 }]);
 
 /***/ }),

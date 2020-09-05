@@ -24,4 +24,8 @@ export default [
         component: Admin,
         name: 'admin'
     },
+    {
+        path: '*',
+        redirect: '/'
+    }
 ]

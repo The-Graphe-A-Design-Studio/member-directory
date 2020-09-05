@@ -54457,9 +54457,10 @@ Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); // Vue.component('n
 
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  routes: _routes__WEBPACK_IMPORTED_MODULE_1__["default"],
   mode: 'history',
-  hash: false
+  // hash: false,
+  history: true,
+  routes: _routes__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 
 new Vue({

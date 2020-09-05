@@ -10,14 +10,13 @@ Vue.use(VueRouter)
 
 import routes from './routes'
 const router = new VueRouter({
+    mode: 'history',
     routes
 });
 
 import App from './App.vue'
-// import Admin from './Admin.vue'
 new Vue({
     // el: '#app',
     router,
     render: h => h(App),
-    // render: h => h(Admin)
 }).$mount('#app');

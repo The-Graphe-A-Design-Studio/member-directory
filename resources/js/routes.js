@@ -1,7 +1,7 @@
 import Home from './pages/Home';
+import Admin from './pages/admin/Admin';
 import Register from './pages/Register';
 import Login from './pages/Login';
-// import Admin from './pages/Admin';
 
 export default [
     {
@@ -19,9 +19,9 @@ export default [
         component: Login,
         name: 'login'
     },
-    // {
-    //     path: '/admin',
-    //     component: Admin,
-    //     name: 'admin'
-    // },
+    {
+        path: '/admin',
+        component: Admin,
+        name: 'admin'
+    },
 ]

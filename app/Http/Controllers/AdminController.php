@@ -8,6 +8,7 @@ use Illuminate\Hashing\BcryptHasher;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Admin;
+use Auth;
 
 class AdminController extends Controller
 {
@@ -18,7 +19,7 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth:admin')->except('loginadmapp', 'regadmapp', 'aboutusadmapp', 'aboutussaveadm');
+        $this->middleware('auth:admin')->except('admininit', 'loginadmapp', 'regadmapp', 'aboutusadmapp', 'aboutussaveadm');
     }
 
     /**
@@ -29,6 +30,12 @@ class AdminController extends Controller
     public function index()
     {
         return view('admin');
+    }
+
+    public function admininit(){
+        $admin = Auth::guard('admin')->user();
+        
+        return response()->json(['admin' => $admin], 200);
     }
 
     public function regadmapp(Request $request){

@@ -25,12 +25,12 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
-        \URL::forceRootUrl(\Config::get('app.url'));    
-        // And this if you wanna handle https URL scheme
-        // It's not usefull for http://www.example.com, it's just to make it more independant from the constant value
-        if (str_contains(\Config::get('app.url'), 'https://developers.thegraphe.com/member-directory')) {
-            \URL::forceScheme('https');
-            //use \URL:forceSchema('https') if you use laravel < 5.4
-        }
+        // \URL::forceRootUrl(\Config::get('app.url'));    
+        // // And this if you wanna handle https URL scheme
+        // // It's not usefull for http://www.example.com, it's just to make it more independant from the constant value
+        // if (str_contains(\Config::get('app.url'), 'https://developers.thegraphe.com/member-directory')) {
+        //     \URL::forceScheme('https');
+        //     //use \URL:forceSchema('https') if you use laravel < 5.4
+        // }
     }
 }

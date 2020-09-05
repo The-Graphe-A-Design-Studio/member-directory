@@ -183,5 +183,6 @@ class UserController extends Controller
         $user = Auth::user();
         
         return response()->json(['user' => $user], 200);
+        // return response()->json(csrf_token());
     }
 }

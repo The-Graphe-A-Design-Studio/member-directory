@@ -52,7 +52,8 @@ return [
     |
     */
 
-    'url' => 'https://developers.thegraphe.com/member-directory',
+    // 'url' => 'https://developers.thegraphe.com/member-directory',
+    'url' => env('APP_URL', 'https://localhost'),
 
     'asset_url' => env('ASSET_URL', null),
 

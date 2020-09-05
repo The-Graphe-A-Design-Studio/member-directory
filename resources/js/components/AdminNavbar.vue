@@ -7,7 +7,7 @@
         <ul class="navbar-nav ml-auto">
           <!-- Authentication Links -->
           <li class="nav-item dropdown">
-            <a
+            <!-- <a
               class="nav-link dropdown-toggle"
               href="#"
               id="navbarDropdown"
@@ -17,12 +17,12 @@
               aria-expanded="false"
             >{{app.user ? app.user.name : "Account"}}</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" v-if="!app.user">
-              <router-link class="nav-link" to="/login">Login</router-link>
-              <router-link class="nav-link" to="/register">Register</router-link>
-            </div>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown" v-else>
-              <a class="nav-link" @click="userLogout" href="javascript:;">Logout</a>
-            </div>
+              <router-link class="nav-link" to="/admin/login">Login</router-link>
+              <router-link class="nav-link" to="/admin/register">Register</router-link>
+            </div>-->
+            <!-- <div class="dropdown-menu" aria-labelledby="navbarDropdown" v-else> -->
+            <a class="nav-link" @click="adminLogout" href="javascript:;">Logout</a>
+            <!-- </div> -->
           </li>
         </ul>
       </div>
@@ -31,24 +31,21 @@
 </template>
 <script>
 export default {
-  name: "navbar",
+  name: "adminnavbar",
   data() {
     return {
-      // csrf: document
-      //   .querySelector('meta[name="csrf-token"]')
-      //   .getAttribute("content"),
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content"),
     };
   },
   props: ["app"],
   methods: {
-    userLogout() {
-      axios.post(BASE_URL + "/users/logout").then(() => {
-        this.app.user = null;
-        this.$router.push("/login");
-      });
-    },
     adminLogout() {
-      axios.post("/admin/logout");
+      axios.post(BASE_URL + "/admin/logout").then(() => {
+        this.$router.push("/admin/login");
+        window.location.reload();
+      });
     },
   },
 };

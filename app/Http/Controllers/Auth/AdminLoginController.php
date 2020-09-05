@@ -35,8 +35,14 @@ class AdminLoginController extends Controller
     {
         Auth::guard('admin')->logout();
 
-        return $request->wantsJson()
-            ? new Response('', 204)
-            : redirect('/');
+        if($request->wantsJson()){
+            return response('', 204);
+        } else {
+            return redirect('/');
+        }
+
+        // return $request->wantsJson()
+        //     ? new Response('', 204)
+        //     : redirect('/');
     }
 }

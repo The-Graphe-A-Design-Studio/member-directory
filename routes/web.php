@@ -38,3 +38,6 @@ Route::any('/admin/{slug}', function(){
     return view('admin')->middleware('auth:admin');
 });
 Route::get('/user/init', 'UserController@init')->name('init');
+Route::get('/{catchall?}', function () {
+    return view('welcome');
+});

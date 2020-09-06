@@ -54451,22 +54451,19 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
-Vue.config.productionTip = false; // Vue.component('navigation-bar', require('./components/Navbar.vue').default);
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); // Vue.config.productionTip = false;
+// Vue.component('navigation-bar', require('./components/Navbar.vue').default);
 // Vue.component('articles', require('./components/Articles.vue').default);
 // Vue.component('mainapp', require('./App.vue').default)
 
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
-  hashbang: false,
-  // hash: false,
-  history: true,
   routes: _routes__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 
 new Vue({
-  el: '#app',
+  // el: '#app',
   router: router,
   render: function render(h) {
     return h(_App_vue__WEBPACK_IMPORTED_MODULE_2__["default"]);

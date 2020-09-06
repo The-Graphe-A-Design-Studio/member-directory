@@ -54462,6 +54462,7 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   hashbang: false,
   // hash: false,
   // history: true,
+  linkActiveClass: 'active',
   routes: _routes__WEBPACK_IMPORTED_MODULE_1__["default"]
 });
 

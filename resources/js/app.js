@@ -4,7 +4,7 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
-// Vue.config.productionTip = false;
+Vue.config.productionTip = false;
 
 // Vue.component('navigation-bar', require('./components/Navbar.vue').default);
 // Vue.component('articles', require('./components/Articles.vue').default);
@@ -13,12 +13,15 @@ Vue.use(VueRouter)
 import routes from './routes'
 const router = new VueRouter({
     mode: 'history',
-    routes
+    hashbang: false,
+    // hash: false,
+    history: true,
+    routes,
 });
 
 import App from './App.vue'
 new Vue({
-    // el: '#app',
+    el: '#app',
     router,
     render: h => h(App),
 }).$mount('#app');

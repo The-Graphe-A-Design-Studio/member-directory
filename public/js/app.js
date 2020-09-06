@@ -54451,7 +54451,8 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 
-Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]); // Vue.component('navigation-bar', require('./components/Navbar.vue').default);
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
+Vue.config.productionTip = false; // Vue.component('navigation-bar', require('./components/Navbar.vue').default);
 // Vue.component('articles', require('./components/Articles.vue').default);
 // Vue.component('mainapp', require('./App.vue').default)
 

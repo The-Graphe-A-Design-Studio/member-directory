@@ -4,6 +4,8 @@ window.Vue = require('vue');
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
+Vue.config.productionTip = false;
+
 // Vue.component('navigation-bar', require('./components/Navbar.vue').default);
 // Vue.component('articles', require('./components/Articles.vue').default);
 // Vue.component('mainapp', require('./App.vue').default)

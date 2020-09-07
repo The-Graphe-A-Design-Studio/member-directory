@@ -17,14 +17,8 @@
               aria-expanded="false"
             >{{app.user ? app.user.name : "Account"}}</a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" v-if="!app.user">
-              <!-- <div v-if="this.app.currentUrl > 0">
-                <router-link class="nav-link" to="/admin/login">Admin Login</router-link>
-                <router-link class="nav-link" to="/admin/register">Admin Register</router-link>
-              </div>-->
-              <!-- <div v-else> -->
               <router-link class="nav-link" to="/login">Login</router-link>
               <router-link class="nav-link" to="/register">Register</router-link>
-              <!-- </div> -->
             </div>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown" v-else>
               <a class="nav-link" @click="userLogout" href="javascript:;">Logout</a>

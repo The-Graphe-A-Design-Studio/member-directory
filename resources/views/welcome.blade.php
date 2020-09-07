@@ -41,8 +41,10 @@
         </div>
     </body>
     <script>
-        // var BASE_URL = "{{ URL::to('/') }}";
-        var BASE_URL = "https://developers.thegraphe.com/member-directory";
+        var BASE_URL = "{{ URL::to('/') }}";
+        // var BASE_URL = "https://developers.thegraphe.com/member-directory";
+        history.pushState({}, document.title, location.href.replace('#', ""));
+        // history.pushState("", document.title, window.location.pathname);
     </script>
     <script src="{{asset('js/app.js')}}"></script>
 </html>

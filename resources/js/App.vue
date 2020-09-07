@@ -38,14 +38,6 @@ export default {
         this.initiatiated = true;
       });
     },
-    // admininit() {
-    //   this.loading = true;
-    //   this.req.get("/admin/init").then((response) => {
-    //     this.user = response.data.user;
-    //     this.loading = false;
-    //     this.initiatiated = true;
-    //   });
-    // },
   },
 };
 </script>

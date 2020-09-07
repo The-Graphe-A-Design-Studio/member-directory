@@ -13,6 +13,14 @@ use Auth;
 
 class UserController extends Controller
 {
+
+    public function init(){
+        $user = Auth::user();
+        
+        return response()->json(['user' => $user], 200);
+        // return response()->json(csrf_token());
+    }
+
     public function register(Request $request)
     {
         $rules = [
@@ -179,10 +187,9 @@ class UserController extends Controller
         return $users;
     }
 
-    public function init(){
-        $user = Auth::user();
-        
-        return response()->json(['user' => $user], 200);
-        // return response()->json(csrf_token());
+    public function members(){
+        $users = User::all();
+        return response()->json(["users" => $users], 200);
     }
+
 }

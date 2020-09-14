@@ -1,4 +1,4 @@
-const API_URL = "http://developers.thegraphe.com/member-directory/api/v1";
+// const API_URL = "http://developers.thegraphe.com/member-directory/api/v1";
 import axios from "axios";
 axios.defaults.baseURL = "https://developers.thegraphe.com/member-directory"
 const state = {

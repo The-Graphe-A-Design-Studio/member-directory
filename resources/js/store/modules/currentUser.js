@@ -13,7 +13,7 @@ const actions = {
             })
     },
     loginUser({ commit }, user) {
-        axios.post("/api/v1/user/login", {
+        axios.post("/member-directory/api/v1/user/login", {
             email: user.email,
             password: user.password
         })

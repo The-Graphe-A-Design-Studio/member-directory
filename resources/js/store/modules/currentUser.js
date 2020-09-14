@@ -1,4 +1,6 @@
 import axios from "axios";
+var baseurl = "/member-directory/";
+// var baseurl = "/";
 
 const state = {
     user: {},
@@ -7,13 +9,13 @@ const state = {
 const getters = {};
 const actions = {
     getUser({ commit }) {
-        axios.get("/api/v1/user/current")
+        axios.get(baseurl + "api/v1/user/current")
             .then(response => {
                 commit('setUser', response.data);
             })
     },
     loginUser({ commit }, user) {
-        axios.post("/api/v1/user/login", {
+        axios.post(baseurl + "api/v1/user/login", {
             email: user.email,
             password: user.password
         })
@@ -29,7 +31,7 @@ const actions = {
             })
     },
     registerUser({ commit }, user) {
-        axios.post("/api/v1/user/register", {
+        axios.post(baseurl + "api/v1/user/register", {
             IM_no: user.IM_no,
             name: user.name,
             dob: user.dob,
@@ -64,7 +66,7 @@ const actions = {
         window.location.replace('/login');
     },
     getUsers() {
-        axios.get("/api/v1/user/all");
+        axios.get(baseurl + "api/v1/user/all");
     }
 };
 const mutations = {

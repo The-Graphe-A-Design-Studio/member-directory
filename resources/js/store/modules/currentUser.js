@@ -1,5 +1,5 @@
-import myapi from "../../myapi";
-
+const API_URL = "http://developers.thegraphe.com/member-directory/api/v1";
+import axios from "axios";
 const state = {
     user: {},
     errors: {}
@@ -7,13 +7,13 @@ const state = {
 const getters = {};
 const actions = {
     getUser({ commit }) {
-        myapi.get("/user/current")
+        axios.get(API_URL + "/user/current")
             .then(response => {
                 commit('setUser', response.data);
             })
     },
     loginUser({ commit }, user) {
-        myapi.post("/user/login", {
+        axios.post(API_URL + "/user/login", {
             email: user.email,
             password: user.password
         })
@@ -29,7 +29,7 @@ const actions = {
             })
     },
     registerUser({ commit }, user) {
-        myapi.post("/user/register", {
+        axios.post(API_URL + "/user/register", {
             IM_no: user.IM_no,
             name: user.name,
             dob: user.dob,
@@ -64,7 +64,7 @@ const actions = {
         window.location.replace('/login');
     },
     getUsers() {
-        myapi.get("/user/all");
+        axios.get(API_URL + "/user/all");
     }
 };
 const mutations = {

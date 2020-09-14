@@ -11,7 +11,7 @@ Auth::routes();
 // Route::get('/{any}', 'AppController@index')->where('any', '.*');
 Route::get('/app', 'AppController@index')->name('home');
 Route::post('/users/logout', 'Auth\LoginController@userLogout')->name('user.logout');
-Route::post('/user/register', 'Auth\RegisterController@register')->name('user.register');
+// Route::post('/user/register', 'Auth\RegisterController@register')->name('user.register');
 
 Route::prefix('/admin')->group( function(){
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');

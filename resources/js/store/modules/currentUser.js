@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const state = {
-    user: {}
+    user: {},
+    errors: {}
 };
 const getters = {};
 const actions = {
@@ -11,7 +12,7 @@ const actions = {
                 commit('setUser', response.data);
             })
     },
-    loginUser({ }, user) {
+    loginUser({ commit }, user) {
         axios.post("/api/v1/user/login", {
             email: user.email,
             password: user.password
@@ -21,8 +22,41 @@ const actions = {
                     //save token
                     localStorage.setItem("user_token", response.data.access_token)
                     console.log(response.data);
+                    window.location.replace("/app");
+                } else {
+                    commit('setError', response.data.errors);
                 }
-                window.location.replace("/app");
+            })
+    },
+    registerUser({ commit }, user) {
+        axios.post("/api/v1/user/register", {
+            IM_no: user.IM_no,
+            name: user.name,
+            dob: user.dob,
+            phone: user.phone,
+            email: user.email,
+            password: user.password,
+            password_confirmation: user.password_confirmation,
+            gender: user.gender,
+            designation: user.designation,
+            classification: user.classification,
+            company: user.company,
+            blood_group: user.blood_group,
+        })
+            .then(response => {
+                if (response.data.access_token) {
+                    //save token
+                    localStorage.setItem("user_token", response.data.access_token)
+                    console.log(response.data);
+                    window.location.replace("/app");
+                }
+                else {
+                    commit('setError', response.data.errors);
+                }
+                // console.log(response.data.errors);
+            })
+            .catch(error => {
+                console.log(error);
             })
     },
     logoutUser() {
@@ -36,6 +70,9 @@ const actions = {
 const mutations = {
     setUser(state, data) {
         state.user = data;
+    },
+    setError(state, data) {
+        state.errors = data;
     }
 };
 

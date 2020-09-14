@@ -1,5 +1,7 @@
 <template>
     <div>
+        <error-list />
+        
         <p>Email</p>
         <input type="email" name="email" v-model="user.email" class="form-control mb-2">
         <p>Password</p>

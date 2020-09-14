@@ -7,7 +7,9 @@ import Vuetify from '../plugins/vuetify';
 import store from './store';
 import router from './routes';
 
+Vue.component('error-list', require('./components/errors/ErrorList.vue').default);
 Vue.component('login-form', require('./components/LoginForm.vue').default);
+Vue.component('register-form', require('./components/RegisterForm.vue').default);
 Vue.component('admin-login-form', require('./components/AdminLoginForm.vue').default);
 Vue.component('app-layout', require('./layouts/AppLayout.vue').default);
 Vue.component('admin-layout', require('./layouts/AdminLayout.vue').default);

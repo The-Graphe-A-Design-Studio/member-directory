@@ -52,8 +52,8 @@ return [
     |
     */
 
-    // 'url' => env('APP_URL', 'http://localhost:8000'),
-    'url' => env('APP_URL', "https://developers.thegraphe.com/member-directory"),
+    'url' => env('APP_URL', 'http://localhost:8000'),
+    // 'url' => env('APP_URL', "https://developers.thegraphe.com/member-directory"),
 
     'asset_url' => env('ASSET_URL', null),
 

@@ -1,6 +1,4 @@
 // const API_URL = "http://developers.thegraphe.com/member-directory/api/v1";
-import axios from "axios";
-axios.defaults.baseURL = "https://developers.thegraphe.com/member-directory"
 const state = {
     user: {},
     errors: {}
@@ -8,13 +6,13 @@ const state = {
 const getters = {};
 const actions = {
     getUser({ commit }) {
-        axios.get("/member-directory/api/v1/user/current")
+        axios.get("/user/current")
             .then(response => {
                 commit('setUser', response.data);
             })
     },
     loginUser({ commit }, user) {
-        axios.post("/member-directory/api/v1/user/login", {
+        axios.post("/user/login", {
             email: user.email,
             password: user.password
         })
@@ -30,7 +28,7 @@ const actions = {
             })
     },
     registerUser({ commit }, user) {
-        axios.post("/member-directory/api/v1/user/register", {
+        axios.post("/user/register", {
             IM_no: user.IM_no,
             name: user.name,
             dob: user.dob,
@@ -65,7 +63,7 @@ const actions = {
         window.location.replace('/login');
     },
     getUsers() {
-        axios.get("/member-directory/api/v1/user/all");
+        axios.get("/user/all");
     }
 };
 const mutations = {

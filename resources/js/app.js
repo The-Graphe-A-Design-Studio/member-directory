@@ -4,6 +4,12 @@ window.Vue = require('vue');
 
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import Vuetify from '../plugins/vuetify';
+import axios from "axios";
+
+axios.defaults.baseURL = "https://developers.thegraphe.com/member-directory/api/v1"
+
+Vue.config.productionTip = false;
+
 import store from './store';
 import router from './routes';
 

@@ -8,7 +8,7 @@ import axios from "axios";
 
 axios.defaults.baseURL = "https://developers.thegraphe.com/member-directory/api/v1"
 
-Vue.config.productionTip = false;
+// Vue.config.productionTip = false;
 
 import store from './store';
 import router from './routes';

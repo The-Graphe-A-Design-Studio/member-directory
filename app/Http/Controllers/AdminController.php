@@ -19,7 +19,11 @@ class AdminController extends Controller
      */
     public function __construct()
     {
+<<<<<<< HEAD
         $this->middleware('auth:admin')->except('admininit', 'loginadmapp', 'regadmapp', 'aboutusadmapp', 'aboutussaveadm');
+=======
+        // $this->middleware('auth:admin')->except('admininit', 'loginadmapp', 'regadmapp', 'aboutusadmapp', 'aboutussaveadm');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -29,7 +33,11 @@ class AdminController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         return view('admin');
+=======
+        return view('adminLayout');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     public function admininit(){

@@ -3,8 +3,11 @@
 namespace Illuminate\Foundation\Console;
 
 use Illuminate\Console\Command;
+<<<<<<< HEAD
 use RuntimeException;
 use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 class StorageLinkCommand extends Command
 {
@@ -29,6 +32,7 @@ class StorageLinkCommand extends Command
      */
     public function handle()
     {
+<<<<<<< HEAD
         foreach ($this->links() as $link => $target) {
             if (file_exists($link)) {
                 $this->error("The [$link] link already exists.");
@@ -41,6 +45,23 @@ class StorageLinkCommand extends Command
 
                 $this->info("The [$link] link has been connected to [$target].");
             }
+=======
+        $relative = $this->option('relative');
+
+        foreach ($this->links() as $link => $target) {
+            if (file_exists($link)) {
+                $this->error("The [$link] link already exists.");
+                continue;
+            }
+
+            if ($relative) {
+                $this->laravel->make('files')->relativeLink($target, $link);
+            } else {
+                $this->laravel->make('files')->link($target, $link);
+            }
+
+            $this->info("The [$link] link has been connected to [$target].");
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
 
         $this->info('The links have been created.');
@@ -56,6 +77,7 @@ class StorageLinkCommand extends Command
         return $this->laravel['config']['filesystems.links'] ??
                [public_path('storage') => storage_path('app/public')];
     }
+<<<<<<< HEAD
 
     /**
      * Get the relative path to the target.
@@ -72,4 +94,6 @@ class StorageLinkCommand extends Command
 
         return (new SymfonyFilesystem)->makePathRelative($target, dirname($link));
     }
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

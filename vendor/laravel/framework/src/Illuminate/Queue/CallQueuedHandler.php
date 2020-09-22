@@ -3,6 +3,10 @@
 namespace Illuminate\Queue;
 
 use Exception;
+<<<<<<< HEAD
+=======
+use Illuminate\Bus\Batchable;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Contracts\Bus\Dispatcher;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Queue\Job;
@@ -60,6 +64,10 @@ class CallQueuedHandler
 
         if (! $job->hasFailed() && ! $job->isReleased()) {
             $this->ensureNextJobInChainIsDispatched($command);
+<<<<<<< HEAD
+=======
+            $this->ensureSuccessfulBatchJobIsRecorded($command);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
 
         if (! $job->isDeletedOrReleased()) {
@@ -133,6 +141,28 @@ class CallQueuedHandler
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Ensure the batch is notified of the successful job completion.
+     *
+     * @param  mixed  $command
+     * @return void
+     */
+    protected function ensureSuccessfulBatchJobIsRecorded($command)
+    {
+        $uses = class_uses_recursive($command);
+
+        if (! in_array(Batchable::class, $uses) ||
+            ! in_array(InteractsWithQueue::class, $uses) ||
+            is_null($command->batch())) {
+            return;
+        }
+
+        $command->batch()->recordSuccessfulJob($command->job->uuid());
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Handle a model not found exception.
      *
      * @param  \Illuminate\Contracts\Queue\Job  $job
@@ -163,6 +193,7 @@ class CallQueuedHandler
      * The exception that caused the failure will be passed.
      *
      * @param  array  $data
+<<<<<<< HEAD
      * @param  \Throwable  $e
      * @return void
      */
@@ -170,8 +201,57 @@ class CallQueuedHandler
     {
         $command = unserialize($data['command']);
 
+=======
+     * @param  \Throwable|null  $e
+     * @param  string  $uuid
+     * @return void
+     */
+    public function failed(array $data, $e, string $uuid)
+    {
+        $command = unserialize($data['command']);
+
+        $this->ensureFailedBatchJobIsRecorded($uuid, $command, $e);
+        $this->ensureChainCatchCallbacksAreInvoked($uuid, $command, $e);
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         if (method_exists($command, 'failed')) {
             $command->failed($e);
         }
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Ensure the batch is notified of the failed job.
+     *
+     * @param  string  $uuid
+     * @param  mixed  $command
+     * @param  \Throwable  $e
+     * @return void
+     */
+    protected function ensureFailedBatchJobIsRecorded(string $uuid, $command, $e)
+    {
+        if (! in_array(Batchable::class, class_uses_recursive($command)) ||
+            is_null($command->batch())) {
+            return;
+        }
+
+        $command->batch()->recordFailedJob($uuid, $e);
+    }
+
+    /**
+     * Ensure the chained job catch callbacks are invoked.
+     *
+     * @param  string  $uuid
+     * @param  mixed  $command
+     * @param  \Throwable  $e
+     * @return void
+     */
+    protected function ensureChainCatchCallbacksAreInvoked(string $uuid, $command, $e)
+    {
+        if (method_exists($command, 'invokeChainCatchCallbacks')) {
+            $command->invokeChainCatchCallbacks($e);
+        }
+    }
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

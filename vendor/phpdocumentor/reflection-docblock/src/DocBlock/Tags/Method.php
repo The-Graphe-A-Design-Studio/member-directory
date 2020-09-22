@@ -213,6 +213,7 @@ final class Method extends BaseTag implements Factory\StaticMethod
             $arguments[] = $argument['type'] . ' $' . $argument['name'];
         }
 
+<<<<<<< HEAD
         $argumentStr = '(' . implode(', ', $arguments) . ')';
 
         if ($this->description) {
@@ -232,6 +233,13 @@ final class Method extends BaseTag implements Factory\StaticMethod
             . ($methodName !== '' ? ($static !== '' || $returnType !== '' ? ' ' : '') . $methodName : '')
             . $argumentStr
             . ($description !== '' ? ' ' . $description : '');
+=======
+        return trim(($this->isStatic() ? 'static ' : '')
+            . (string) $this->returnType . ' '
+            . $this->methodName
+            . '(' . implode(', ', $arguments) . ')'
+            . ($this->description ? ' ' . $this->description->render() : ''));
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

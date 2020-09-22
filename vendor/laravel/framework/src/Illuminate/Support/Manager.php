@@ -16,6 +16,7 @@ abstract class Manager
     protected $container;
 
     /**
+<<<<<<< HEAD
      * The container instance.
      *
      * @var \Illuminate\Contracts\Container\Container
@@ -25,6 +26,8 @@ abstract class Manager
     protected $app;
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * The configuration repository instance.
      *
      * @var \Illuminate\Contracts\Config\Repository
@@ -53,7 +56,10 @@ abstract class Manager
      */
     public function __construct(Container $container)
     {
+<<<<<<< HEAD
         $this->app = $container;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $this->container = $container;
         $this->config = $container->make('config');
     }

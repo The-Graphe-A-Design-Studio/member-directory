@@ -12,7 +12,11 @@ use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Contracts\Support\Responsable;
 use Illuminate\Contracts\Validation\Factory as ValidationFactory;
 use Illuminate\Contracts\View\Factory as ViewFactory;
+<<<<<<< HEAD
 use Illuminate\Database\Eloquent\Factory as EloquentFactory;
+=======
+use Illuminate\Foundation\Bus\PendingClosureDispatch;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Foundation\Bus\PendingDispatch;
 use Illuminate\Foundation\Mix;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -384,11 +388,17 @@ if (! function_exists('dispatch')) {
      */
     function dispatch($job)
     {
+<<<<<<< HEAD
         if ($job instanceof Closure) {
             $job = CallQueuedClosure::create($job);
         }
 
         return new PendingDispatch($job);
+=======
+        return $job instanceof Closure
+                ? new PendingClosureDispatch(CallQueuedClosure::create($job))
+                : new PendingDispatch($job);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }
 
@@ -406,6 +416,7 @@ if (! function_exists('dispatch_now')) {
     }
 }
 
+<<<<<<< HEAD
 if (! function_exists('elixir')) {
     /**
      * Get the path to a versioned Elixir file.
@@ -448,6 +459,8 @@ if (! function_exists('elixir')) {
     }
 }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 if (! function_exists('encrypt')) {
     /**
      * Encrypt the given value.
@@ -477,6 +490,7 @@ if (! function_exists('event')) {
     }
 }
 
+<<<<<<< HEAD
 if (! function_exists('factory')) {
     /**
      * Create a model factory builder for a given class and amount.
@@ -497,6 +511,8 @@ if (! function_exists('factory')) {
     }
 }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 if (! function_exists('info')) {
     /**
      * Write some information to the log.

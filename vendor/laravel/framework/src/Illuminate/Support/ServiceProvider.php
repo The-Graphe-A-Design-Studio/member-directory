@@ -2,6 +2,10 @@
 
 namespace Illuminate\Support;
 
+<<<<<<< HEAD
+=======
+use Closure;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Console\Application as Artisan;
 use Illuminate\Contracts\Foundation\CachesConfiguration;
 use Illuminate\Contracts\Foundation\CachesRoutes;
@@ -19,6 +23,23 @@ abstract class ServiceProvider
     protected $app;
 
     /**
+<<<<<<< HEAD
+=======
+     * All of the registered booting callbacks.
+     *
+     * @var array
+     */
+    protected $bootingCallbacks = [];
+
+    /**
+     * All of the registered booted callbacks.
+     *
+     * @var array
+     */
+    protected $bootedCallbacks = [];
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * The paths that should be published.
      *
      * @var array
@@ -54,6 +75,55 @@ abstract class ServiceProvider
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Register a booting callback to be run before the "boot" method is called.
+     *
+     * @param  \Closure  $callback
+     * @return void
+     */
+    public function booting(Closure $callback)
+    {
+        $this->bootingCallbacks[] = $callback;
+    }
+
+    /**
+     * Register a booted callback to be run after the "boot" method is called.
+     *
+     * @param  \Closure  $callback
+     * @return void
+     */
+    public function booted(Closure $callback)
+    {
+        $this->bootedCallbacks[] = $callback;
+    }
+
+    /**
+     * Call the registered booting callbacks.
+     *
+     * @return void
+     */
+    public function callBootingCallbacks()
+    {
+        foreach ($this->bootingCallbacks as $callback) {
+            $callback();
+        }
+    }
+
+    /**
+     * Call the registered booted callbacks.
+     *
+     * @return void
+     */
+    public function callBootedCallbacks()
+    {
+        foreach ($this->bootedCallbacks as $callback) {
+            $callback();
+        }
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Merge the given configuration with the existing configuration.
      *
      * @param  string  $path
@@ -168,6 +238,11 @@ abstract class ServiceProvider
     /**
      * Register Eloquent model factory paths.
      *
+<<<<<<< HEAD
+=======
+     * @deprecated Will be removed in a future Laravel version.
+     *
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @param  array|string  $paths
      * @return void
      */

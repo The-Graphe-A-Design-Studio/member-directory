@@ -339,6 +339,11 @@ class Builder
     protected function parseSub($query)
     {
         if ($query instanceof self || $query instanceof EloquentBuilder || $query instanceof Relation) {
+<<<<<<< HEAD
+=======
+            $query = $this->prependDatabaseNameIfCrossDatabaseQuery($query);
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             return [$query->toSql(), $query->getBindings()];
         } elseif (is_string($query)) {
             return [$query, []];
@@ -350,6 +355,29 @@ class Builder
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Prepend the database name if the given query is on another database.
+     *
+     * @param  mixed  $query
+     * @return mixed
+     */
+    protected function prependDatabaseNameIfCrossDatabaseQuery($query)
+    {
+        if ($query->getConnection()->getDatabaseName() !==
+            $this->getConnection()->getDatabaseName()) {
+            $databaseName = $query->getConnection()->getDatabaseName();
+
+            if (strpos($query->from, $databaseName) !== 0 && strpos($query->from, '.') === false) {
+                $query->from($databaseName.'.'.$query->from);
+            }
+        }
+
+        return $query;
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Add a new select column to the query.
      *
      * @param  array|mixed  $column
@@ -3075,7 +3103,11 @@ class Builder
      * @param  array  $bindings
      * @return array
      */
+<<<<<<< HEAD
     protected function cleanBindings(array $bindings)
+=======
+    public function cleanBindings(array $bindings)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         return array_values(array_filter($bindings, function ($binding) {
             return ! $binding instanceof Expression;

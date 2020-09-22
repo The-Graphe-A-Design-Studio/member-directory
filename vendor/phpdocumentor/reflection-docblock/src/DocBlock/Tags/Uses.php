@@ -18,10 +18,15 @@ use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
 use phpDocumentor\Reflection\Fqsen;
 use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\Types\Context as TypeContext;
+<<<<<<< HEAD
 use phpDocumentor\Reflection\Utils;
 use Webmozart\Assert\Assert;
 use function array_key_exists;
 use function explode;
+=======
+use Webmozart\Assert\Assert;
+use function preg_split;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 /**
  * Reflection class for a {@}uses tag in a Docblock.
@@ -52,14 +57,24 @@ final class Uses extends BaseTag implements Factory\StaticMethod
         Assert::notNull($resolver);
         Assert::notNull($descriptionFactory);
 
+<<<<<<< HEAD
         $parts = Utils::pregSplit('/\s+/Su', $body, 2);
 
         return new static(
             self::resolveFqsen($parts[0], $resolver, $context),
+=======
+        $parts = preg_split('/\s+/Su', $body, 2);
+        Assert::isArray($parts);
+        Assert::allString($parts);
+
+        return new static(
+            $resolver->resolve($parts[0], $context),
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $descriptionFactory->create($parts[1] ?? '', $context)
         );
     }
 
+<<<<<<< HEAD
     private static function resolveFqsen(string $parts, ?FqsenResolver $fqsenResolver, ?TypeContext $context) : Fqsen
     {
         Assert::notNull($fqsenResolver);
@@ -73,6 +88,8 @@ final class Uses extends BaseTag implements Factory\StaticMethod
         return new Fqsen($resolved . '::' . $fqsenParts[1]);
     }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     /**
      * Returns the structural element this tag refers to.
      */
@@ -86,6 +103,7 @@ final class Uses extends BaseTag implements Factory\StaticMethod
      */
     public function __toString() : string
     {
+<<<<<<< HEAD
         if ($this->description) {
             $description = $this->description->render();
         } else {
@@ -95,5 +113,8 @@ final class Uses extends BaseTag implements Factory\StaticMethod
         $refers = (string) $this->refers;
 
         return $refers . ($description !== '' ? ($refers !== '' ? ' ' : '') . $description : '');
+=======
+        return $this->refers . ' ' . (string) $this->description;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

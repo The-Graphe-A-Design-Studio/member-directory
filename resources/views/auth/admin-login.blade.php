@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -17,11 +18,17 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body>
+=======
+@extends('layouts.app')
+
+@section('content')
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">{{ __('ADMIN Login') }}
+<<<<<<< HEAD
                     <span style="float: right;">or <a href="{{ route('admin.register') }}">Sign up?</a></span>
                 </div>
 
@@ -83,10 +90,21 @@
                             </div>
                         </div>
                     </form>
+=======
+                    <!-- <span style="float: right;">or <a href="{{ route('admin.register') }}">Sign up?</a></span> -->
+                </div>
+
+                <div class="card-body">
+                    <admin-login-form />
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 </div>
             </div>
         </div>
     </div>
 </div>
+<<<<<<< HEAD
 </body>
 </html>
+=======
+@endsection
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd

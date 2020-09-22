@@ -3,7 +3,10 @@
 namespace Illuminate\Routing\Console;
 
 use Illuminate\Console\GeneratorCommand;
+<<<<<<< HEAD
 use Illuminate\Support\Str;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use InvalidArgumentException;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -184,6 +187,7 @@ class ControllerMakeCommand extends GeneratorCommand
             throw new InvalidArgumentException('Model name contains invalid characters.');
         }
 
+<<<<<<< HEAD
         $model = trim(str_replace('/', '\\', $model), '\\');
 
         if (! Str::startsWith($model, $rootNamespace = $this->laravel->getNamespace())) {
@@ -191,6 +195,9 @@ class ControllerMakeCommand extends GeneratorCommand
         }
 
         return $model;
+=======
+        return $this->qualifyModel($model);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

@@ -2,6 +2,10 @@
 
 namespace Illuminate\Events;
 
+<<<<<<< HEAD
+=======
+use Closure;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Exception;
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Broadcasting\Factory as BroadcastFactory;
@@ -12,11 +16,19 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use Illuminate\Support\Traits\Macroable;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Traits\ReflectsClosures;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use ReflectionClass;
 
 class Dispatcher implements DispatcherContract
 {
+<<<<<<< HEAD
     use Macroable;
+=======
+    use Macroable, ReflectsClosures;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * The IoC container instance.
@@ -67,12 +79,29 @@ class Dispatcher implements DispatcherContract
     /**
      * Register an event listener with the dispatcher.
      *
+<<<<<<< HEAD
      * @param  string|array  $events
      * @param  \Closure|string  $listener
      * @return void
      */
     public function listen($events, $listener)
     {
+=======
+     * @param  \Closure|string|array  $events
+     * @param  \Closure|string|null  $listener
+     * @return void
+     */
+    public function listen($events, $listener = null)
+    {
+        if ($events instanceof Closure) {
+            return $this->listen($this->firstClosureParameterType($events), $events);
+        } elseif ($events instanceof QueuedClosure) {
+            return $this->listen($this->firstClosureParameterType($events->closure), $events->resolve());
+        } elseif ($listener instanceof QueuedClosure) {
+            $listener = $listener->resolve();
+        }
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         foreach ((array) $events as $event) {
             if (Str::contains($event, '*')) {
                 $this->setupWildcardListen($event, $listener);
@@ -414,6 +443,13 @@ class Dispatcher implements DispatcherContract
                             ? $listener
                             : $this->parseClassCallable($listener);
 
+<<<<<<< HEAD
+=======
+        if (! method_exists($class, $method)) {
+            $method = '__invoke';
+        }
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         if ($this->handlerShouldBeQueued($class)) {
             return $this->createQueuedHandlerCallable($class, $method);
         }
@@ -540,10 +576,17 @@ class Dispatcher implements DispatcherContract
     {
         return tap($job, function ($job) use ($listener) {
             $job->tries = $listener->tries ?? null;
+<<<<<<< HEAD
             $job->retryAfter = method_exists($listener, 'retryAfter')
                                 ? $listener->retryAfter() : ($listener->retryAfter ?? null);
             $job->timeout = $listener->timeout ?? null;
             $job->timeoutAt = method_exists($listener, 'retryUntil')
+=======
+            $job->backoff = method_exists($listener, 'backoff')
+                                ? $listener->backoff() : ($listener->backoff ?? null);
+            $job->timeout = $listener->timeout ?? null;
+            $job->retryUntil = method_exists($listener, 'retryUntil')
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                                 ? $listener->retryUntil() : null;
         });
     }

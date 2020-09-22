@@ -7,6 +7,11 @@ use Illuminate\Database\Query\Grammars\SQLiteGrammar as QueryGrammar;
 use Illuminate\Database\Query\Processors\SQLiteProcessor;
 use Illuminate\Database\Schema\Grammars\SQLiteGrammar as SchemaGrammar;
 use Illuminate\Database\Schema\SQLiteBuilder;
+<<<<<<< HEAD
+=======
+use Illuminate\Filesystem\Filesystem;
+use RuntimeException;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 class SQLiteConnection extends Connection
 {
@@ -69,6 +74,22 @@ class SQLiteConnection extends Connection
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Get the schema state for the connection.
+     *
+     * @param  \Illuminate\Filesystem\Filesystem|null  $files
+     * @param  callable|null  $processFactory
+     *
+     * @throws \RuntimeException
+     */
+    public function getSchemaState(Filesystem $files = null, callable $processFactory = null)
+    {
+        throw new RuntimeException('Schema dumping is not supported when using SQLite.');
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the default post processor instance.
      *
      * @return \Illuminate\Database\Query\Processors\SQLiteProcessor

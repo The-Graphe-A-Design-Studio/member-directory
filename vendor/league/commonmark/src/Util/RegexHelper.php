@@ -158,7 +158,11 @@ final class RegexHelper
     {
         switch ($type) {
             case HtmlBlock::TYPE_1_CODE_CONTAINER:
+<<<<<<< HEAD
                 return '/^<(?:script|pre|textarea|style)(?:\s|>|$)/i';
+=======
+                return '/^<(?:script|pre|style)(?:\s|>|$)/i';
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             case HtmlBlock::TYPE_2_COMMENT:
                 return '/^<!--/';
             case HtmlBlock::TYPE_3:
@@ -187,7 +191,11 @@ final class RegexHelper
     {
         switch ($type) {
             case HtmlBlock::TYPE_1_CODE_CONTAINER:
+<<<<<<< HEAD
                 return '%<\/(?:script|pre|textarea|style)>%i';
+=======
+                return '%<\/(?:script|pre|style)>%i';
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             case HtmlBlock::TYPE_2_COMMENT:
                 return '/-->/';
             case HtmlBlock::TYPE_3:

@@ -19,7 +19,11 @@ namespace Illuminate\Support\Facades;
  * @method static \Illuminate\Routing\Route put(string $uri, array|string|callable|null $action = null)
  * @method static \Illuminate\Routing\Route redirect(string $uri, string $destination, int $status = 302)
  * @method static \Illuminate\Routing\Route substituteBindings(\Illuminate\Support\Facades\Route $route)
+<<<<<<< HEAD
  * @method static \Illuminate\Routing\Route view(string $uri, string $view, array $data = [])
+=======
+ * @method static \Illuminate\Routing\Route view(string $uri, string $view, array $data = [], int $status = 200, array $headers = [])
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
  * @method static \Illuminate\Routing\RouteRegistrar as(string $value)
  * @method static \Illuminate\Routing\RouteRegistrar domain(string $value)
  * @method static \Illuminate\Routing\RouteRegistrar middleware(array|string|null $middleware)

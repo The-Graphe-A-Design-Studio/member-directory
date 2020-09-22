@@ -5,6 +5,10 @@ namespace Illuminate\Database\Schema;
 use Closure;
 use Doctrine\DBAL\Types\Type;
 use Illuminate\Database\Connection;
+<<<<<<< HEAD
+=======
+use InvalidArgumentException;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use LogicException;
 use RuntimeException;
 
@@ -39,6 +43,16 @@ class Builder
     public static $defaultStringLength = 255;
 
     /**
+<<<<<<< HEAD
+=======
+     * The default relationship morph key type.
+     *
+     * @var string
+     */
+    public static $defaultMorphKeyType = 'int';
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Create a new database Schema manager.
      *
      * @param  \Illuminate\Database\Connection  $connection
@@ -62,6 +76,34 @@ class Builder
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Set the default morph key type for migrations.
+     *
+     * @param  string  $type
+     * @return void
+     */
+    public static function defaultMorphKeyType(string $type)
+    {
+        if (! in_array($type, ['int', 'uuid'])) {
+            throw new InvalidArgumentException("Morph key type must be 'int' or 'uuid'.");
+        }
+
+        static::$defaultMorphKeyType = $type;
+    }
+
+    /**
+     * Set the default morph key type for migrations to UUIDs.
+     *
+     * @return void
+     */
+    public static function morphUsingUuids()
+    {
+        return static::defaultMorphKeyType('uuid');
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Determine if the given table exists.
      *
      * @param  string  $table

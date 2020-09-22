@@ -1160,11 +1160,17 @@ class Container implements ArrayAccess, ContainerContract
      */
     public function getAlias($abstract)
     {
+<<<<<<< HEAD
         if (! isset($this->aliases[$abstract])) {
             return $abstract;
         }
 
         return $this->getAlias($this->aliases[$abstract]);
+=======
+        return isset($this->aliases[$abstract])
+                    ? $this->getAlias($this->aliases[$abstract])
+                    : $abstract;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -1175,9 +1181,13 @@ class Container implements ArrayAccess, ContainerContract
      */
     protected function getExtenders($abstract)
     {
+<<<<<<< HEAD
         $abstract = $this->getAlias($abstract);
 
         return $this->extenders[$abstract] ?? [];
+=======
+        return $this->extenders[$this->getAlias($abstract)] ?? [];
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

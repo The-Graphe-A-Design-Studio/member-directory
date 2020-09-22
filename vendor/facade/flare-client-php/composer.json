@@ -19,6 +19,10 @@
     },
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.14",
+<<<<<<< HEAD
+=======
+        "larapack/dd": "^1.1",
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         "spatie/phpunit-snapshot-assertions": "^2.0",
         "phpunit/phpunit": "^7.5.16"
     },

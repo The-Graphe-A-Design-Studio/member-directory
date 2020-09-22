@@ -2,6 +2,10 @@
 
 namespace Illuminate\Events;
 
+<<<<<<< HEAD
+=======
+use Illuminate\Bus\Queueable;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Container\Container;
 use Illuminate\Contracts\Queue\Job;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -9,7 +13,11 @@ use Illuminate\Queue\InteractsWithQueue;
 
 class CallQueuedListener implements ShouldQueue
 {
+<<<<<<< HEAD
     use InteractsWithQueue;
+=======
+    use InteractsWithQueue, Queueable;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * The listener class name.
@@ -40,18 +48,30 @@ class CallQueuedListener implements ShouldQueue
     public $tries;
 
     /**
+<<<<<<< HEAD
      * The number of seconds to wait before retrying the job.
      *
      * @var int
      */
     public $retryAfter;
+=======
+     * The number of seconds to wait before retrying a job that encountered an uncaught exception.
+     *
+     * @var int
+     */
+    public $backoff;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * The timestamp indicating when the job should timeout.
      *
      * @var int
      */
+<<<<<<< HEAD
     public $timeoutAt;
+=======
+    public $retryUntil;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * The number of seconds the job can run before timing out.

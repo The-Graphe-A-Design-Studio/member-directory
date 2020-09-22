@@ -71,6 +71,7 @@ final class Author extends BaseTag implements Factory\StaticMethod
      */
     public function __toString() : string
     {
+<<<<<<< HEAD
         if ($this->authorEmail) {
             $authorEmail = '<' . $this->authorEmail . '>';
         } else {
@@ -80,6 +81,9 @@ final class Author extends BaseTag implements Factory\StaticMethod
         $authorName = (string) $this->authorName;
 
         return $authorName . ($authorEmail !== '' ? ($authorName !== '' ? ' ' : '') . $authorEmail : '');
+=======
+        return $this->authorName . ($this->authorEmail !== '' ? ' <' . $this->authorEmail . '>' : '');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

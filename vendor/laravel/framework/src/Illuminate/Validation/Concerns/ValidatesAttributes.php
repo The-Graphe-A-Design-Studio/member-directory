@@ -14,7 +14,10 @@ use Egulias\EmailValidator\Validation\SpoofCheckValidation;
 use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
+<<<<<<< HEAD
 use Illuminate\Support\Carbon;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rules\Exists;
@@ -185,6 +188,7 @@ trait ValidatesAttributes
      */
     protected function getDateTimestamp($value)
     {
+<<<<<<< HEAD
         if ($value instanceof DateTimeInterface) {
             return $value->getTimestamp();
         }
@@ -198,6 +202,11 @@ trait ValidatesAttributes
         }
 
         return strtotime($value);
+=======
+        $date = is_null($value) ? null : $this->getDateTime($value);
+
+        return $date ? $date->getTimestamp() : null;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -245,17 +254,22 @@ trait ValidatesAttributes
     protected function getDateTime($value)
     {
         try {
+<<<<<<< HEAD
             if ($this->isTestingRelativeDateTime($value)) {
                 return Date::parse($value);
             }
 
             return date_create($value) ?: null;
+=======
+            return Date::parse($value);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         } catch (Exception $e) {
             //
         }
     }
 
     /**
+<<<<<<< HEAD
      * Check if the given value should be adjusted to Carbon::getTestNow().
      *
      * @param  mixed  $value
@@ -269,6 +283,8 @@ trait ValidatesAttributes
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Validate that an attribute contains only alphabetic characters.
      *
      * @param  string  $attribute
@@ -1498,6 +1514,11 @@ trait ValidatesAttributes
 
         if (is_bool($other)) {
             $values = $this->convertValuesToBoolean($values);
+<<<<<<< HEAD
+=======
+        } elseif (is_null($other)) {
+            $values = $this->convertValuesToNull($values);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
 
         return [$values, $other];
@@ -1523,6 +1544,22 @@ trait ValidatesAttributes
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Convert the given values to null if they are string "null".
+     *
+     * @param  array  $values
+     * @return array
+     */
+    protected function convertValuesToNull($values)
+    {
+        return array_map(function ($value) {
+            return Str::lower($value) === 'null' ? null : $value;
+        }, $values);
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Validate that an attribute exists when another attribute does not have a given value.
      *
      * @param  string  $attribute

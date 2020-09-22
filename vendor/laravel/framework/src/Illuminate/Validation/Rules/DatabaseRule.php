@@ -65,9 +65,15 @@ trait DatabaseRule
         if (is_subclass_of($table, Model::class)) {
             $model = new $table;
 
+<<<<<<< HEAD
             return implode('.', array_filter(
                 [$model->getConnectionName(), $model->getTable()]
             ));
+=======
+            return implode('.', array_map(function (string $part) {
+                return trim($part, '.');
+            }, array_filter([$model->getConnectionName(), $model->getTable()])));
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
 
         return $table;

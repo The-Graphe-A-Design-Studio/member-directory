@@ -140,5 +140,8 @@ final class Tokens
     const T_NAME_FULLY_QUALIFIED = 388;
     const T_NAME_QUALIFIED = 389;
     const T_NAME_RELATIVE = 390;
+<<<<<<< HEAD
     const T_ATTRIBUTE = 391;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

@@ -12,6 +12,7 @@
 /*
  * Authors:
  * - Danish Standards Association    bug-glibc-locales@gnu.org
+<<<<<<< HEAD
  * - John Eyðstein Johannesen (mashema)
  */
 return array_replace_recursive(require __DIR__.'/en.php', [
@@ -22,6 +23,12 @@ return array_replace_recursive(require __DIR__.'/en.php', [
         'LL' => 'D. MMMM YYYY',
         'LLL' => 'D. MMMM YYYY HH:mm',
         'LLLL' => 'dddd [d.] D. MMMM YYYY [kl.] HH:mm',
+=======
+ */
+return array_replace_recursive(require __DIR__.'/en.php', [
+    'formats' => [
+        'L' => 'MMM DD YYYY',
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     ],
     'months' => ['januaarip', 'februaarip', 'marsip', 'apriilip', 'maajip', 'juunip', 'juulip', 'aggustip', 'septembarip', 'oktobarip', 'novembarip', 'decembarip'],
     'months_short' => ['jan', 'feb', 'mar', 'apr', 'maj', 'jun', 'jul', 'aug', 'sep', 'okt', 'nov', 'dec'],
@@ -31,6 +38,7 @@ return array_replace_recursive(require __DIR__.'/en.php', [
     'first_day_of_week' => 1,
     'day_of_first_week_of_year' => 1,
 
+<<<<<<< HEAD
     'year' => '{1}ukioq :count|{0}:count ukiut|]1,Inf[ukiut :count',
     'a_year' => '{1}ukioq|{0}:count ukiut|]1,Inf[ukiut :count',
     'y' => '{1}:countyr|{0}:countyrs|]1,Inf[:countyrs',
@@ -61,4 +69,33 @@ return array_replace_recursive(require __DIR__.'/en.php', [
 
     'ago' => ':time matuma siorna',
 
+=======
+    'year' => ':count ukioq', // less reliable
+    'y' => ':count ukioq', // less reliable
+    'a_year' => ':count ukioq', // less reliable
+
+    'month' => ':count Ukiup qaammatai',
+    'm' => ':count Ukiup qaammatai',
+    'a_month' => ':count Ukiup qaammatai',
+
+    'week' => ':count sapaat', // less reliable
+    'w' => ':count sapaat', // less reliable
+    'a_week' => ':count sapaat', // less reliable
+
+    'day' => ':count ulloq',
+    'd' => ':count ulloq',
+    'a_day' => ':count ulloq',
+
+    'hour' => ':count akunneq',
+    'h' => ':count akunneq',
+    'a_hour' => ':count akunneq',
+
+    'minute' => ':count eqqumiitsuliorneq', // less reliable
+    'min' => ':count eqqumiitsuliorneq', // less reliable
+    'a_minute' => ':count eqqumiitsuliorneq', // less reliable
+
+    'second' => ':count marluk', // less reliable
+    's' => ':count marluk', // less reliable
+    'a_second' => ':count marluk', // less reliable
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 ]);

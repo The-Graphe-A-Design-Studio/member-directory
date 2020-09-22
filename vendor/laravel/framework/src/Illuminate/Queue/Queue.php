@@ -132,9 +132,15 @@ abstract class Queue
             'job' => 'Illuminate\Queue\CallQueuedHandler@call',
             'maxTries' => $job->tries ?? null,
             'maxExceptions' => $job->maxExceptions ?? null,
+<<<<<<< HEAD
             'delay' => $this->getJobRetryDelay($job),
             'timeout' => $job->timeout ?? null,
             'timeoutAt' => $this->getJobExpiration($job),
+=======
+            'backoff' => $this->getJobBackoff($job),
+            'timeout' => $job->timeout ?? null,
+            'retryUntil' => $this->getJobExpiration($job),
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             'data' => [
                 'commandName' => $job,
                 'command' => $job,
@@ -162,11 +168,16 @@ abstract class Queue
     }
 
     /**
+<<<<<<< HEAD
      * Get the retry delay for an object-based queue handler.
+=======
+     * Get the backoff for an object-based queue handler.
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      *
      * @param  mixed  $job
      * @return mixed
      */
+<<<<<<< HEAD
     public function getJobRetryDelay($job)
     {
         if (! method_exists($job, 'retryAfter') && ! isset($job->retryAfter)) {
@@ -177,6 +188,19 @@ abstract class Queue
 
         return $delay instanceof DateTimeInterface
                         ? $this->secondsUntil($delay) : $delay;
+=======
+    public function getJobBackoff($job)
+    {
+        if (! method_exists($job, 'backoff') && ! isset($job->backoff)) {
+            return;
+        }
+
+        return collect($job->backoff ?? $job->backoff())
+            ->map(function ($backoff) {
+                return $backoff instanceof DateTimeInterface
+                                ? $this->secondsUntil($backoff) : $backoff;
+            })->implode(',');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -187,11 +211,19 @@ abstract class Queue
      */
     public function getJobExpiration($job)
     {
+<<<<<<< HEAD
         if (! method_exists($job, 'retryUntil') && ! isset($job->timeoutAt)) {
             return;
         }
 
         $expiration = $job->timeoutAt ?? $job->retryUntil();
+=======
+        if (! method_exists($job, 'retryUntil') && ! isset($job->retryUntil)) {
+            return;
+        }
+
+        $expiration = $job->retryUntil ?? $job->retryUntil();
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         return $expiration instanceof DateTimeInterface
                         ? $expiration->getTimestamp() : $expiration;
@@ -213,7 +245,11 @@ abstract class Queue
             'job' => $job,
             'maxTries' => null,
             'maxExceptions' => null,
+<<<<<<< HEAD
             'delay' => null,
+=======
+            'backoff' => null,
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             'timeout' => null,
             'data' => $data,
         ]);

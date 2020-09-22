@@ -27,11 +27,19 @@ class ClearCompiledCommand extends Command
      */
     public function handle()
     {
+<<<<<<< HEAD
         if (file_exists($servicesPath = $this->laravel->getCachedServicesPath())) {
             @unlink($servicesPath);
         }
 
         if (file_exists($packagesPath = $this->laravel->getCachedPackagesPath())) {
+=======
+        if (is_file($servicesPath = $this->laravel->getCachedServicesPath())) {
+            @unlink($servicesPath);
+        }
+
+        if (is_file($packagesPath = $this->laravel->getCachedPackagesPath())) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             @unlink($packagesPath);
         }
 

@@ -20,6 +20,7 @@ class Passport
     public static $implicitGrantEnabled = false;
 
     /**
+<<<<<<< HEAD
      * The personal access token client ID.
      *
      * @var int|string
@@ -34,6 +35,8 @@ class Passport
     public static $personalAccessClientSecret;
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * The default scope.
      *
      * @var string
@@ -197,6 +200,7 @@ class Passport
     }
 
     /**
+<<<<<<< HEAD
      * Set the client ID that should be used to issue personal access tokens.
      *
      * @param  int|string  $clientId
@@ -223,6 +227,8 @@ class Passport
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Set the default scope(s). Multiple scopes may be an array or specified delimited by spaces.
      *
      * @param  array|string  $scope
@@ -409,11 +415,19 @@ class Passport
     }
 
     /**
+<<<<<<< HEAD
      * Set the current client for the application with the given scopes.
      *
      * @param  \Laravel\Passport\Client  $client
      * @param  array  $scopes
      * @return \Laravel\Passport\Client
+=======
+     * Set the current client for the application with the given scopes.
+     *
+     * @param \Laravel\Passport\Client $client
+     * @param array $scopes
+     * @return \Laravel\Passport\Client
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     public static function actingAsClient($client, $scopes = [])
     {

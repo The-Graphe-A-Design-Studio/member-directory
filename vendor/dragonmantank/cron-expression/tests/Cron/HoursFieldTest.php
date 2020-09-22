@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 namespace Cron\Tests;
 
 use Cron\HoursField;
@@ -23,6 +28,7 @@ class HoursFieldTest extends TestCase
         $this->assertTrue($f->validate('01'));
         $this->assertTrue($f->validate('*'));
         $this->assertFalse($f->validate('*/3,1,1-12'));
+<<<<<<< HEAD
     }
 
     /**
@@ -33,6 +39,9 @@ class HoursFieldTest extends TestCase
         $f = new HoursField();
         $this->assertTrue($f->isSatisfiedBy(new DateTime(), '?'));
         $this->assertTrue($f->isSatisfiedBy(new DateTimeImmutable(), '?'));
+=======
+        $this->assertFalse($f->validate('1/10'));
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

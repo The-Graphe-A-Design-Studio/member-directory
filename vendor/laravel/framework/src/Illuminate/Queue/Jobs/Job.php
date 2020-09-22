@@ -210,7 +210,11 @@ abstract class Job
         [$class, $method] = JobName::parse($payload['job']);
 
         if (method_exists($this->instance = $this->resolve($class), 'failed')) {
+<<<<<<< HEAD
             $this->instance->failed($payload['data'], $e);
+=======
+            $this->instance->failed($payload['data'], $e, $payload['uuid']);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
     }
 
@@ -266,6 +270,7 @@ abstract class Job
     }
 
     /**
+<<<<<<< HEAD
      * Get the number of seconds to delay a failed job before retrying it.
      *
      * @return int|null
@@ -273,6 +278,15 @@ abstract class Job
     public function delaySeconds()
     {
         return $this->payload()['delay'] ?? null;
+=======
+     * The number of seconds to wait before retrying a job that encountered an uncaught exception.
+     *
+     * @return int|null
+     */
+    public function backoff()
+    {
+        return $this->payload()['backoff'] ?? $this->payload()['delay'] ?? null;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -290,9 +304,15 @@ abstract class Job
      *
      * @return int|null
      */
+<<<<<<< HEAD
     public function timeoutAt()
     {
         return $this->payload()['timeoutAt'] ?? null;
+=======
+    public function retryUntil()
+    {
+        return $this->payload()['retryUntil'] ?? $this->payload()['timeoutAt'] ?? null;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

@@ -5,8 +5,16 @@ namespace Illuminate\Filesystem;
 use ErrorException;
 use FilesystemIterator;
 use Illuminate\Contracts\Filesystem\FileNotFoundException;
+<<<<<<< HEAD
 use Illuminate\Support\Traits\Macroable;
 use RuntimeException;
+=======
+use Illuminate\Support\LazyCollection;
+use Illuminate\Support\Traits\Macroable;
+use RuntimeException;
+use SplFileObject;
+use Symfony\Component\Filesystem\Filesystem as SymfonyFilesystem;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Mime\MimeTypes;
 
@@ -87,14 +95,32 @@ class Filesystem
      * Get the returned value of a file.
      *
      * @param  string  $path
+<<<<<<< HEAD
+=======
+     * @param  array  $data
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @return mixed
      *
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
      */
+<<<<<<< HEAD
     public function getRequire($path)
     {
         if ($this->isFile($path)) {
             return require $path;
+=======
+    public function getRequire($path, array $data = [])
+    {
+        if ($this->isFile($path)) {
+            $__path = $path;
+            $__data = $data;
+
+            return (static function () use ($__path, $__data) {
+                extract($__data, EXTR_SKIP);
+
+                return require $__path;
+            })();
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
 
         throw new FileNotFoundException("File does not exist at path {$path}.");
@@ -103,12 +129,60 @@ class Filesystem
     /**
      * Require the given file once.
      *
+<<<<<<< HEAD
      * @param  string  $file
      * @return mixed
      */
     public function requireOnce($file)
     {
         require_once $file;
+=======
+     * @param  string  $path
+     * @param  array  $data
+     * @return mixed
+     */
+    public function requireOnce($path, array $data = [])
+    {
+        if ($this->isFile($path)) {
+            $__path = $path;
+            $__data = $data;
+
+            return (static function () use ($__path, $__data) {
+                extract($__data, EXTR_SKIP);
+
+                return require_once $__path;
+            })();
+        }
+
+        throw new FileNotFoundException("File does not exist at path {$path}.");
+    }
+
+    /**
+     * Get the contents of a file one line at a time.
+     *
+     * @param  string  $path
+     * @return \Illuminate\Support\LazyCollection
+     *
+     * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException
+     */
+    public function lines($path)
+    {
+        if (! $this->isFile($path)) {
+            throw new FileNotFoundException(
+                "File does not exist at path {$path}."
+            );
+        }
+
+        return LazyCollection::make(function () use ($path) {
+            $file = new SplFileObject($path);
+
+            $file->setFlags(SplFileObject::DROP_NEW_LINE);
+
+            while (! $file->eof()) {
+                yield $file->fgets();
+            }
+        });
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -271,6 +345,29 @@ class Filesystem
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Create a relative symlink to the target file or directory.
+     *
+     * @param  string  $target
+     * @param  string  $link
+     * @return void
+     */
+    public function relativeLink($target, $link)
+    {
+        if (! class_exists(SymfonyFilesystem::class)) {
+            throw new RuntimeException(
+                'To enable support for relative links, please install the symfony/filesystem package.'
+            );
+        }
+
+        $relativeTarget = (new SymfonyFilesystem)->makePathRelative($target, dirname($link));
+
+        $this->link($relativeTarget, $link);
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Extract the file name from a file path.
      *
      * @param  string  $path

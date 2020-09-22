@@ -22,8 +22,11 @@ class ArrowFunction extends Expr implements FunctionLike
 
     /** @var Expr */
     public $expr;
+<<<<<<< HEAD
     /** @var Node\AttributeGroup[] */
     public $attrGroups;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * @param array $subNodes   Array of the following optional subnodes:
@@ -32,7 +35,10 @@ class ArrowFunction extends Expr implements FunctionLike
      *                          'params'     => array() : Parameters
      *                          'returnType' => null    : Return type
      *                          'expr'       => Expr    : Expression body
+<<<<<<< HEAD
      *                          'attrGroups' => array() : PHP attribute groups
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @param array $attributes Additional attributes
      */
     public function __construct(array $subNodes = [], array $attributes = []) {
@@ -43,11 +49,18 @@ class ArrowFunction extends Expr implements FunctionLike
         $returnType = $subNodes['returnType'] ?? null;
         $this->returnType = \is_string($returnType) ? new Node\Identifier($returnType) : $returnType;
         $this->expr = $subNodes['expr'] ?? null;
+<<<<<<< HEAD
         $this->attrGroups = $subNodes['attrGroups'] ?? [];
     }
 
     public function getSubNodeNames() : array {
         return ['attrGroups', 'static', 'byRef', 'params', 'returnType', 'expr'];
+=======
+    }
+
+    public function getSubNodeNames() : array {
+        return ['static', 'byRef', 'params', 'returnType', 'expr'];
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     public function returnsByRef() : bool {
@@ -62,10 +75,13 @@ class ArrowFunction extends Expr implements FunctionLike
         return $this->returnType;
     }
 
+<<<<<<< HEAD
     public function getAttrGroups() : array {
         return $this->attrGroups;
     }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     /**
      * @return Node\Stmt\Return_[]
      */

@@ -36,7 +36,11 @@
             </div>
 
             <div>
+<<<<<<< HEAD
                 <span class="relative z-0 inline-flex shadow-sm">
+=======
+                <span class="relative z-0 inline-flex shadow-sm rounded-md">
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                     {{-- Previous Page Link --}}
                     @if ($paginator->onFirstPage())
                         <span aria-disabled="true" aria-label="{{ __('pagination.previous') }}">

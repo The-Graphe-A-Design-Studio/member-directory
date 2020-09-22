@@ -87,8 +87,13 @@ final class TypeResolver
         'scalar' => Types\Scalar::class,
         'callback' => Types\Callable_::class,
         'callable' => Types\Callable_::class,
+<<<<<<< HEAD
         'false' => PseudoTypes\False_::class,
         'true' => PseudoTypes\True_::class,
+=======
+        'false' => Types\False_::class,
+        'true' => Types\True_::class,
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         'self' => Types\Self_::class,
         '$this' => Types\This::class,
         'static' => Types\Static_::class,
@@ -311,7 +316,11 @@ final class TypeResolver
      *
      * @return Type|Array_|Object_
      *
+<<<<<<< HEAD
      * @psalm-mutation-free
+=======
+     * @psalm-pure
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     private function resolveSingleType(string $type, Context $context) : object
     {
@@ -362,7 +371,11 @@ final class TypeResolver
      *
      * @param string $type A relative or absolute type as defined in the phpDocumentor documentation.
      *
+<<<<<<< HEAD
      * @psalm-mutation-free
+=======
+     * @psalm-pure
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     private function isKeyword(string $type) : bool
     {
@@ -374,7 +387,11 @@ final class TypeResolver
      *
      * @param string $type A relative or absolute type as defined in the phpDocumentor documentation.
      *
+<<<<<<< HEAD
      * @psalm-mutation-free
+=======
+     * @psalm-pure
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     private function isPartialStructuralElementName(string $type) : bool
     {
@@ -384,7 +401,11 @@ final class TypeResolver
     /**
      * Tests whether the given type is a Fully Qualified Structural Element Name.
      *
+<<<<<<< HEAD
      * @psalm-mutation-free
+=======
+     * @psalm-pure
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     private function isFqsen(string $type) : bool
     {
@@ -394,7 +415,11 @@ final class TypeResolver
     /**
      * Resolves the given keyword (such as `string`) into a Type object representing that keyword.
      *
+<<<<<<< HEAD
      * @psalm-mutation-free
+=======
+     * @psalm-pure
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     private function resolveKeyword(string $type) : Type
     {
@@ -406,7 +431,11 @@ final class TypeResolver
     /**
      * Resolves the given FQSEN string into an FQSEN object.
      *
+<<<<<<< HEAD
      * @psalm-mutation-free
+=======
+     * @psalm-pure
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     private function resolveTypedObject(string $type, ?Context $context = null) : Object_
     {

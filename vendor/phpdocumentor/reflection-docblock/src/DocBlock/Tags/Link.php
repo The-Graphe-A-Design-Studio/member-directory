@@ -16,11 +16,19 @@ namespace phpDocumentor\Reflection\DocBlock\Tags;
 use phpDocumentor\Reflection\DocBlock\Description;
 use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
 use phpDocumentor\Reflection\Types\Context as TypeContext;
+<<<<<<< HEAD
 use phpDocumentor\Reflection\Utils;
 use Webmozart\Assert\Assert;
 
 /**
  * Reflection class for a {@}link tag in a Docblock.
+=======
+use Webmozart\Assert\Assert;
+use function preg_split;
+
+/**
+ * Reflection class for a @link tag in a Docblock.
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
  */
 final class Link extends BaseTag implements Factory\StaticMethod
 {
@@ -46,7 +54,12 @@ final class Link extends BaseTag implements Factory\StaticMethod
     ) : self {
         Assert::notNull($descriptionFactory);
 
+<<<<<<< HEAD
         $parts = Utils::pregSplit('/\s+/Su', $body, 2);
+=======
+        $parts = preg_split('/\s+/Su', $body, 2);
+        Assert::isArray($parts);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $description = isset($parts[1]) ? $descriptionFactory->create($parts[1], $context) : null;
 
         return new static($parts[0], $description);
@@ -65,6 +78,7 @@ final class Link extends BaseTag implements Factory\StaticMethod
      */
     public function __toString() : string
     {
+<<<<<<< HEAD
         if ($this->description) {
             $description = $this->description->render();
         } else {
@@ -74,5 +88,8 @@ final class Link extends BaseTag implements Factory\StaticMethod
         $link = (string) $this->link;
 
         return $link . ($description !== '' ? ($link !== '' ? ' ' : '') . $description : '');
+=======
+        return $this->link . ($this->description ? ' ' . $this->description->render() : '');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

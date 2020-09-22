@@ -4,6 +4,10 @@ namespace Illuminate\Bus;
 
 use Closure;
 use Illuminate\Queue\CallQueuedClosure;
+<<<<<<< HEAD
+=======
+use Illuminate\Queue\SerializableClosure;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Support\Arr;
 use RuntimeException;
 
@@ -38,6 +42,16 @@ trait Queueable
     public $chainQueue;
 
     /**
+<<<<<<< HEAD
+=======
+     * The callbacks to be executed on chain failure.
+     *
+     * @var array|null
+     */
+    public $chainCatchCallbacks;
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * The number of seconds before the job should be made available.
      *
      * @var \DateTimeInterface|\DateInterval|int|null
@@ -190,7 +204,27 @@ trait Queueable
 
                 $next->chainConnection = $this->chainConnection;
                 $next->chainQueue = $this->chainQueue;
+<<<<<<< HEAD
             }));
         }
     }
+=======
+                $next->chainCatchCallbacks = $this->chainCatchCallbacks;
+            }));
+        }
+    }
+
+    /**
+     * Invoke all of the chain's failed job callbacks.
+     *
+     * @param  \Throwable  $e
+     * @return void
+     */
+    public function invokeChainCatchCallbacks($e)
+    {
+        collect($this->chainCatchCallbacks)->each(function ($callback) use ($e) {
+            $callback instanceof SerializableClosure ? $callback->__invoke($e) : call_user_func($callback, $e);
+        });
+    }
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

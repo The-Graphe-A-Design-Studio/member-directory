@@ -109,5 +109,9 @@
 %token T_ELLIPSIS
 %token T_NAME_FULLY_QUALIFIED
 %token T_NAME_QUALIFIED
+<<<<<<< HEAD
 %token T_NAME_RELATIVE
 %token T_ATTRIBUTE
+=======
+%token T_NAME_RELATIVE
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd

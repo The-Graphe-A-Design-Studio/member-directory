@@ -12,6 +12,17 @@ interface Session
     public function getName();
 
     /**
+<<<<<<< HEAD
+=======
+     * Set the name of the session.
+     *
+     * @param  string  $name
+     * @return void
+     */
+    public function setName($name);
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the current session ID.
      *
      * @return string
@@ -73,6 +84,18 @@ interface Session
     public function get($key, $default = null);
 
     /**
+<<<<<<< HEAD
+=======
+     * Get the value of a given key and then forget it.
+     *
+     * @param  string  $key
+     * @param  mixed  $default
+     * @return mixed
+     */
+    public function pull($key, $default = null);
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Put a key / value pair or array of key / value pairs in the session.
      *
      * @param  string|array  $key
@@ -89,6 +112,16 @@ interface Session
     public function token();
 
     /**
+<<<<<<< HEAD
+=======
+     * Regenerate the CSRF token value.
+     *
+     * @return void
+     */
+    public function regenerateToken();
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Remove an item from the session, returning its value.
      *
      * @param  string  $key
@@ -112,6 +145,24 @@ interface Session
     public function flush();
 
     /**
+<<<<<<< HEAD
+=======
+     * Flush the session data and regenerate the ID.
+     *
+     * @return bool
+     */
+    public function invalidate();
+
+    /**
+     * Generate a new session identifier.
+     *
+     * @param  bool  $destroy
+     * @return bool
+     */
+    public function regenerate($destroy = false);
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Generate a new session ID for the session.
      *
      * @param  bool  $destroy

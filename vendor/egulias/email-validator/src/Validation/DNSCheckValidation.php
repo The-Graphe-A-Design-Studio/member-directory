@@ -97,7 +97,14 @@ class DNSCheckValidation implements EmailValidation
      */
     protected function checkDns($host)
     {
+<<<<<<< HEAD
         $variant = INTL_IDNA_VARIANT_UTS46;
+=======
+        $variant = INTL_IDNA_VARIANT_2003;
+        if (defined('INTL_IDNA_VARIANT_UTS46')) {
+            $variant = INTL_IDNA_VARIANT_UTS46;
+        }
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         $host = rtrim(idn_to_ascii($host, IDNA_DEFAULT, $variant), '.') . '.';
 

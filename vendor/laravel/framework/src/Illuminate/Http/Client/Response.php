@@ -50,15 +50,31 @@ class Response implements ArrayAccess
     /**
      * Get the JSON decoded body of the response as an array or scalar value.
      *
+<<<<<<< HEAD
      * @return mixed
      */
     public function json()
+=======
+     * @param  string|null  $key
+     * @param  mixed  $default
+     * @return mixed
+     */
+    public function json($key = null, $default = null)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         if (! $this->decoded) {
             $this->decoded = json_decode($this->body(), true);
         }
 
+<<<<<<< HEAD
         return $this->decoded;
+=======
+        if (is_null($key)) {
+            return $this->decoded;
+        }
+
+        return data_get($this->decoded, $key, $default);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

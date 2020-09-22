@@ -18,10 +18,15 @@ use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
 use phpDocumentor\Reflection\Fqsen;
 use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\Types\Context as TypeContext;
+<<<<<<< HEAD
 use phpDocumentor\Reflection\Utils;
 use Webmozart\Assert\Assert;
 use function array_key_exists;
 use function explode;
+=======
+use Webmozart\Assert\Assert;
+use function preg_split;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 /**
  * Reflection class for a @covers tag in a Docblock.
@@ -49,6 +54,7 @@ final class Covers extends BaseTag implements Factory\StaticMethod
         ?FqsenResolver $resolver = null,
         ?TypeContext $context = null
     ) : self {
+<<<<<<< HEAD
         Assert::stringNotEmpty($body);
         Assert::notNull($descriptionFactory);
         Assert::notNull($resolver);
@@ -57,10 +63,22 @@ final class Covers extends BaseTag implements Factory\StaticMethod
 
         return new static(
             self::resolveFqsen($parts[0], $resolver, $context),
+=======
+        Assert::notEmpty($body);
+        Assert::notNull($descriptionFactory);
+        Assert::notNull($resolver);
+
+        $parts = preg_split('/\s+/Su', $body, 2);
+        Assert::isArray($parts);
+
+        return new static(
+            $resolver->resolve($parts[0], $context),
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $descriptionFactory->create($parts[1] ?? '', $context)
         );
     }
 
+<<<<<<< HEAD
     private static function resolveFqsen(string $parts, ?FqsenResolver $fqsenResolver, ?TypeContext $context) : Fqsen
     {
         Assert::notNull($fqsenResolver);
@@ -74,6 +92,8 @@ final class Covers extends BaseTag implements Factory\StaticMethod
         return new Fqsen($resolved . '::' . $fqsenParts[1]);
     }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     /**
      * Returns the structural element this tag refers to.
      */
@@ -87,6 +107,7 @@ final class Covers extends BaseTag implements Factory\StaticMethod
      */
     public function __toString() : string
     {
+<<<<<<< HEAD
         if ($this->description) {
             $description = $this->description->render();
         } else {
@@ -96,5 +117,8 @@ final class Covers extends BaseTag implements Factory\StaticMethod
         $refers = (string) $this->refers;
 
         return $refers . ($description !== '' ? ($refers !== '' ? ' ' : '') . $description : '');
+=======
+        return $this->refers . ($this->description ? ' ' . $this->description->render() : '');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

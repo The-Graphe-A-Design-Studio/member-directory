@@ -21,11 +21,22 @@ class WorkCommand extends Command
      */
     protected $signature = 'queue:work
                             {connection? : The name of the queue connection to work}
+<<<<<<< HEAD
+=======
+                            {--name=default : The name of the worker}
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                             {--queue= : The names of the queues to work}
                             {--daemon : Run the worker in daemon mode (Deprecated)}
                             {--once : Only process the next job on the queue}
                             {--stop-when-empty : Stop when the queue is empty}
+<<<<<<< HEAD
                             {--delay=0 : The number of seconds to delay failed jobs}
+=======
+                            {--delay=0 : The number of seconds to delay failed jobs (Deprecated)}
+                            {--backoff=0 : The number of seconds to wait before retrying a job that encountered an uncaught exception}
+                            {--max-jobs=0 : The number of jobs to process before stopping}
+                            {--max-time=0 : The maximum number of seconds the worker should run}
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                             {--force : Force the worker to run even in maintenance mode}
                             {--memory=128 : The memory limit in megabytes}
                             {--sleep=3 : Number of seconds to sleep when no job is available}
@@ -71,7 +82,11 @@ class WorkCommand extends Command
     /**
      * Execute the console command.
      *
+<<<<<<< HEAD
      * @return void
+=======
+     * @return int|null
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     public function handle()
     {
@@ -92,7 +107,11 @@ class WorkCommand extends Command
         // connection being run for the queue operation currently being executed.
         $queue = $this->getQueue($connection);
 
+<<<<<<< HEAD
         $this->runWorker(
+=======
+        return $this->runWorker(
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $connection, $queue
         );
     }
@@ -102,6 +121,7 @@ class WorkCommand extends Command
      *
      * @param  string  $connection
      * @param  string  $queue
+<<<<<<< HEAD
      * @return array
      */
     protected function runWorker($connection, $queue)
@@ -109,6 +129,15 @@ class WorkCommand extends Command
         $this->worker->setCache($this->cache);
 
         return $this->worker->{$this->option('once') ? 'runNextJob' : 'daemon'}(
+=======
+     * @return int|null
+     */
+    protected function runWorker($connection, $queue)
+    {
+        return $this->worker->setName($this->option('name'))
+                     ->setCache($this->cache)
+                     ->{$this->option('once') ? 'runNextJob' : 'daemon'}(
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $connection, $queue, $this->gatherWorkerOptions()
         );
     }
@@ -120,11 +149,29 @@ class WorkCommand extends Command
      */
     protected function gatherWorkerOptions()
     {
+<<<<<<< HEAD
         return new WorkerOptions(
             $this->option('delay'), $this->option('memory'),
             $this->option('timeout'), $this->option('sleep'),
             $this->option('tries'), $this->option('force'),
             $this->option('stop-when-empty')
+=======
+        $backoff = $this->hasOption('backoff')
+                    ? $this->option('backoff')
+                    : $this->option('delay');
+
+        return new WorkerOptions(
+            $this->option('name'),
+            $backoff,
+            $this->option('memory'),
+            $this->option('timeout'),
+            $this->option('sleep'),
+            $this->option('tries'),
+            $this->option('force'),
+            $this->option('stop-when-empty'),
+            $this->option('max-jobs'),
+            $this->option('max-time')
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         );
     }
 
@@ -196,8 +243,15 @@ class WorkCommand extends Command
     protected function logFailedJob(JobFailed $event)
     {
         $this->laravel['queue.failer']->log(
+<<<<<<< HEAD
             $event->connectionName, $event->job->getQueue(),
             $event->job->getRawBody(), $event->exception
+=======
+            $event->connectionName,
+            $event->job->getQueue(),
+            $event->job->getRawBody(),
+            $event->exception
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         );
     }
 

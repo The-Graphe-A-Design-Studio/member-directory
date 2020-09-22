@@ -12,6 +12,10 @@ use Illuminate\Contracts\Mail\Mailer;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Stringable;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Support\Traits\Macroable;
 use Illuminate\Support\Traits\ReflectsClosures;
 use Psr\Http\Client\ClientExceptionInterface;
@@ -474,7 +478,11 @@ class Event
      */
     protected function emailOutput(Mailer $mailer, $addresses, $onlyIfOutputExists = false)
     {
+<<<<<<< HEAD
         $text = file_exists($this->output) ? file_get_contents($this->output) : '';
+=======
+        $text = is_file($this->output) ? file_get_contents($this->output) : '';
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         if ($onlyIfOutputExists && empty($text)) {
             return;
@@ -727,6 +735,15 @@ class Event
      */
     public function then(Closure $callback)
     {
+<<<<<<< HEAD
+=======
+        $parameters = $this->closureParameterTypes($callback);
+
+        if (Arr::get($parameters, 'output') === Stringable::class) {
+            return $this->thenWithOutput($callback);
+        }
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $this->afterCallbacks[] = $callback;
 
         return $this;
@@ -754,6 +771,15 @@ class Event
      */
     public function onSuccess(Closure $callback)
     {
+<<<<<<< HEAD
+=======
+        $parameters = $this->closureParameterTypes($callback);
+
+        if (Arr::get($parameters, 'output') === Stringable::class) {
+            return $this->onSuccessWithOutput($callback);
+        }
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         return $this->then(function (Container $container) use ($callback) {
             if (0 === $this->exitCode) {
                 $container->call($callback);
@@ -783,6 +809,15 @@ class Event
      */
     public function onFailure(Closure $callback)
     {
+<<<<<<< HEAD
+=======
+        $parameters = $this->closureParameterTypes($callback);
+
+        if (Arr::get($parameters, 'output') === Stringable::class) {
+            return $this->onFailureWithOutput($callback);
+        }
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         return $this->then(function (Container $container) use ($callback) {
             if (0 !== $this->exitCode) {
                 $container->call($callback);
@@ -814,11 +849,19 @@ class Event
     protected function withOutputCallback(Closure $callback, $onlyIfOutputExists = false)
     {
         return function (Container $container) use ($callback, $onlyIfOutputExists) {
+<<<<<<< HEAD
             $output = $this->output && file_exists($this->output) ? file_get_contents($this->output) : '';
 
             return $onlyIfOutputExists && empty($output)
                             ? null
                             : $container->call($callback, ['output' => $output]);
+=======
+            $output = $this->output && is_file($this->output) ? file_get_contents($this->output) : '';
+
+            return $onlyIfOutputExists && empty($output)
+                            ? null
+                            : $container->call($callback, ['output' => new Stringable($output)]);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         };
     }
 

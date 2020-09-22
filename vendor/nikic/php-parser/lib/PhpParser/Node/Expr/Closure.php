@@ -20,8 +20,11 @@ class Closure extends Expr implements FunctionLike
     public $returnType;
     /** @var Node\Stmt[] Statements */
     public $stmts;
+<<<<<<< HEAD
     /** @var Node\AttributeGroup[] PHP attribute groups */
     public $attrGroups;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * Constructs a lambda function node.
@@ -33,7 +36,10 @@ class Closure extends Expr implements FunctionLike
      *                          'uses'       => array(): use()s
      *                          'returnType' => null   : Return type
      *                          'stmts'      => array(): Statements
+<<<<<<< HEAD
      *                          'attrGroups' => array(): PHP attributes groups
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @param array $attributes Additional attributes
      */
     public function __construct(array $subNodes = [], array $attributes = []) {
@@ -45,11 +51,18 @@ class Closure extends Expr implements FunctionLike
         $returnType = $subNodes['returnType'] ?? null;
         $this->returnType = \is_string($returnType) ? new Node\Identifier($returnType) : $returnType;
         $this->stmts = $subNodes['stmts'] ?? [];
+<<<<<<< HEAD
         $this->attrGroups = $subNodes['attrGroups'] ?? [];
     }
 
     public function getSubNodeNames() : array {
         return ['attrGroups', 'static', 'byRef', 'params', 'uses', 'returnType', 'stmts'];
+=======
+    }
+
+    public function getSubNodeNames() : array {
+        return ['static', 'byRef', 'params', 'uses', 'returnType', 'stmts'];
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     public function returnsByRef() : bool {
@@ -68,11 +81,15 @@ class Closure extends Expr implements FunctionLike
     public function getStmts() : array {
         return $this->stmts;
     }
+<<<<<<< HEAD
 
     public function getAttrGroups() : array {
         return $this->attrGroups;
     }
 
+=======
+    
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     public function getType() : string {
         return 'Expr_Closure';
     }

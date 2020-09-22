@@ -151,8 +151,14 @@ class Listener
             'queue:work',
             $connection,
             '--once',
+<<<<<<< HEAD
             "--queue={$queue}",
             "--delay={$options->delay}",
+=======
+            "--name={$options->name}",
+            "--queue={$queue}",
+            "--backoff={$options->backoff}",
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             "--memory={$options->memory}",
             "--sleep={$options->sleep}",
             "--tries={$options->maxTries}",

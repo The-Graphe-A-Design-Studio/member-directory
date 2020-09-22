@@ -4,10 +4,18 @@ namespace Illuminate\Support;
 
 use ArrayAccess;
 use ArrayObject;
+<<<<<<< HEAD
 
 class Optional implements ArrayAccess
 {
     use Traits\Macroable {
+=======
+use Illuminate\Support\Traits\Macroable;
+
+class Optional implements ArrayAccess
+{
+    use Macroable {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         __call as macroCall;
     }
 

@@ -5,6 +5,10 @@ namespace Illuminate\Database\Schema;
 use BadMethodCallException;
 use Closure;
 use Illuminate\Database\Connection;
+<<<<<<< HEAD
+=======
+use Illuminate\Database\Eloquent\Model;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Database\Query\Expression;
 use Illuminate\Database\Schema\Grammars\Grammar;
 use Illuminate\Database\SQLiteConnection;
@@ -255,7 +259,11 @@ class Blueprint
      *
      * @return bool
      */
+<<<<<<< HEAD
     protected function creating()
+=======
+    public function creating()
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         return collect($this->commands)->contains(function ($command) {
             return $command->name === 'create';
@@ -834,6 +842,27 @@ class Blueprint
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Create a foreign ID column for the given model.
+     *
+     * @param  \Illuminate\Database\Eloquent\Model|string  $model
+     * @param  string|null  $column
+     * @return \Illuminate\Database\Schema\ForeignIdColumnDefinition
+     */
+    public function foreignIdFor($model, $column = null)
+    {
+        if (is_string($model)) {
+            $model = new $model;
+        }
+
+        return $model->getKeyType() === 'int' && $model->incrementing
+                    ? $this->foreignId($column ?: $model->getForeignKey())
+                    : $this->foreignUuid($column ?: $model->getForeignKey());
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Create a new float column on the table.
      *
      * @param  string  $column
@@ -1307,11 +1336,13 @@ class Blueprint
      */
     public function morphs($name, $indexName = null)
     {
-        $this->string("{$name}_type");
-
-        $this->unsignedBigInteger("{$name}_id");
-
-        $this->index(["{$name}_type", "{$name}_id"], $indexName);
+<<<<<<< HEAD
+=======
+        if (Builder::$defaultMorphKeyType === 'uuid') {
+            $this->uuidMorphs($name, $indexName);
+        } else {
+            $this->numericMorphs($name, $indexName);
+        }
     }
 
     /**
@@ -1322,6 +1353,47 @@ class Blueprint
      * @return void
      */
     public function nullableMorphs($name, $indexName = null)
+    {
+        if (Builder::$defaultMorphKeyType === 'uuid') {
+            $this->nullableUuidMorphs($name, $indexName);
+        } else {
+            $this->nullableNumericMorphs($name, $indexName);
+        }
+    }
+
+    /**
+     * Add the proper columns for a polymorphic table using numeric IDs (incremental).
+     *
+     * @param  string  $name
+     * @param  string|null  $indexName
+     * @return void
+     */
+    public function numericMorphs($name, $indexName = null)
+    {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
+        $this->string("{$name}_type");
+
+        $this->unsignedBigInteger("{$name}_id");
+
+        $this->index(["{$name}_type", "{$name}_id"], $indexName);
+    }
+
+    /**
+<<<<<<< HEAD
+     * Add nullable columns for a polymorphic table.
+=======
+     * Add nullable columns for a polymorphic table using numeric IDs (incremental).
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
+     *
+     * @param  string  $name
+     * @param  string|null  $indexName
+     * @return void
+     */
+<<<<<<< HEAD
+    public function nullableMorphs($name, $indexName = null)
+=======
+    public function nullableNumericMorphs($name, $indexName = null)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         $this->string("{$name}_type")->nullable();
 
@@ -1542,4 +1614,37 @@ class Blueprint
             return (bool) $column->change;
         });
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Determine if the blueprint has auto increment columns.
+     *
+     * @return bool
+     */
+    public function hasAutoIncrementColumn()
+    {
+        return ! is_null(collect($this->getAddedColumns())->first(function ($column) {
+            return $column->autoIncrement === true;
+        }));
+    }
+
+    /**
+     * Get the auto increment column starting values.
+     *
+     * @return array
+     */
+    public function autoIncrementingStartingValues()
+    {
+        if (! $this->hasAutoIncrementColumn()) {
+            return [];
+        }
+
+        return collect($this->getAddedColumns())->mapWithKeys(function ($column) {
+            return $column->autoIncrement === true
+                        ? [$column->name => $column->get('startingValue', $column->get('from'))]
+                        : [$column->name => null];
+        })->filter()->all();
+    }
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

@@ -28,9 +28,16 @@ abstract class Seeder
      *
      * @param  array|string  $class
      * @param  bool  $silent
+<<<<<<< HEAD
      * @return $this
      */
     public function call($class, $silent = false)
+=======
+     * @param  mixed ...$parameters
+     * @return $this
+     */
+    public function call($class, $silent = false, ...$parameters)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         $classes = Arr::wrap($class);
 
@@ -45,12 +52,21 @@ abstract class Seeder
 
             $startTime = microtime(true);
 
+<<<<<<< HEAD
             $seeder->__invoke();
 
             $runTime = round(microtime(true) - $startTime, 2);
 
             if ($silent === false && isset($this->command)) {
                 $this->command->getOutput()->writeln("<info>Seeded:</info>  {$name} ({$runTime} seconds)");
+=======
+            $seeder->__invoke(...$parameters);
+
+            $runTime = number_format((microtime(true) - $startTime) * 1000, 2);
+
+            if ($silent === false && isset($this->command)) {
+                $this->command->getOutput()->writeln("<info>Seeded:</info>  {$name} ({$runTime}ms)");
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             }
         }
 
@@ -61,11 +77,20 @@ abstract class Seeder
      * Silently seed the given connection from the given path.
      *
      * @param  array|string  $class
+<<<<<<< HEAD
      * @return void
      */
     public function callSilent($class)
     {
         $this->call($class, true);
+=======
+     * @param  mixed ...$parameters
+     * @return void
+     */
+    public function callSilent($class, ...$parameters)
+    {
+        $this->call($class, true, ...$parameters);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -120,18 +145,31 @@ abstract class Seeder
     /**
      * Run the database seeds.
      *
+<<<<<<< HEAD
+=======
+     * @param  mixed ...$parameters
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @return mixed
      *
      * @throws \InvalidArgumentException
      */
+<<<<<<< HEAD
     public function __invoke()
+=======
+    public function __invoke(...$parameters)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         if (! method_exists($this, 'run')) {
             throw new InvalidArgumentException('Method [run] missing from '.get_class($this));
         }
 
         return isset($this->container)
+<<<<<<< HEAD
                     ? $this->container->call([$this, 'run'])
                     : $this->run();
+=======
+                    ? $this->container->call([$this, 'run'], $parameters)
+                    : $this->run(...$parameters);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

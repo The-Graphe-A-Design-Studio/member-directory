@@ -62,6 +62,20 @@ class ClosureCommand extends Command
      * @param  string  $description
      * @return $this
      */
+<<<<<<< HEAD
+=======
+    public function purpose($description)
+    {
+        return $this->describe($description);
+    }
+
+    /**
+     * Set the description for the command.
+     *
+     * @param  string  $description
+     * @return $this
+     */
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     public function describe($description)
     {
         $this->setDescription($description);

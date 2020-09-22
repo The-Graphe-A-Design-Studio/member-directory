@@ -27,6 +27,7 @@ class EventServiceProvider extends ServiceProvider
      *
      * @return void
      */
+<<<<<<< HEAD
     public function boot()
     {
         $events = $this->getEvents();
@@ -40,6 +41,33 @@ class EventServiceProvider extends ServiceProvider
         foreach ($this->subscribe as $subscriber) {
             Event::subscribe($subscriber);
         }
+=======
+    public function register()
+    {
+        $this->booting(function () {
+            $events = $this->getEvents();
+
+            foreach ($events as $event => $listeners) {
+                foreach (array_unique($listeners) as $listener) {
+                    Event::listen($event, $listener);
+                }
+            }
+
+            foreach ($this->subscribe as $subscriber) {
+                Event::subscribe($subscriber);
+            }
+        });
+    }
+
+    /**
+     * Boot any application services.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        //
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

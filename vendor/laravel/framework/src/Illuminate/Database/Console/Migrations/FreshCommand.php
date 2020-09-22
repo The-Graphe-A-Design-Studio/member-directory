@@ -79,7 +79,11 @@ class FreshCommand extends Command
     {
         $this->call('db:seed', array_filter([
             '--database' => $database,
+<<<<<<< HEAD
             '--class' => $this->option('seeder') ?: 'DatabaseSeeder',
+=======
+            '--class' => $this->option('seeder') ?: 'Database\\Seeders\\DatabaseSeeder',
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             '--force' => true,
         ]));
     }

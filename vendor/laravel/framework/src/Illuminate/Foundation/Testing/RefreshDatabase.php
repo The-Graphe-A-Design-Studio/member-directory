@@ -49,7 +49,13 @@ trait RefreshDatabase
      */
     protected function migrateUsing()
     {
+<<<<<<< HEAD
         return [];
+=======
+        return [
+            '--seed' => $this->shouldSeed(),
+        ];
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -80,6 +86,10 @@ trait RefreshDatabase
         return [
             '--drop-views' => $this->shouldDropViews(),
             '--drop-types' => $this->shouldDropTypes(),
+<<<<<<< HEAD
+=======
+            '--seed' => $this->shouldSeed(),
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         ];
     }
 
@@ -132,8 +142,12 @@ trait RefreshDatabase
      */
     protected function shouldDropViews()
     {
+<<<<<<< HEAD
         return property_exists($this, 'dropViews')
                             ? $this->dropViews : false;
+=======
+        return property_exists($this, 'dropViews') ? $this->dropViews : false;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -143,7 +157,21 @@ trait RefreshDatabase
      */
     protected function shouldDropTypes()
     {
+<<<<<<< HEAD
         return property_exists($this, 'dropTypes')
                             ? $this->dropTypes : false;
+=======
+        return property_exists($this, 'dropTypes') ? $this->dropTypes : false;
+    }
+
+    /**
+     * Determine if the seed task should be run when refreshing the database.
+     *
+     * @return bool
+     */
+    protected function shouldSeed()
+    {
+        return property_exists($this, 'seed') ? $this->seed : false;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

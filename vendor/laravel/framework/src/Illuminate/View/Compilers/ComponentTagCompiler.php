@@ -33,6 +33,16 @@ class ComponentTagCompiler
     protected $aliases = [];
 
     /**
+<<<<<<< HEAD
+=======
+     * The component class namespaces.
+     *
+     * @var array
+     */
+    protected $namespaces = [];
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * The "bind:" attributes that have been compiled for the current component.
      *
      * @var array
@@ -46,9 +56,16 @@ class ComponentTagCompiler
      * @param  \Illuminate\View\Compilers\BladeCompiler|null
      * @return void
      */
+<<<<<<< HEAD
     public function __construct(array $aliases = [], ?BladeCompiler $blade = null)
     {
         $this->aliases = $aliases;
+=======
+    public function __construct(array $aliases = [], array $namespaces = [], ?BladeCompiler $blade = null)
+    {
+        $this->aliases = $aliases;
+        $this->namespaces = $namespaces;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         $this->blade = $blade ?: new BladeCompiler(new Filesystem, sys_get_temp_dir());
     }
@@ -100,6 +117,7 @@ class ComponentTagCompiler
                 (?<attributes>
                     (?:
                         \s+
+<<<<<<< HEAD
                         [\w\-:.@]+
                         (
                             =
@@ -112,6 +130,28 @@ class ComponentTagCompiler
                             )
                         )
                     ?)*
+=======
+                        (?:
+                            (?:
+                                \{\{\s*\\\$attributes(?:[^}]+?)?\s*\}\}
+                            )
+                            |
+                            (?:
+                                [\w\-:.@]+
+                                (
+                                    =
+                                    (?:
+                                        \\\"[^\\\"]*\\\"
+                                        |
+                                        \'[^\']*\'
+                                        |
+                                        [^\'\\\"=<>]+
+                                    )
+                                )?
+                            )
+                        )
+                    )*
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                     \s*
                 )
                 (?<![\/=\-])
@@ -145,6 +185,7 @@ class ComponentTagCompiler
                 (?<attributes>
                     (?:
                         \s+
+<<<<<<< HEAD
                         [\w\-:.@]+
                         (
                             =
@@ -156,6 +197,27 @@ class ComponentTagCompiler
                                 [^\'\\\"=<>]+
                             )
                         )?
+=======
+                        (?:
+                            (?:
+                                \{\{\s*\\\$attributes(?:[^}]+?)?\s*\}\}
+                            )
+                            |
+                            (?:
+                                [\w\-:.@]+
+                                (
+                                    =
+                                    (?:
+                                        \\\"[^\\\"]*\\\"
+                                        |
+                                        \'[^\']*\'
+                                        |
+                                        [^\'\\\"=<>]+
+                                    )
+                                )?
+                            )
+                        )
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                     )*
                     \s*
                 )
@@ -216,7 +278,11 @@ class ComponentTagCompiler
      *
      * @throws \InvalidArgumentException
      */
+<<<<<<< HEAD
     protected function componentClass(string $component)
+=======
+    public function componentClass(string $component)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         $viewFactory = Container::getInstance()->make(Factory::class);
 
@@ -234,6 +300,13 @@ class ComponentTagCompiler
             );
         }
 
+<<<<<<< HEAD
+=======
+        if ($class = $this->findClassByComponent($component)) {
+            return $class;
+        }
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         if (class_exists($class = $this->guessClassName($component))) {
             return $class;
         }
@@ -248,6 +321,30 @@ class ComponentTagCompiler
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Find the class for the given component using the registered namespaces.
+     *
+     * @param  string  $component
+     * @return string|null
+     */
+    public function findClassByComponent(string $component)
+    {
+        $segments = explode('::', $component);
+
+        $prefix = $segments[0];
+
+        if (! isset($this->namespaces[$prefix]) || ! isset($segments[1])) {
+            return;
+        }
+
+        if (class_exists($class = $this->namespaces[$prefix].'\\'.$this->formatClassName($segments[1]))) {
+            return $class;
+        }
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Guess the class name for the given component.
      *
      * @param  string  $component
@@ -259,11 +356,31 @@ class ComponentTagCompiler
                     ->make(Application::class)
                     ->getNamespace();
 
+<<<<<<< HEAD
+=======
+        $class = $this->formatClassName($component);
+
+        return $namespace.'View\\Components\\'.$class;
+    }
+
+    /**
+     * Format the class name for the given component.
+     *
+     * @param  string  $component
+     * @return string
+     */
+    public function formatClassName(string $component)
+    {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $componentPieces = array_map(function ($componentPiece) {
             return ucfirst(Str::camel($componentPiece));
         }, explode('.', $component));
 
+<<<<<<< HEAD
         return $namespace.'View\\Components\\'.implode('\\', $componentPieces);
+=======
+        return implode('\\', $componentPieces);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -292,7 +409,11 @@ class ComponentTagCompiler
      * @param  array  $attributes
      * @return array
      */
+<<<<<<< HEAD
     protected function partitionDataAndAttributes($class, array $attributes)
+=======
+    public function partitionDataAndAttributes($class, array $attributes)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         // If the class doesn't exists, we'll assume it's a class-less component and
         // return all of the attributes as both data and attributes since we have
@@ -352,6 +473,11 @@ class ComponentTagCompiler
      */
     protected function getAttributesFromAttributeString(string $attributeString)
     {
+<<<<<<< HEAD
+=======
+        $attributeString = $this->parseAttributeBag($attributeString);
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $attributeString = $this->parseBindAttributes($attributeString);
 
         $pattern = '/
@@ -399,6 +525,25 @@ class ComponentTagCompiler
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Parse the attribute bag in a given attribute string into it's fully-qualified syntax.
+     *
+     * @param  string  $attributeString
+     * @return string
+     */
+    protected function parseAttributeBag(string $attributeString)
+    {
+        $pattern = "/
+            (?:^|\s+)                                        # start of the string or whitespace between attributes
+            \{\{\s*(\\\$attributes(?:[^}]+?(?<!\s))?)\s*\}\} # exact match of attributes variable being echoed
+        /x";
+
+        return preg_replace($pattern, ' :attributes="$1"', $attributeString);
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Parse the "bind" attributes in a given attribute string into their fully-qualified syntax.
      *
      * @param  string  $attributeString

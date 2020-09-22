@@ -12,12 +12,19 @@ use Illuminate\Queue\Connectors\RedisConnector;
 use Illuminate\Queue\Connectors\SqsConnector;
 use Illuminate\Queue\Connectors\SyncConnector;
 use Illuminate\Queue\Failed\DatabaseFailedJobProvider;
+<<<<<<< HEAD
+=======
+use Illuminate\Queue\Failed\DatabaseUuidFailedJobProvider;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Queue\Failed\DynamoDbFailedJobProvider;
 use Illuminate\Queue\Failed\NullFailedJobProvider;
 use Illuminate\Support\Arr;
 use Illuminate\Support\ServiceProvider;
+<<<<<<< HEAD
 use Illuminate\Support\Str;
 use Opis\Closure\SerializableClosure;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 class QueueServiceProvider extends ServiceProvider implements DeferrableProvider
 {
@@ -33,7 +40,10 @@ class QueueServiceProvider extends ServiceProvider implements DeferrableProvider
         $this->registerWorker();
         $this->registerListener();
         $this->registerFailedJobServices();
+<<<<<<< HEAD
         $this->registerOpisSecurityKey();
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -201,6 +211,11 @@ class QueueServiceProvider extends ServiceProvider implements DeferrableProvider
 
             if (isset($config['driver']) && $config['driver'] === 'dynamodb') {
                 return $this->dynamoFailedJobProvider($config);
+<<<<<<< HEAD
+=======
+            } elseif (isset($config['driver']) && $config['driver'] === 'database-uuids') {
+                return $this->databaseUuidFailedJobProvider($config);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             } elseif (isset($config['table'])) {
                 return $this->databaseFailedJobProvider($config);
             } else {
@@ -223,6 +238,22 @@ class QueueServiceProvider extends ServiceProvider implements DeferrableProvider
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Create a new database failed job provider that uses UUIDs as IDs.
+     *
+     * @param  array  $config
+     * @return \Illuminate\Queue\Failed\DatabaseUuidFailedJobProvider
+     */
+    protected function databaseUuidFailedJobProvider($config)
+    {
+        return new DatabaseUuidFailedJobProvider(
+            $this->app['db'], $config['database'], $config['table']
+        );
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Create a new DynamoDb failed job provider.
      *
      * @param  array  $config
@@ -250,6 +281,7 @@ class QueueServiceProvider extends ServiceProvider implements DeferrableProvider
     }
 
     /**
+<<<<<<< HEAD
      * Configure Opis Closure signing for security.
      *
      * @return void
@@ -264,6 +296,8 @@ class QueueServiceProvider extends ServiceProvider implements DeferrableProvider
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the services provided by the provider.
      *
      * @return array
@@ -271,8 +305,16 @@ class QueueServiceProvider extends ServiceProvider implements DeferrableProvider
     public function provides()
     {
         return [
+<<<<<<< HEAD
             'queue', 'queue.worker', 'queue.listener',
             'queue.failer', 'queue.connection',
+=======
+            'queue',
+            'queue.connection',
+            'queue.failer',
+            'queue.listener',
+            'queue.worker',
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         ];
     }
 }

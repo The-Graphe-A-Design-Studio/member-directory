@@ -29,7 +29,11 @@ class Mix
             $manifestDirectory = "/{$manifestDirectory}";
         }
 
+<<<<<<< HEAD
         if (file_exists(public_path($manifestDirectory.'/hot'))) {
+=======
+        if (is_file(public_path($manifestDirectory.'/hot'))) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $url = rtrim(file_get_contents(public_path($manifestDirectory.'/hot')));
 
             if (Str::startsWith($url, ['http://', 'https://'])) {
@@ -42,7 +46,11 @@ class Mix
         $manifestPath = public_path($manifestDirectory.'/mix-manifest.json');
 
         if (! isset($manifests[$manifestPath])) {
+<<<<<<< HEAD
             if (! file_exists($manifestPath)) {
+=======
+            if (! is_file($manifestPath)) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 throw new Exception('The Mix manifest does not exist.');
             }
 

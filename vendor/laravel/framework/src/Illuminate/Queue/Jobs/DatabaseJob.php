@@ -45,15 +45,23 @@ class DatabaseJob extends Job implements JobContract
      * Release the job back into the queue.
      *
      * @param  int  $delay
+<<<<<<< HEAD
      * @return mixed
+=======
+     * @return void
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     public function release($delay = 0)
     {
         parent::release($delay);
 
+<<<<<<< HEAD
         $this->delete();
 
         return $this->database->release($this->queue, $this->job, $delay);
+=======
+        $this->database->deleteAndRelease($this->queue, $this, $delay);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -97,4 +105,17 @@ class DatabaseJob extends Job implements JobContract
     {
         return $this->job->payload;
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Get the database job record.
+     *
+     * @return \Illuminate\Queue\Jobs\DatabaseJobRecord
+     */
+    public function getJobRecord()
+    {
+        return $this->job;
+    }
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

@@ -4,6 +4,10 @@ namespace Illuminate\View;
 
 use Closure;
 use Illuminate\Container\Container;
+<<<<<<< HEAD
+=======
+use Illuminate\Contracts\Support\Htmlable;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Support\Str;
 use ReflectionClass;
 use ReflectionMethod;
@@ -49,14 +53,22 @@ abstract class Component
     /**
      * Get the view / view contents that represent the component.
      *
+<<<<<<< HEAD
      * @return \Illuminate\View\View|\Closure|string
+=======
+     * @return \Illuminate\View\View|\Illuminate\Contracts\Support\Htmlable|\Closure|string
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     abstract public function render();
 
     /**
      * Resolve the Blade view or view file that should be used when rendering the component.
      *
+<<<<<<< HEAD
      * @return \Illuminate\View\View|\Closure|string
+=======
+     * @return \Illuminate\View\View|\Illuminate\Contracts\Support\Htmlable|\Closure|string
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      */
     public function resolveView()
     {
@@ -66,6 +78,13 @@ abstract class Component
             return $view;
         }
 
+<<<<<<< HEAD
+=======
+        if ($view instanceof Htmlable) {
+            return $view;
+        }
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $resolver = function ($view) {
             $factory = Container::getInstance()->make('view');
 
@@ -94,7 +113,11 @@ abstract class Component
             $directory = Container::getInstance()['config']->get('view.compiled')
         );
 
+<<<<<<< HEAD
         if (! file_exists($viewFile = $directory.'/'.sha1($contents).'.blade.php')) {
+=======
+        if (! is_file($viewFile = $directory.'/'.sha1($contents).'.blade.php')) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             if (! is_dir($directory)) {
                 mkdir($directory, 0755, true);
             }

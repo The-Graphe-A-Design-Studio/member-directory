@@ -160,4 +160,14 @@ interface ConnectionInterface
      * @return array
      */
     public function pretend(Closure $callback);
+<<<<<<< HEAD
+=======
+
+    /**
+     * Get the name of the connected database.
+     *
+     * @return string
+     */
+    public function getDatabaseName();
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

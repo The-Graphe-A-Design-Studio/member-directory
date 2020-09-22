@@ -23,15 +23,21 @@ use ReflectionProperty;
 use Reflector;
 use RuntimeException;
 use UnexpectedValueException;
+<<<<<<< HEAD
 use function define;
 use function defined;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use function file_exists;
 use function file_get_contents;
 use function get_class;
 use function in_array;
 use function is_string;
+<<<<<<< HEAD
 use function strrpos;
 use function substr;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use function token_get_all;
 use function trim;
 use const T_AS;
@@ -43,6 +49,7 @@ use const T_NS_SEPARATOR;
 use const T_STRING;
 use const T_USE;
 
+<<<<<<< HEAD
 if (!defined('T_NAME_QUALIFIED')) {
     define('T_NAME_QUALIFIED', 'T_NAME_QUALIFIED');
 }
@@ -51,6 +58,8 @@ if (!defined('T_NAME_FULLY_QUALIFIED')) {
     define('T_NAME_FULLY_QUALIFIED', 'T_NAME_FULLY_QUALIFIED');
 }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 /**
  * Convenience class to create a Context for DocBlocks when not using the Reflection Component of phpDocumentor.
  *
@@ -233,8 +242,12 @@ final class ContextFactory
         $this->skipToNextStringOrNamespaceSeparator($tokens);
 
         $name = '';
+<<<<<<< HEAD
         $acceptedTokens = [T_STRING, T_NS_SEPARATOR, T_NAME_QUALIFIED];
         while ($tokens->valid() && in_array($tokens->current()[0], $acceptedTokens, true)) {
+=======
+        while ($tokens->valid() && in_array($tokens->current()[0], [T_STRING, T_NS_SEPARATOR], true)) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $name .= $tokens->current()[1];
             $tokens->next();
         }
@@ -281,6 +294,7 @@ final class ContextFactory
                 break;
             }
 
+<<<<<<< HEAD
             if ($currentToken[0] === T_NAME_QUALIFIED) {
                 break;
             }
@@ -289,6 +303,8 @@ final class ContextFactory
                 break;
             }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $tokens->next();
         }
     }
@@ -325,6 +341,7 @@ final class ContextFactory
                             $currentNs   .= (string) $tokenValue;
                             $currentAlias =  $tokenValue;
                             break;
+<<<<<<< HEAD
                         case T_NAME_QUALIFIED:
                         case T_NAME_FULLY_QUALIFIED:
                             $currentNs   .= (string) $tokenValue;
@@ -333,6 +350,8 @@ final class ContextFactory
                                 (int) (strrpos((string) $tokenValue, '\\')) + 1
                             );
                             break;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                         case T_CURLY_OPEN:
                         case '{':
                             $state     = 'grouped';

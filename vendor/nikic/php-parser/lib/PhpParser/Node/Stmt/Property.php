@@ -16,8 +16,11 @@ class Property extends Node\Stmt
     public $props;
     /** @var null|Identifier|Name|NullableType|UnionType Type declaration */
     public $type;
+<<<<<<< HEAD
     /** @var Node\AttributeGroup[] PHP attribute groups */
     public $attrGroups;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * Constructs a class property list node.
@@ -26,18 +29,30 @@ class Property extends Node\Stmt
      * @param PropertyProperty[]                                 $props      Properties
      * @param array                                              $attributes Additional attributes
      * @param null|string|Identifier|Name|NullableType|UnionType $type       Type declaration
+<<<<<<< HEAD
      * @param Node\AttributeGroup[]                              $attrGroups PHP attribute groups
      */
     public function __construct(int $flags, array $props, array $attributes = [], $type = null, array $attrGroups = []) {
+=======
+     */
+    public function __construct(int $flags, array $props, array $attributes = [], $type = null) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $this->attributes = $attributes;
         $this->flags = $flags;
         $this->props = $props;
         $this->type = \is_string($type) ? new Identifier($type) : $type;
+<<<<<<< HEAD
         $this->attrGroups = $attrGroups;
     }
 
     public function getSubNodeNames() : array {
         return ['attrGroups', 'flags', 'type', 'props'];
+=======
+    }
+
+    public function getSubNodeNames() : array {
+        return ['flags', 'type', 'props'];
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

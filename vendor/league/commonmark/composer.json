@@ -26,7 +26,11 @@
     "require-dev": {
         "ext-json": "*",
         "cebe/markdown": "~1.0",
+<<<<<<< HEAD
         "commonmark/commonmark.js": "0.29.2",
+=======
+        "commonmark/commonmark.js": "0.29.1",
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         "erusev/parsedown": "~1.0",
         "github/gfm": "0.29.0",
         "michelf/php-markdown": "~1.4",
@@ -46,9 +50,15 @@
             "type": "package",
             "package": {
                 "name": "commonmark/commonmark.js",
+<<<<<<< HEAD
                 "version": "0.29.2",
                 "dist": {
                     "url": "https://github.com/commonmark/commonmark.js/archive/0.29.2.zip",
+=======
+                "version": "0.29.1",
+                "dist": {
+                    "url": "https://github.com/commonmark/commonmark.js/archive/0.29.1.zip",
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                     "type": "zip"
                 }
             }

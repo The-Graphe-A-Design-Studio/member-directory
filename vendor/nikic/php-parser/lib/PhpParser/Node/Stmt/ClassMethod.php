@@ -19,8 +19,11 @@ class ClassMethod extends Node\Stmt implements FunctionLike
     public $returnType;
     /** @var Node\Stmt[]|null Statements */
     public $stmts;
+<<<<<<< HEAD
     /** @var Node\AttributeGroup[] PHP attribute groups */
     public $attrGroups;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     private static $magicNames = [
         '__construct'  => true,
@@ -50,7 +53,10 @@ class ClassMethod extends Node\Stmt implements FunctionLike
      *                          'params'     => array()        : Parameters
      *                          'returnType' => null           : Return type
      *                          'stmts'      => array()        : Statements
+<<<<<<< HEAD
      *                          'attrGroups' => array()        : PHP attribute groups
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @param array $attributes Additional attributes
      */
     public function __construct($name, array $subNodes = [], array $attributes = []) {
@@ -62,11 +68,18 @@ class ClassMethod extends Node\Stmt implements FunctionLike
         $returnType = $subNodes['returnType'] ?? null;
         $this->returnType = \is_string($returnType) ? new Node\Identifier($returnType) : $returnType;
         $this->stmts = array_key_exists('stmts', $subNodes) ? $subNodes['stmts'] : [];
+<<<<<<< HEAD
         $this->attrGroups = $subNodes['attrGroups'] ?? [];
     }
 
     public function getSubNodeNames() : array {
         return ['attrGroups', 'flags', 'byRef', 'name', 'params', 'returnType', 'stmts'];
+=======
+    }
+
+    public function getSubNodeNames() : array {
+        return ['flags', 'byRef', 'name', 'params', 'returnType', 'stmts'];
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     public function returnsByRef() : bool {
@@ -85,10 +98,13 @@ class ClassMethod extends Node\Stmt implements FunctionLike
         return $this->stmts;
     }
 
+<<<<<<< HEAD
     public function getAttrGroups() : array {
         return $this->attrGroups;
     }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     /**
      * Whether the method is explicitly or implicitly public.
      *
@@ -128,7 +144,11 @@ class ClassMethod extends Node\Stmt implements FunctionLike
 
     /**
      * Whether the method is final.
+<<<<<<< HEAD
      *
+=======
+     * 
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @return bool
      */
     public function isFinal() : bool {
@@ -152,7 +172,11 @@ class ClassMethod extends Node\Stmt implements FunctionLike
     public function isMagic() : bool {
         return isset(self::$magicNames[$this->name->toLowerString()]);
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     public function getType() : string {
         return 'Stmt_ClassMethod';
     }

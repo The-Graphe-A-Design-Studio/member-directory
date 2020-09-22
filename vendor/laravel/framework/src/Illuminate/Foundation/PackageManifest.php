@@ -102,11 +102,19 @@ class PackageManifest
             return $this->manifest;
         }
 
+<<<<<<< HEAD
         if (! file_exists($this->manifestPath)) {
             $this->build();
         }
 
         return $this->manifest = file_exists($this->manifestPath) ?
+=======
+        if (! is_file($this->manifestPath)) {
+            $this->build();
+        }
+
+        return $this->manifest = is_file($this->manifestPath) ?
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $this->files->getRequire($this->manifestPath) : [];
     }
 
@@ -154,7 +162,11 @@ class PackageManifest
      */
     protected function packagesToIgnore()
     {
+<<<<<<< HEAD
         if (! file_exists($this->basePath.'/composer.json')) {
+=======
+        if (! is_file($this->basePath.'/composer.json')) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             return [];
         }
 

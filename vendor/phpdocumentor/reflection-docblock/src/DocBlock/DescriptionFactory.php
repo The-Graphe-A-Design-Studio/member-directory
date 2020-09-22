@@ -14,12 +14,20 @@ declare(strict_types=1);
 namespace phpDocumentor\Reflection\DocBlock;
 
 use phpDocumentor\Reflection\Types\Context as TypeContext;
+<<<<<<< HEAD
 use phpDocumentor\Reflection\Utils;
+=======
+use Webmozart\Assert\Assert;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use function count;
 use function explode;
 use function implode;
 use function ltrim;
 use function min;
+<<<<<<< HEAD
+=======
+use function preg_split;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use function str_replace;
 use function strlen;
 use function strpos;
@@ -97,7 +105,11 @@ class DescriptionFactory
             return [$contents];
         }
 
+<<<<<<< HEAD
         return Utils::pregSplit(
+=======
+        $parts =  preg_split(
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             '/\{
                 # "{@}" is not a valid inline tag. This ensures that we do not treat it as one, but treat it literally.
                 (?!@\})
@@ -126,6 +138,12 @@ class DescriptionFactory
             0,
             PREG_SPLIT_DELIM_CAPTURE
         );
+<<<<<<< HEAD
+=======
+        Assert::isArray($parts);
+
+        return $parts;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

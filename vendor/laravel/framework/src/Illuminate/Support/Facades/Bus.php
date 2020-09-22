@@ -7,8 +7,16 @@ use Illuminate\Foundation\Bus\PendingChain;
 use Illuminate\Support\Testing\Fakes\BusFake;
 
 /**
+<<<<<<< HEAD
  * @method static \Illuminate\Contracts\Bus\Dispatcher map(array $map)
  * @method static \Illuminate\Contracts\Bus\Dispatcher pipeThrough(array $pipes)
+=======
+ * @method static \Illuminate\Bus\Batch|null findBatch(string $batchId)
+ * @method static \Illuminate\Bus\PendingBatch batch(array $jobs)
+ * @method static \Illuminate\Contracts\Bus\Dispatcher map(array $map)
+ * @method static \Illuminate\Contracts\Bus\Dispatcher pipeThrough(array $pipes)
+ * @method static \Illuminate\Foundation\Bus\PendingChain chain(array $jobs)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
  * @method static bool hasCommandHandler($command)
  * @method static bool|mixed getCommandHandler($command)
  * @method static mixed dispatch($command)

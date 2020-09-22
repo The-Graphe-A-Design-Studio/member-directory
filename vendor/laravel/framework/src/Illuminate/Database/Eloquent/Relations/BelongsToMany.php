@@ -860,10 +860,17 @@ class BelongsToMany extends Relation
     {
         $this->query->addSelect($this->shouldSelect());
 
+<<<<<<< HEAD
         return $this->query->chunk($count, function ($results) use ($callback) {
             $this->hydratePivotRelation($results->all());
 
             return $callback($results);
+=======
+        return $this->query->chunk($count, function ($results, $page) use ($callback) {
+            $this->hydratePivotRelation($results->all());
+
+            return $callback($results, $page);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         });
     }
 

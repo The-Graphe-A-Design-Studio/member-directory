@@ -2,6 +2,10 @@
 
 namespace Illuminate\Support\Facades;
 
+<<<<<<< HEAD
+=======
+use Illuminate\Queue\Worker;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Support\Testing\Fakes\QueueFake;
 
 /**
@@ -20,6 +24,10 @@ use Illuminate\Support\Testing\Fakes\QueueFake;
  * @method static void assertPushed(string $job, callable|int $callback = null)
  * @method static void assertPushedOn(string $queue, string $job, callable|int $callback = null)
  * @method static void assertPushedWithChain(string $job, array $expectedChain = [], callable $callback = null)
+<<<<<<< HEAD
+=======
+ * @method static void popUsing(string $workerName, callable $callback)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
  *
  * @see \Illuminate\Queue\QueueManager
  * @see \Illuminate\Queue\Queue
@@ -27,6 +35,21 @@ use Illuminate\Support\Testing\Fakes\QueueFake;
 class Queue extends Facade
 {
     /**
+<<<<<<< HEAD
+=======
+     * Register a callback to be executed to pick jobs.
+     *
+     * @param  string  $workerName
+     * @param  callable  $callback
+     * @return void
+     */
+    public static function popUsing($workerName, $callback)
+    {
+        return Worker::popUsing($workerName, $callback);
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Replace the bound instance with a fake.
      *
      * @return \Illuminate\Support\Testing\Fakes\QueueFake

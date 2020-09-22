@@ -3,6 +3,10 @@
 namespace {{ namespace }};
 
 use Closure;
+<<<<<<< HEAD
+=======
+use Illuminate\Http\Request;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 class {{ class }}
 {
@@ -13,7 +17,11 @@ class {{ class }}
      * @param  \Closure  $next
      * @return mixed
      */
+<<<<<<< HEAD
     public function handle($request, Closure $next)
+=======
+    public function handle(Request $request, Closure $next)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         return $next($request);
     }

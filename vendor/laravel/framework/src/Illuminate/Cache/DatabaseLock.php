@@ -4,7 +4,10 @@ namespace Illuminate\Cache;
 
 use Illuminate\Database\Connection;
 use Illuminate\Database\QueryException;
+<<<<<<< HEAD
 use Illuminate\Support\Carbon;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 class DatabaseLock extends Lock
 {
@@ -93,7 +96,11 @@ class DatabaseLock extends Lock
      */
     protected function expiresAt()
     {
+<<<<<<< HEAD
         return $this->seconds > 0 ? time() + $this->seconds : Carbon::now()->addDays(1)->getTimestamp();
+=======
+        return $this->seconds > 0 ? time() + $this->seconds : now()->addDays(1)->getTimestamp();
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

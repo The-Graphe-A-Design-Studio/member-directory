@@ -34,6 +34,17 @@ to learn how to use Mockery.
 
 The current version can be seen at [docs.mockery.io](http://docs.mockery.io).
 
+<<<<<<< HEAD
+=======
+## PHPUnit Integration
+
+Mockery ships with some helpers if you are using PHPUnit. You can extend the
+[`Mockery\Adapter\Phpunit\MockeryTestCase`](library/Mockery/Adapter/Phpunit/MockeryTestCase.php)
+class instead of `PHPUnit\Framework\TestCase`, or if you are already using a
+custom base class for your tests, take a look at the traits available in the
+[`Mockery\Adapter\Phpunit`](library/Mockery/Adapter/Phpunit) namespace.
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 ## Test Doubles
 
 Test doubles (often called mocks) simulate the behaviour of real objects. They are
@@ -268,7 +279,11 @@ versioning scheme.
 
 ### Alternative Runtimes
 
+<<<<<<< HEAD
 Mockery will attempt to continue support HHVM, but will not make any guarantees.
+=======
+Mockery 1.3 was the last version to support HHVM 3 and PHP 5. There is no support for HHVM 4+.
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 ## A new home for Mockery
 

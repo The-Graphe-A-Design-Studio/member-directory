@@ -64,6 +64,7 @@ final class Generic extends BaseTag implements Factory\StaticMethod
      */
     public function __toString() : string
     {
+<<<<<<< HEAD
         if ($this->description) {
             $description = $this->description->render();
         } else {
@@ -71,6 +72,9 @@ final class Generic extends BaseTag implements Factory\StaticMethod
         }
 
         return $description;
+=======
+        return $this->description ? $this->description->render() : '';
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

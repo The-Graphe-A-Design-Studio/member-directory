@@ -33,7 +33,11 @@ class Application extends Container implements ApplicationContract, CachesConfig
      *
      * @var string
      */
+<<<<<<< HEAD
     const VERSION = '7.28.3';
+=======
+    const VERSION = '8.0.1';
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * The base path for the Laravel installation.
@@ -859,6 +863,7 @@ class Application extends Container implements ApplicationContract, CachesConfig
      * Boot the given service provider.
      *
      * @param  \Illuminate\Support\ServiceProvider  $provider
+<<<<<<< HEAD
      * @return mixed
      */
     protected function bootProvider(ServiceProvider $provider)
@@ -866,6 +871,19 @@ class Application extends Container implements ApplicationContract, CachesConfig
         if (method_exists($provider, 'boot')) {
             return $this->call([$provider, 'boot']);
         }
+=======
+     * @return void
+     */
+    protected function bootProvider(ServiceProvider $provider)
+    {
+        $provider->callBootingCallbacks();
+
+        if (method_exists($provider, 'boot')) {
+            $this->call([$provider, 'boot']);
+        }
+
+        $provider->callBootedCallbacks();
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -953,7 +971,11 @@ class Application extends Container implements ApplicationContract, CachesConfig
      */
     public function configurationIsCached()
     {
+<<<<<<< HEAD
         return file_exists($this->getCachedConfigPath());
+=======
+        return is_file($this->getCachedConfigPath());
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -1044,7 +1066,11 @@ class Application extends Container implements ApplicationContract, CachesConfig
      */
     public function isDownForMaintenance()
     {
+<<<<<<< HEAD
         return file_exists($this->storagePath().'/framework/down');
+=======
+        return is_file($this->storagePath().'/framework/down');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

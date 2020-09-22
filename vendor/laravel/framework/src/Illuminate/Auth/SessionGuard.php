@@ -518,6 +518,37 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Log the user out of the application on their current device only.
+     *
+     * This method does not cycle the "remember" token.
+     *
+     * @return void
+     */
+    public function logoutCurrentDevice()
+    {
+        $user = $this->user();
+
+        $this->clearUserDataFromStorage();
+
+        // If we have an event dispatcher instance, we can fire off the logout event
+        // so any further processing can be done. This allows the developer to be
+        // listening for anytime a user signs out of this application manually.
+        if (isset($this->events)) {
+            $this->events->dispatch(new CurrentDeviceLogout($this->name, $user));
+        }
+
+        // Once we have fired the logout event we will clear the users out of memory
+        // so they are no longer available as the user is no longer considered as
+        // being signed into this application and should not be available here.
+        $this->user = null;
+
+        $this->loggedOut = true;
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Remove the user data from the session and cookies.
      *
      * @return void
@@ -546,6 +577,7 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     }
 
     /**
+<<<<<<< HEAD
      * Log the user out of the application on their current device only.
      *
      * @return void
@@ -572,6 +604,8 @@ class SessionGuard implements StatefulGuard, SupportsBasicAuth
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Invalidate other sessions for the current user.
      *
      * The application must be using the AuthenticateSession middleware.

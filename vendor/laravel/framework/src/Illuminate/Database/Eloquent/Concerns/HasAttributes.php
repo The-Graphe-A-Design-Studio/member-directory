@@ -7,6 +7,10 @@ use DateTimeInterface;
 use Illuminate\Contracts\Database\Eloquent\Castable;
 use Illuminate\Contracts\Database\Eloquent\CastsInboundAttributes;
 use Illuminate\Contracts\Support\Arrayable;
+<<<<<<< HEAD
+=======
+use Illuminate\Database\Eloquent\InvalidCastException;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Database\Eloquent\JsonEncodingException;
 use Illuminate\Database\Eloquent\Relations\Relation;
 use Illuminate\Support\Arr;
@@ -81,6 +85,11 @@ trait HasAttributes
     /**
      * The attributes that should be mutated to dates.
      *
+<<<<<<< HEAD
+=======
+     * @deprecated Use the "casts" property
+     *
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @var array
      */
     protected $dates = [];
@@ -700,7 +709,11 @@ trait HasAttributes
     protected function isDateAttribute($key)
     {
         return in_array($key, $this->getDates(), true) ||
+<<<<<<< HEAD
                                     $this->isDateCastable($key);
+=======
+               $this->isDateCastable($key);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -1067,9 +1080,27 @@ trait HasAttributes
      */
     protected function isClassCastable($key)
     {
+<<<<<<< HEAD
         return array_key_exists($key, $this->getCasts()) &&
                 class_exists($class = $this->parseCasterClass($this->getCasts()[$key])) &&
                 ! in_array($class, static::$primitiveCastTypes);
+=======
+        if (! array_key_exists($key, $this->getCasts())) {
+            return false;
+        }
+
+        $castType = $this->parseCasterClass($this->getCasts()[$key]);
+
+        if (in_array($castType, static::$primitiveCastTypes)) {
+            return false;
+        }
+
+        if (class_exists($castType)) {
+            return true;
+        }
+
+        throw new InvalidCastException($this->getModel(), $key, $castType);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -1092,7 +1123,11 @@ trait HasAttributes
         }
 
         if (is_subclass_of($castType, Castable::class)) {
+<<<<<<< HEAD
             $castType = $castType::castUsing();
+=======
+            $castType = $castType::castUsing($arguments);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
 
         if (is_object($castType)) {

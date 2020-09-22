@@ -5,6 +5,16 @@ namespace Illuminate\Contracts\Console;
 interface Kernel
 {
     /**
+<<<<<<< HEAD
+=======
+     * Bootstrap the application for artisan commands.
+     *
+     * @return void
+     */
+    public function bootstrap();
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Handle an incoming console command.
      *
      * @param  \Symfony\Component\Console\Input\InputInterface  $input

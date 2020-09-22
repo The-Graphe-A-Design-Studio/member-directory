@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": "^7.2.5",
+<<<<<<< HEAD
         "illuminate/console": "^7.0",
         "illuminate/filesystem": "^7.0",
         "illuminate/support": "^7.0"
@@ -18,6 +19,15 @@
     "require-dev": {
         "mockery/mockery": "^1.0",
         "phpunit/phpunit": "^8.0"
+=======
+        "illuminate/console": "^7.0|^8.0",
+        "illuminate/filesystem": "^7.0|^8.0",
+        "illuminate/support": "^7.0|^8.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^8.0|^9.0"
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     },
     "autoload": {
         "psr-4": {

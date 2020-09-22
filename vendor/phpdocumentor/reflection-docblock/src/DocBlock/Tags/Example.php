@@ -45,6 +45,7 @@ final class Example implements Tag, Factory\StaticMethod
     /** @var string|null */
     private $content;
 
+<<<<<<< HEAD
     public function __construct(
         string $filePath,
         bool $isURI,
@@ -54,6 +55,12 @@ final class Example implements Tag, Factory\StaticMethod
     ) {
         Assert::stringNotEmpty($filePath);
         Assert::greaterThanEq($startingLine, 1);
+=======
+    public function __construct(string $filePath, bool $isURI, int $startingLine, int $lineCount, ?string $content)
+    {
+        Assert::notEmpty($filePath);
+        Assert::greaterThanEq($startingLine, 0);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         Assert::greaterThanEq($lineCount, 0);
 
         $this->filePath     = $filePath;
@@ -68,8 +75,13 @@ final class Example implements Tag, Factory\StaticMethod
 
     public function getContent() : string
     {
+<<<<<<< HEAD
         if ($this->content === null || $this->content === '') {
             $filePath = $this->filePath;
+=======
+        if ($this->content === null) {
+            $filePath = '"' . $this->filePath . '"';
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             if ($this->isURI) {
                 $filePath = $this->isUriRelative($this->filePath)
                     ? str_replace('%2F', '/', rawurlencode($this->filePath))
@@ -90,7 +102,11 @@ final class Example implements Tag, Factory\StaticMethod
     public static function create(string $body) : ?Tag
     {
         // File component: File path in quotes or File URI / Source information
+<<<<<<< HEAD
         if (!preg_match('/^\s*(?:(\"[^\"]+\")|(\S+))(?:\s+(.*))?$/sux', $body, $matches)) {
+=======
+        if (!preg_match('/^(?:\"([^\"]+)\"|(\S+))(?:\s+(.*))?$/sux', $body, $matches)) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             return null;
         }
 
@@ -112,7 +128,11 @@ final class Example implements Tag, Factory\StaticMethod
             // Starting line / Number of lines / Description
             if (preg_match('/^([1-9]\d*)(?:\s+((?1))\s*)?(.*)$/sux', $matches[3], $contentMatches)) {
                 $startingLine = (int) $contentMatches[1];
+<<<<<<< HEAD
                 if (isset($contentMatches[2])) {
+=======
+                if (isset($contentMatches[2]) && $contentMatches[2] !== '') {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                     $lineCount = (int) $contentMatches[2];
                 }
 
@@ -139,7 +159,11 @@ final class Example implements Tag, Factory\StaticMethod
      */
     public function getFilePath() : string
     {
+<<<<<<< HEAD
         return trim($this->filePath, '"');
+=======
+        return $this->filePath;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -147,6 +171,7 @@ final class Example implements Tag, Factory\StaticMethod
      */
     public function __toString() : string
     {
+<<<<<<< HEAD
         $filePath = (string) $this->filePath;
         $isDefaultLine = $this->startingLine === 1 && $this->lineCount === 0;
         $startingLine = !$isDefaultLine ? (string) $this->startingLine : '';
@@ -163,6 +188,9 @@ final class Example implements Tag, Factory\StaticMethod
             . ($content !== ''
                 ? ($filePath !== '' || $startingLine !== '' || $lineCount !== '' ? ' ' : '') . $content
                 : '');
+=======
+        return $this->filePath . ($this->content ? ' ' . $this->content : '');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

@@ -18,8 +18,12 @@ class Standard extends PrettyPrinterAbstract
     // Special nodes
 
     protected function pParam(Node\Param $node) {
+<<<<<<< HEAD
         return $this->pAttrGroups($node->attrGroups, true)
              . $this->pModifiers($node->flags)
+=======
+        return ($this->pModifiers($node->flags))
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
              . ($node->type ? $this->p($node->type) . ' ' : '')
              . ($node->byRef ? '&' : '')
              . ($node->variadic ? '...' : '')
@@ -53,6 +57,7 @@ class Standard extends PrettyPrinterAbstract
         return '$' . $node->name;
     }
 
+<<<<<<< HEAD
     protected function pAttribute(Node\Attribute $node) {
         return $this->p($node->name)
              . ($node->args ? '(' . $this->pCommaSeparated($node->args) . ')' : '');
@@ -62,6 +67,8 @@ class Standard extends PrettyPrinterAbstract
         return '#[' . $this->pCommaSeparated($node->attrs) . ']';
     }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     // Names
 
     protected function pName(Name $node) {
@@ -610,8 +617,12 @@ class Standard extends PrettyPrinterAbstract
     }
 
     protected function pExpr_Closure(Expr\Closure $node) {
+<<<<<<< HEAD
         return $this->pAttrGroups($node->attrGroups, true)
              . ($node->static ? 'static ' : '')
+=======
+        return ($node->static ? 'static ' : '')
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
              . 'function ' . ($node->byRef ? '&' : '')
              . '(' . $this->pCommaSeparated($node->params) . ')'
              . (!empty($node->uses) ? ' use(' . $this->pCommaSeparated($node->uses) . ')' : '')
@@ -632,8 +643,12 @@ class Standard extends PrettyPrinterAbstract
     }
 
     protected function pExpr_ArrowFunction(Expr\ArrowFunction $node) {
+<<<<<<< HEAD
         return $this->pAttrGroups($node->attrGroups, true)
             . ($node->static ? 'static ' : '')
+=======
+        return ($node->static ? 'static ' : '')
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             . 'fn' . ($node->byRef ? '&' : '')
             . '(' . $this->pCommaSeparated($node->params) . ')'
             . (null !== $node->returnType ? ': ' . $this->p($node->returnType) : '')
@@ -721,8 +736,12 @@ class Standard extends PrettyPrinterAbstract
     }
 
     protected function pStmt_Interface(Stmt\Interface_ $node) {
+<<<<<<< HEAD
         return $this->pAttrGroups($node->attrGroups)
              . 'interface ' . $node->name
+=======
+        return 'interface ' . $node->name
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
              . (!empty($node->extends) ? ' extends ' . $this->pCommaSeparated($node->extends) : '')
              . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
     }
@@ -732,8 +751,12 @@ class Standard extends PrettyPrinterAbstract
     }
 
     protected function pStmt_Trait(Stmt\Trait_ $node) {
+<<<<<<< HEAD
         return $this->pAttrGroups($node->attrGroups)
              . 'trait ' . $node->name
+=======
+        return 'trait ' . $node->name
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
              . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
     }
 
@@ -758,8 +781,12 @@ class Standard extends PrettyPrinterAbstract
     }
 
     protected function pStmt_Property(Stmt\Property $node) {
+<<<<<<< HEAD
         return $this->pAttrGroups($node->attrGroups)
             . (0 === $node->flags ? 'var ' : $this->pModifiers($node->flags))
+=======
+        return (0 === $node->flags ? 'var ' : $this->pModifiers($node->flags))
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             . ($node->type ? $this->p($node->type) . ' ' : '')
             . $this->pCommaSeparated($node->props) . ';';
     }
@@ -770,8 +797,12 @@ class Standard extends PrettyPrinterAbstract
     }
 
     protected function pStmt_ClassMethod(Stmt\ClassMethod $node) {
+<<<<<<< HEAD
         return $this->pAttrGroups($node->attrGroups)
              . $this->pModifiers($node->flags)
+=======
+        return $this->pModifiers($node->flags)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
              . 'function ' . ($node->byRef ? '&' : '') . $node->name
              . '(' . $this->pMaybeMultiline($node->params) . ')'
              . (null !== $node->returnType ? ' : ' . $this->p($node->returnType) : '')
@@ -781,14 +812,22 @@ class Standard extends PrettyPrinterAbstract
     }
 
     protected function pStmt_ClassConst(Stmt\ClassConst $node) {
+<<<<<<< HEAD
         return $this->pAttrGroups($node->attrGroups)
              . $this->pModifiers($node->flags)
+=======
+        return $this->pModifiers($node->flags)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
              . 'const ' . $this->pCommaSeparated($node->consts) . ';';
     }
 
     protected function pStmt_Function(Stmt\Function_ $node) {
+<<<<<<< HEAD
         return $this->pAttrGroups($node->attrGroups)
              . 'function ' . ($node->byRef ? '&' : '') . $node->name
+=======
+        return 'function ' . ($node->byRef ? '&' : '') . $node->name
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
              . '(' . $this->pCommaSeparated($node->params) . ')'
              . (null !== $node->returnType ? ' : ' . $this->p($node->returnType) : '')
              . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
@@ -943,12 +982,20 @@ class Standard extends PrettyPrinterAbstract
     // Helpers
 
     protected function pClassCommon(Stmt\Class_ $node, $afterClassToken) {
+<<<<<<< HEAD
         return $this->pAttrGroups($node->attrGroups, $node->name === null)
             . $this->pModifiers($node->flags)
             . 'class' . $afterClassToken
             . (null !== $node->extends ? ' extends ' . $this->p($node->extends) : '')
             . (!empty($node->implements) ? ' implements ' . $this->pCommaSeparated($node->implements) : '')
             . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
+=======
+        return $this->pModifiers($node->flags)
+        . 'class' . $afterClassToken
+        . (null !== $node->extends ? ' extends ' . $this->p($node->extends) : '')
+        . (!empty($node->implements) ? ' implements ' . $this->pCommaSeparated($node->implements) : '')
+        . $this->nl . '{' . $this->pStmts($node->stmts) . $this->nl . '}';
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     protected function pObjectProperty($node) {
@@ -1049,13 +1096,18 @@ class Standard extends PrettyPrinterAbstract
         return false;
     }
 
+<<<<<<< HEAD
     private function pMaybeMultiline(array $nodes, bool $trailingComma = false) {
+=======
+    private function pMaybeMultiline(array $nodes, $trailingComma = false) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         if (!$this->hasNodeWithComments($nodes)) {
             return $this->pCommaSeparated($nodes);
         } else {
             return $this->pCommaSeparatedMultiline($nodes, $trailingComma) . $this->nl;
         }
     }
+<<<<<<< HEAD
 
     private function pAttrGroups(array $nodes, bool $inline = false): string {
         $result = '';
@@ -1066,4 +1118,6 @@ class Standard extends PrettyPrinterAbstract
 
         return $result;
     }
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

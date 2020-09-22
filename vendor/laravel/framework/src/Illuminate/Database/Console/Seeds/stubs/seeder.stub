@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+namespace Database\Seeders;
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Database\Seeder;
 
 class {{ class }} extends Seeder

@@ -76,6 +76,7 @@ class SendQueuedMailable
     }
 
     /**
+<<<<<<< HEAD
      * Get the retry delay for the mailable object.
      *
      * @return mixed
@@ -87,6 +88,19 @@ class SendQueuedMailable
         }
 
         return $this->mailable->retryAfter ?? $this->mailable->retryAfter();
+=======
+     * Get number of seconds before a released mailable will be available.
+     *
+     * @return mixed
+     */
+    public function backoff()
+    {
+        if (! method_exists($this->mailable, 'backoff') && ! isset($this->mailable->backoff)) {
+            return;
+        }
+
+        return $this->mailable->backoff ?? $this->mailable->backoff();
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

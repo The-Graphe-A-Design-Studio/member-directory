@@ -15,6 +15,10 @@ namespace Illuminate\Support\Facades;
  * @method static void compile(string|null $path = null)
  * @method static void component(string $class, string|null $alias = null, string $prefix = '')
  * @method static void components(array $components, string $prefix = '')
+<<<<<<< HEAD
+=======
+ * @method static void componentNamespace(string $namespace, string $prefix)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
  * @method static void directive(string $name, callable $handler)
  * @method static void extend(callable $compiler)
  * @method static void if(string $name, callable $callback)

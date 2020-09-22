@@ -30,6 +30,7 @@ class PendingMailFake extends PendingMail
     }
 
     /**
+<<<<<<< HEAD
      * Send a mailable message immediately.
      *
      * @param  \Illuminate\Contracts\Mail\Mailable  $mailable;
@@ -42,6 +43,8 @@ class PendingMailFake extends PendingMail
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Push the given mailable onto the queue.
      *
      * @param  \Illuminate\Contracts\Mail\Mailable  $mailable;

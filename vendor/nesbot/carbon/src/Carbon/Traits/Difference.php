@@ -26,6 +26,10 @@ use DateTimeInterface;
  * Depends on the following methods:
  *
  * @method bool lessThan($date)
+<<<<<<< HEAD
+=======
+ * @method DateInterval diff(\DateTimeInterface $date, bool $absolute = false)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
  * @method static copy()
  * @method static resolveCarbon($date = null)
  * @method static Translator translator()
@@ -500,6 +504,7 @@ trait Difference
     }
 
     /**
+<<<<<<< HEAD
      * Get the difference in weeks as float (microsecond-precision).
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date
@@ -513,6 +518,8 @@ trait Difference
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the difference in months as float (microsecond-precision).
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date
@@ -637,6 +644,7 @@ trait Difference
     }
 
     /**
+<<<<<<< HEAD
      * Get the difference in weeks as float (microsecond-precision).
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date
@@ -650,6 +658,8 @@ trait Difference
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the difference in months as float (microsecond-precision) using timestamps.
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date

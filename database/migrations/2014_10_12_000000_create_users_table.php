@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('gender');
             $table->string('photo')->nullable();
+<<<<<<< HEAD
             $table->string('club_name');
             $table->string('designation');
             $table->string('occupation');
@@ -30,6 +31,15 @@ class CreateUsersTable extends Migration
             $table->string('sponsorer');
             $table->integer('leo');
             $table->string('status');
+=======
+            $table->string('designation');
+            $table->string('classification');
+            $table->string('company');
+            $table->string('blood_group');
+            $table->string('group_id')->nullable();
+            $table->string('sponsorer')->nullable();
+            $table->string('api_token')->nullable();
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $table->rememberToken();
             $table->timestamps();
         });

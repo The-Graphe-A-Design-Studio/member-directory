@@ -80,6 +80,7 @@ class Mockery
      */
     public static function builtInTypes()
     {
+<<<<<<< HEAD
         $builtInTypes = array(
             'self',
             'array',
@@ -98,6 +99,20 @@ class Mockery
         }
 
         return $builtInTypes;
+=======
+        return array(
+            'array',
+            'bool',
+            'callable',
+            'float',
+            'int',
+            'iterable',
+            'object',
+            'self',
+            'string',
+            'void',
+        );
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -863,6 +878,7 @@ class Mockery
     ) {
         $newMockName = 'demeter_' . md5($parent) . '_' . $method;
 
+<<<<<<< HEAD
         if (\PHP_VERSION_ID >= 70000) {
             $parRef = null;
             $parRefMethod = null;
@@ -885,6 +901,28 @@ class Mockery
 
                     return $mock;
                 }
+=======
+        $parRef = null;
+        $parRefMethod = null;
+        $parRefMethodRetType = null;
+
+        $parentMock = $exp->getMock();
+        if ($parentMock !== null) {
+            $parRef = new ReflectionObject($parentMock);
+        }
+
+        if ($parRef !== null && $parRef->hasMethod($method)) {
+            $parRefMethod = $parRef->getMethod($method);
+            $parRefMethodRetType = Reflector::getReturnType($parRefMethod, true);
+
+            if ($parRefMethodRetType !== null) {
+                $nameBuilder = new MockNameBuilder();
+                $nameBuilder->addPart('\\' . $newMockName);
+                $mock = self::namedMock($nameBuilder->build(), $parRefMethodRetType);
+                $exp->andReturn($mock);
+
+                return $mock;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             }
         }
 

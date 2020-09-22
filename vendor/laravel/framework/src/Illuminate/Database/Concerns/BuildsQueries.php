@@ -83,6 +83,11 @@ trait BuildsQueries
 
         $lastId = null;
 
+<<<<<<< HEAD
+=======
+        $page = 1;
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         do {
             $clone = clone $this;
 
@@ -100,13 +105,22 @@ trait BuildsQueries
             // On each chunk result set, we will pass them to the callback and then let the
             // developer take care of everything within the callback, which allows us to
             // keep the memory low for spinning through large result sets for working.
+<<<<<<< HEAD
             if ($callback($results) === false) {
+=======
+            if ($callback($results, $page) === false) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 return false;
             }
 
             $lastId = $results->last()->{$alias};
 
             unset($results);
+<<<<<<< HEAD
+=======
+
+            $page++;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         } while ($countResults == $count);
 
         return true;
@@ -123,9 +137,15 @@ trait BuildsQueries
      */
     public function eachById(callable $callback, $count = 1000, $column = null, $alias = null)
     {
+<<<<<<< HEAD
         return $this->chunkById($count, function ($results) use ($callback) {
             foreach ($results as $key => $value) {
                 if ($callback($value, $key) === false) {
+=======
+        return $this->chunkById($count, function ($results, $page) use ($callback, $count) {
+            foreach ($results as $key => $value) {
+                if ($callback($value, (($page - 1) * $count) + $key) === false) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                     return false;
                 }
             }

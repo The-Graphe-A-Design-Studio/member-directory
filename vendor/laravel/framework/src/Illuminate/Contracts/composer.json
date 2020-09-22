@@ -14,7 +14,11 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": "^7.2.5",
+=======
+        "php": "^7.3",
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         "psr/container": "^1.0",
         "psr/simple-cache": "^1.0"
     },
@@ -25,7 +29,11 @@
     },
     "extra": {
         "branch-alias": {
+<<<<<<< HEAD
             "dev-master": "7.x-dev"
+=======
+            "dev-master": "8.x-dev"
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
     },
     "config": {

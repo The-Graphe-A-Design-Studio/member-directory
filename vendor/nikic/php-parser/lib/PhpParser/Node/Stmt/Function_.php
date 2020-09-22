@@ -20,8 +20,11 @@ class Function_ extends Node\Stmt implements FunctionLike
     public $returnType;
     /** @var Node\Stmt[] Statements */
     public $stmts;
+<<<<<<< HEAD
     /** @var Node\AttributeGroup[] PHP attribute groups */
     public $attrGroups;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * Constructs a function node.
@@ -32,7 +35,10 @@ class Function_ extends Node\Stmt implements FunctionLike
      *                           'params'     => array(): Parameters
      *                           'returnType' => null   : Return type
      *                           'stmts'      => array(): Statements
+<<<<<<< HEAD
      *                           'attrGroups' => array(): PHP attribute groups
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @param array  $attributes Additional attributes
      */
     public function __construct($name, array $subNodes = [], array $attributes = []) {
@@ -43,11 +49,18 @@ class Function_ extends Node\Stmt implements FunctionLike
         $returnType = $subNodes['returnType'] ?? null;
         $this->returnType = \is_string($returnType) ? new Node\Identifier($returnType) : $returnType;
         $this->stmts = $subNodes['stmts'] ?? [];
+<<<<<<< HEAD
         $this->attrGroups = $subNodes['attrGroups'] ?? [];
     }
 
     public function getSubNodeNames() : array {
         return ['attrGroups', 'byRef', 'name', 'params', 'returnType', 'stmts'];
+=======
+    }
+
+    public function getSubNodeNames() : array {
+        return ['byRef', 'name', 'params', 'returnType', 'stmts'];
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     public function returnsByRef() : bool {
@@ -62,15 +75,22 @@ class Function_ extends Node\Stmt implements FunctionLike
         return $this->returnType;
     }
 
+<<<<<<< HEAD
     public function getAttrGroups() : array {
         return $this->attrGroups;
     }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     /** @return Node\Stmt[] */
     public function getStmts() : array {
         return $this->stmts;
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     public function getType() : string {
         return 'Stmt_Function';
     }

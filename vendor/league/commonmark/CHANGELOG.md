@@ -4,6 +4,7 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) princi
 
 ## [Unreleased][unreleased]
 
+<<<<<<< HEAD
 ## [1.5.5] - 2020-09-13
 
 ### Changed
@@ -15,6 +16,8 @@ Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) princi
  - Fixed `textarea` elements not being treated as a type 1 HTML block (like `script`, `style`, or `pre`)
  - Fixed autolink processor not handling other unmatched trailing parentheses
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 ## [1.5.4] - 2020-08-17
 
 ### Fixed
@@ -381,8 +384,12 @@ No changes were made since 1.0.0-rc1.
    - Removed `DelimiterStack::iterateByCharacters()` (use the new `processDelimiters()` method instead)
    - Removed the protected `DelimiterStack::findMatchingOpener()` method
 
+<<<<<<< HEAD
 [unreleased]: https://github.com/thephpleague/commonmark/compare/1.5.5...1.5
 [1.5.5]: https://github.com/thephpleague/commonmark/compare/1.5.4...1.5.5
+=======
+[unreleased]: https://github.com/thephpleague/commonmark/compare/1.5.4...1.5
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 [1.5.4]: https://github.com/thephpleague/commonmark/compare/1.5.3...1.5.4
 [1.5.3]: https://github.com/thephpleague/commonmark/compare/1.5.2...1.5.3
 [1.5.2]: https://github.com/thephpleague/commonmark/compare/1.5.1...1.5.2

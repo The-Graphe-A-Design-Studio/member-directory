@@ -97,7 +97,11 @@ class PolicyMakeCommand extends GeneratorCommand
         if (Str::startsWith($model, '\\')) {
             $namespacedModel = trim($model, '\\');
         } else {
+<<<<<<< HEAD
             $namespacedModel = $this->laravel->getNamespace().$model;
+=======
+            $namespacedModel = $this->qualifyModel($model);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
 
         $model = class_basename(trim($model, '\\'));

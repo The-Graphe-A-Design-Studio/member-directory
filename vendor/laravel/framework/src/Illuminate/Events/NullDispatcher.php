@@ -64,11 +64,19 @@ class NullDispatcher implements DispatcherContract
     /**
      * Register an event listener with the dispatcher.
      *
+<<<<<<< HEAD
      * @param  string|array  $events
      * @param  \Closure|string  $listener
      * @return void
      */
     public function listen($events, $listener)
+=======
+     * @param  \Closure|string|array  $events
+     * @param  \Closure|string|null  $listener
+     * @return void
+     */
+    public function listen($events, $listener = null)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         $this->dispatcher->listen($events, $listener);
     }

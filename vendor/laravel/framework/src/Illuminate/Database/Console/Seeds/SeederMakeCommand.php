@@ -3,8 +3,11 @@
 namespace Illuminate\Database\Console\Seeds;
 
 use Illuminate\Console\GeneratorCommand;
+<<<<<<< HEAD
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Composer;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 class SeederMakeCommand extends GeneratorCommand
 {
@@ -30,6 +33,7 @@ class SeederMakeCommand extends GeneratorCommand
     protected $type = 'Seeder';
 
     /**
+<<<<<<< HEAD
      * The Composer instance.
      *
      * @var \Illuminate\Support\Composer
@@ -51,6 +55,8 @@ class SeederMakeCommand extends GeneratorCommand
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Execute the console command.
      *
      * @return void
@@ -58,8 +64,11 @@ class SeederMakeCommand extends GeneratorCommand
     public function handle()
     {
         parent::handle();
+<<<<<<< HEAD
 
         $this->composer->dumpAutoloads();
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -80,7 +89,11 @@ class SeederMakeCommand extends GeneratorCommand
      */
     protected function resolveStubPath($stub)
     {
+<<<<<<< HEAD
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
+=======
+        return is_file($customPath = $this->laravel->basePath(trim($stub, '/')))
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             ? $customPath
             : __DIR__.$stub;
     }
@@ -93,7 +106,15 @@ class SeederMakeCommand extends GeneratorCommand
      */
     protected function getPath($name)
     {
+<<<<<<< HEAD
         return $this->laravel->databasePath().'/seeds/'.$name.'.php';
+=======
+        if (is_dir($this->laravel->databasePath().'/seeds')) {
+            return $this->laravel->databasePath().'/seeds/'.$name.'.php';
+        } else {
+            return $this->laravel->databasePath().'/seeders/'.$name.'.php';
+        }
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

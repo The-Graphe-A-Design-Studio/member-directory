@@ -3,11 +3,17 @@
 namespace App\Http\Controllers\api\v1\user;
 
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\User;
 use Validator;
+=======
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\User;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 class UserController extends Controller
 {
@@ -18,9 +24,19 @@ class UserController extends Controller
      */
     public function index()
     {
+<<<<<<< HEAD
         return User::all();
     }
 
+=======
+        return User::paginate(1);
+    }
+
+    public function currentUser()
+    {
+        return Auth::user();
+    }
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     /**
      * Show the form for creating a new resource.
      *
@@ -71,6 +87,7 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+<<<<<<< HEAD
     public function update(Request $request)
     {
         $user = Auth::user();
@@ -142,6 +159,11 @@ class UserController extends Controller
         $user->save();
 
         return response()->json(['status' => 'success', 'messege' => 'Member details updated'], 200);
+=======
+    public function update(Request $request, $id)
+    {
+        //
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -154,6 +176,7 @@ class UserController extends Controller
     {
         //
     }
+<<<<<<< HEAD
 
     public function search(Request $request)
     {
@@ -178,4 +201,6 @@ class UserController extends Controller
         return response()->json(['status' => 'success', 'members' => $leos], 200);
 
     }
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

@@ -10,12 +10,16 @@ class ClassConst extends Node\Stmt
     public $flags;
     /** @var Node\Const_[] Constant declarations */
     public $consts;
+<<<<<<< HEAD
     /** @var Node\AttributeGroup[] */
     public $attrGroups;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * Constructs a class const list node.
      *
+<<<<<<< HEAD
      * @param Node\Const_[]         $consts     Constant declarations
      * @param int                   $flags      Modifiers
      * @param array                 $attributes Additional attributes
@@ -35,6 +39,20 @@ class ClassConst extends Node\Stmt
 
     public function getSubNodeNames() : array {
         return ['attrGroups', 'flags', 'consts'];
+=======
+     * @param Node\Const_[] $consts     Constant declarations
+     * @param int           $flags      Modifiers
+     * @param array         $attributes Additional attributes
+     */
+    public function __construct(array $consts, int $flags = 0, array $attributes = []) {
+        $this->attributes = $attributes;
+        $this->flags = $flags;
+        $this->consts = $consts;
+    }
+
+    public function getSubNodeNames() : array {
+        return ['flags', 'consts'];
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -64,7 +82,11 @@ class ClassConst extends Node\Stmt
     public function isPrivate() : bool {
         return (bool) ($this->flags & Class_::MODIFIER_PRIVATE);
     }
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     public function getType() : string {
         return 'Stmt_ClassConst';
     }

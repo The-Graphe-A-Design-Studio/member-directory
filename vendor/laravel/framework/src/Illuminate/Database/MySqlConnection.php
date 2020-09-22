@@ -7,10 +7,29 @@ use Illuminate\Database\Query\Grammars\MySqlGrammar as QueryGrammar;
 use Illuminate\Database\Query\Processors\MySqlProcessor;
 use Illuminate\Database\Schema\Grammars\MySqlGrammar as SchemaGrammar;
 use Illuminate\Database\Schema\MySqlBuilder;
+<<<<<<< HEAD
+=======
+use Illuminate\Database\Schema\MySqlSchemaState;
+use Illuminate\Filesystem\Filesystem;
+use PDO;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 class MySqlConnection extends Connection
 {
     /**
+<<<<<<< HEAD
+=======
+     * Determine if the connected database is a MariaDB database.
+     *
+     * @return bool
+     */
+    public function isMaria()
+    {
+        return strpos($this->getPdo()->getAttribute(PDO::ATTR_SERVER_VERSION), 'MariaDB') !== false;
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the default query grammar instance.
      *
      * @return \Illuminate\Database\Query\Grammars\MySqlGrammar
@@ -45,6 +64,21 @@ class MySqlConnection extends Connection
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Get the schema state for the connection.
+     *
+     * @param  \Illuminate\Filesystem\Filesystem|null  $files
+     * @param  callable|null  $processFactory
+     * @return \Illuminate\Database\Schema\MySqlSchemaState
+     */
+    public function getSchemaState(Filesystem $files = null, callable $processFactory = null)
+    {
+        return new MySqlSchemaState($this, $files, $processFactory);
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the default post processor instance.
      *
      * @return \Illuminate\Database\Query\Processors\MySqlProcessor

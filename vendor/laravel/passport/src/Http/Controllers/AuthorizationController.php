@@ -5,12 +5,19 @@ namespace Laravel\Passport\Http\Controllers;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+<<<<<<< HEAD
 use Laminas\Diactoros\Response as Psr7Response;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Laravel\Passport\Bridge\User;
 use Laravel\Passport\ClientRepository;
 use Laravel\Passport\Passport;
 use Laravel\Passport\TokenRepository;
 use League\OAuth2\Server\AuthorizationServer;
+<<<<<<< HEAD
+=======
+use Nyholm\Psr7\Response as Psr7Response;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Psr\Http\Message\ServerRequestInterface;
 
 class AuthorizationController

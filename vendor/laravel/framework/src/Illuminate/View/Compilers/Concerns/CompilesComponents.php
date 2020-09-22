@@ -3,6 +3,10 @@
 namespace Illuminate\View\Compilers\Concerns;
 
 use Illuminate\Support\Str;
+<<<<<<< HEAD
+=======
+use Illuminate\View\ComponentAttributeBag;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 trait CompilesComponents
 {
@@ -169,7 +173,11 @@ trait CompilesComponents
     public static function sanitizeComponentAttribute($value)
     {
         return is_string($value) ||
+<<<<<<< HEAD
                (is_object($value) && method_exists($value, '__toString'))
+=======
+               (is_object($value) && ! $value instanceof ComponentAttributeBag && method_exists($value, '__toString'))
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                         ? e($value)
                         : $value;
     }

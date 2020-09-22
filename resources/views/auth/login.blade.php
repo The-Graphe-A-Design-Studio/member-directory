@@ -8,6 +8,7 @@
                 <div class="card-header">{{ __('Login') }}</div>
 
                 <div class="card-body">
+<<<<<<< HEAD
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
@@ -65,6 +66,9 @@
                             </div>
                         </div>
                     </form>
+=======
+                    <login-form />
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 </div>
             </div>
         </div>

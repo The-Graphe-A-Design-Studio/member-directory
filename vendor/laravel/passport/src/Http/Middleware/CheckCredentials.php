@@ -4,6 +4,7 @@ namespace Laravel\Passport\Http\Middleware;
 
 use Closure;
 use Illuminate\Auth\AuthenticationException;
+<<<<<<< HEAD
 use Laminas\Diactoros\ResponseFactory;
 use Laminas\Diactoros\ServerRequestFactory;
 use Laminas\Diactoros\StreamFactory;
@@ -11,6 +12,12 @@ use Laminas\Diactoros\UploadedFileFactory;
 use Laravel\Passport\TokenRepository;
 use League\OAuth2\Server\Exception\OAuthServerException;
 use League\OAuth2\Server\ResourceServer;
+=======
+use Laravel\Passport\TokenRepository;
+use League\OAuth2\Server\Exception\OAuthServerException;
+use League\OAuth2\Server\ResourceServer;
+use Nyholm\Psr7\Factory\Psr17Factory;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Symfony\Bridge\PsrHttpMessage\Factory\PsrHttpFactory;
 
 abstract class CheckCredentials
@@ -55,10 +62,17 @@ abstract class CheckCredentials
     public function handle($request, Closure $next, ...$scopes)
     {
         $psr = (new PsrHttpFactory(
+<<<<<<< HEAD
             new ServerRequestFactory,
             new StreamFactory,
             new UploadedFileFactory,
             new ResponseFactory
+=======
+            new Psr17Factory,
+            new Psr17Factory,
+            new Psr17Factory,
+            new Psr17Factory
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         ))->createRequest($request);
 
         try {

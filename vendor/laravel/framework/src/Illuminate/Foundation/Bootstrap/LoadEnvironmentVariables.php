@@ -68,7 +68,11 @@ class LoadEnvironmentVariables
      */
     protected function setEnvironmentFilePath($app, $file)
     {
+<<<<<<< HEAD
         if (file_exists($app->environmentPath().'/'.$file)) {
+=======
+        if (is_file($app->environmentPath().'/'.$file)) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $app->loadEnvironmentFrom($file);
 
             return true;

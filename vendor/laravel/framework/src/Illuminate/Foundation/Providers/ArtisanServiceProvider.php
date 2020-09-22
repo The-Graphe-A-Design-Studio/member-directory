@@ -9,6 +9,10 @@ use Illuminate\Cache\Console\ForgetCommand as CacheForgetCommand;
 use Illuminate\Console\Scheduling\ScheduleFinishCommand;
 use Illuminate\Console\Scheduling\ScheduleRunCommand;
 use Illuminate\Contracts\Support\DeferrableProvider;
+<<<<<<< HEAD
+=======
+use Illuminate\Database\Console\DumpCommand;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Database\Console\Factories\FactoryMakeCommand;
 use Illuminate\Database\Console\Seeds\SeedCommand;
 use Illuminate\Database\Console\Seeds\SeederMakeCommand;
@@ -55,12 +59,20 @@ use Illuminate\Foundation\Console\VendorPublishCommand;
 use Illuminate\Foundation\Console\ViewCacheCommand;
 use Illuminate\Foundation\Console\ViewClearCommand;
 use Illuminate\Notifications\Console\NotificationTableCommand;
+<<<<<<< HEAD
+=======
+use Illuminate\Queue\Console\BatchesTableCommand;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Queue\Console\FailedTableCommand;
 use Illuminate\Queue\Console\FlushFailedCommand as FlushFailedQueueCommand;
 use Illuminate\Queue\Console\ForgetFailedCommand as ForgetFailedQueueCommand;
 use Illuminate\Queue\Console\ListenCommand as QueueListenCommand;
 use Illuminate\Queue\Console\ListFailedCommand as ListFailedQueueCommand;
 use Illuminate\Queue\Console\RestartCommand as QueueRestartCommand;
+<<<<<<< HEAD
+=======
+use Illuminate\Queue\Console\RetryBatchCommand as QueueRetryBatchCommand;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Queue\Console\RetryCommand as QueueRetryCommand;
 use Illuminate\Queue\Console\TableCommand;
 use Illuminate\Queue\Console\WorkCommand as QueueWorkCommand;
@@ -99,10 +111,18 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
         'QueueListen' => 'command.queue.listen',
         'QueueRestart' => 'command.queue.restart',
         'QueueRetry' => 'command.queue.retry',
+<<<<<<< HEAD
+=======
+        'QueueRetryBatch' => 'command.queue.retry-batch',
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         'QueueWork' => 'command.queue.work',
         'RouteCache' => 'command.route.cache',
         'RouteClear' => 'command.route.clear',
         'RouteList' => 'command.route.list',
+<<<<<<< HEAD
+=======
+        'SchemaDump' => 'command.schema.dump',
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         'Seed' => 'command.seed',
         'ScheduleFinish' => ScheduleFinishCommand::class,
         'ScheduleRun' => ScheduleRunCommand::class,
@@ -140,6 +160,10 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
         'ProviderMake' => 'command.provider.make',
         'QueueFailedTable' => 'command.queue.failed-table',
         'QueueTable' => 'command.queue.table',
+<<<<<<< HEAD
+=======
+        'QueueBatchesTable' => 'command.queue.batches-table',
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         'RequestMake' => 'command.request.make',
         'ResourceMake' => 'command.resource.make',
         'RuleMake' => 'command.rule.make',
@@ -687,6 +711,21 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
      *
      * @return void
      */
+<<<<<<< HEAD
+=======
+    protected function registerQueueRetryBatchCommand()
+    {
+        $this->app->singleton('command.queue.retry-batch', function () {
+            return new QueueRetryBatchCommand;
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     protected function registerQueueWorkCommand()
     {
         $this->app->singleton('command.queue.work', function ($app) {
@@ -723,6 +762,21 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
      *
      * @return void
      */
+<<<<<<< HEAD
+=======
+    protected function registerQueueBatchesTableCommand()
+    {
+        $this->app->singleton('command.queue.batches-table', function ($app) {
+            return new BatchesTableCommand($app['files'], $app['composer']);
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     protected function registerRequestMakeCommand()
     {
         $this->app->singleton('command.request.make', function ($app) {
@@ -831,6 +885,21 @@ class ArtisanServiceProvider extends ServiceProvider implements DeferrableProvid
      *
      * @return void
      */
+<<<<<<< HEAD
+=======
+    protected function registerSchemaDumpCommand()
+    {
+        $this->app->singleton('command.schema.dump', function () {
+            return new DumpCommand;
+        });
+    }
+
+    /**
+     * Register the command.
+     *
+     * @return void
+     */
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     protected function registerSeedCommand()
     {
         $this->app->singleton('command.seed', function ($app) {

@@ -63,9 +63,18 @@ class MigrationCreator
         // various place-holders, save the file, and run the post create event.
         $stub = $this->getStub($table, $create);
 
+<<<<<<< HEAD
         $this->files->put(
             $path = $this->getPath($name, $path),
             $this->populateStub($name, $stub, $table)
+=======
+        $path = $this->getPath($name, $path);
+
+        $this->files->ensureDirectoryExists(dirname($path));
+
+        $this->files->put(
+            $path, $this->populateStub($name, $stub, $table)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         );
 
         // Next, we will fire any hooks that are supposed to fire after a migration is

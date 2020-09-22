@@ -3,6 +3,10 @@
 namespace Illuminate\Queue;
 
 use Closure;
+<<<<<<< HEAD
+=======
+use Exception;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Container\Container;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -21,6 +25,16 @@ class CallQueuedClosure implements ShouldQueue
     public $closure;
 
     /**
+<<<<<<< HEAD
+=======
+     * The callbacks that should be executed on failure.
+     *
+     * @var array
+     */
+    public $failureCallbacks = [];
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Indicate if the job should be deleted when models are missing.
      *
      * @var bool
@@ -61,6 +75,37 @@ class CallQueuedClosure implements ShouldQueue
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Add a callback to be executed if the job fails.
+     *
+     * @param  callable  $callback
+     * @return $this
+     */
+    public function onFailure($callback)
+    {
+        $this->failureCallbacks[] = $callback instanceof Closure
+                        ? new SerializableClosure($callback)
+                        : $callback;
+
+        return $this;
+    }
+
+    /**
+     * Handle a job failure.
+     *
+     * @param  \Exception  $exception
+     * @return void
+     */
+    public function failed(Exception $e)
+    {
+        foreach ($this->failureCallbacks as $callback) {
+            call_user_func($callback instanceof SerializableClosure ? $callback->getClosure() : $callback, $e);
+        }
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the display name for the queued job.
      *
      * @return string

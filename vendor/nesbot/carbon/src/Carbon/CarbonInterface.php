@@ -898,6 +898,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function calendar($referenceTime = null, array $formats = []);
 
     /**
+<<<<<<< HEAD
      * Checks if the (date)time string is in a given format and valid to create a
      * new instance.
      *
@@ -915,6 +916,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public static function canBeCreatedFromFormat($date, $format);
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Return the Carbon instance passed through, a now instance in the same timezone
      * if null given or parse the input if string given.
      *
@@ -1828,6 +1831,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function floatDiffInRealSeconds($date = null, $absolute = true);
 
     /**
+<<<<<<< HEAD
      * Get the difference in weeks as float (microsecond-precision).
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date
@@ -1838,6 +1842,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function floatDiffInRealWeeks($date = null, $absolute = true);
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the difference in year as float (microsecond-precision) using timestamps.
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date
@@ -1858,6 +1864,7 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function floatDiffInSeconds($date = null, $absolute = true);
 
     /**
+<<<<<<< HEAD
      * Get the difference in weeks as float (microsecond-precision).
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date
@@ -1868,6 +1875,8 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
     public function floatDiffInWeeks($date = null, $absolute = true);
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the difference in year as float (microsecond-precision).
      *
      * @param \Carbon\CarbonInterface|\DateTimeInterface|string|null $date
@@ -2383,6 +2392,11 @@ interface CarbonInterface extends DateTimeInterface, JsonSerializable
      * Carbon::hasFormat('13:12:45', 'h:i:s'); // false
      * ```
      *
+<<<<<<< HEAD
+=======
+     * @SuppressWarnings(PHPMD.EmptyCatchBlock)
+     *
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @param string $date
      * @param string $format
      *

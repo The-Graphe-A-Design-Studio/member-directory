@@ -18,6 +18,7 @@ use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
 use phpDocumentor\Reflection\DocBlock\Tags\Reference\Fqsen as FqsenRef;
 use phpDocumentor\Reflection\DocBlock\Tags\Reference\Reference;
 use phpDocumentor\Reflection\DocBlock\Tags\Reference\Url;
+<<<<<<< HEAD
 use phpDocumentor\Reflection\Fqsen;
 use phpDocumentor\Reflection\FqsenResolver;
 use phpDocumentor\Reflection\Types\Context as TypeContext;
@@ -26,6 +27,13 @@ use Webmozart\Assert\Assert;
 use function array_key_exists;
 use function explode;
 use function preg_match;
+=======
+use phpDocumentor\Reflection\FqsenResolver;
+use phpDocumentor\Reflection\Types\Context as TypeContext;
+use Webmozart\Assert\Assert;
+use function preg_match;
+use function preg_split;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 /**
  * Reflection class for an {@}see tag in a Docblock.
@@ -53,9 +61,17 @@ final class See extends BaseTag implements Factory\StaticMethod
         ?DescriptionFactory $descriptionFactory = null,
         ?TypeContext $context = null
     ) : self {
+<<<<<<< HEAD
         Assert::notNull($descriptionFactory);
 
         $parts = Utils::pregSplit('/\s+/Su', $body, 2);
+=======
+        Assert::notNull($typeResolver);
+        Assert::notNull($descriptionFactory);
+
+        $parts = preg_split('/\s+/Su', $body, 2);
+        Assert::isArray($parts);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $description = isset($parts[1]) ? $descriptionFactory->create($parts[1], $context) : null;
 
         // https://tools.ietf.org/html/rfc2396#section-3
@@ -63,6 +79,7 @@ final class See extends BaseTag implements Factory\StaticMethod
             return new static(new Url($parts[0]), $description);
         }
 
+<<<<<<< HEAD
         return new static(new FqsenRef(self::resolveFqsen($parts[0], $typeResolver, $context)), $description);
     }
 
@@ -77,6 +94,9 @@ final class See extends BaseTag implements Factory\StaticMethod
         }
 
         return new Fqsen($resolved . '::' . $fqsenParts[1]);
+=======
+        return new static(new FqsenRef($typeResolver->resolve($parts[0], $context)), $description);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -92,6 +112,7 @@ final class See extends BaseTag implements Factory\StaticMethod
      */
     public function __toString() : string
     {
+<<<<<<< HEAD
         if ($this->description) {
             $description = $this->description->render();
         } else {
@@ -101,5 +122,8 @@ final class See extends BaseTag implements Factory\StaticMethod
         $refers = (string) $this->refers;
 
         return $refers . ($description !== '' ? ($refers !== '' ? ' ' : '') . $description : '');
+=======
+        return $this->refers . ($this->description ? ' ' . $this->description->render() : '');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

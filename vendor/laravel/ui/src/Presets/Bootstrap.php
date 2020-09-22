@@ -14,7 +14,10 @@ class Bootstrap extends Preset
     public static function install()
     {
         static::updatePackages();
+<<<<<<< HEAD
         static::updateWebpackConfiguration();
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         static::updateSass();
         static::updateBootstrapping();
         static::removeNodeModules();
@@ -32,12 +35,16 @@ class Bootstrap extends Preset
             'bootstrap' => '^4.0.0',
             'jquery' => '^3.2',
             'popper.js' => '^1.12',
+<<<<<<< HEAD
             'sass' => '^1.15.2',
             'sass-loader' => '^8.0.0',
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         ] + $packages;
     }
 
     /**
+<<<<<<< HEAD
      * Update the Webpack configuration.
      *
      * @return void
@@ -48,6 +55,8 @@ class Bootstrap extends Preset
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Update the Sass files for the application.
      *
      * @return void

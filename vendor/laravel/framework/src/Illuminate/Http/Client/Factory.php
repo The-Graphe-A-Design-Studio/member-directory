@@ -250,7 +250,11 @@ class Factory
      * @param  callable  $callback
      * @return \Illuminate\Support\Collection
      */
+<<<<<<< HEAD
     public function recorded($callback)
+=======
+    public function recorded($callback = null)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         if (empty($this->recorded)) {
             return collect();

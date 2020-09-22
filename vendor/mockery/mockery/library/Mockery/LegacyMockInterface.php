@@ -69,7 +69,11 @@ interface LegacyMockInterface
     /**
      * Set mock to defer unexpected methods to its parent if possible
      *
+<<<<<<< HEAD
      * @deprecated 2.0.0 Please use makePartial() instead
+=======
+     * @deprecated since 1.4.0. Please use makePartial() instead.
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      *
      * @return Mock
      */

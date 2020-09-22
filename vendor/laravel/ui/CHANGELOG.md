@@ -1,5 +1,6 @@
 # Release Notes
 
+<<<<<<< HEAD
 ## [Unreleased](https://github.com/laravel/ui/compare/v2.4.0...2.x)
 
 
@@ -23,6 +24,9 @@
 ### Fixed
 - Use proper json responses ([#139](https://github.com/laravel/ui/pull/139))
 - Ensure sass directory exists ([456daa3](https://github.com/laravel/ui/commit/456daa330a32483b0fa9794334e60af6b2db3bf6))
+=======
+## [Unreleased](https://github.com/laravel/ui/compare/v2.2.0...2.x)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 
 ## [v2.2.0 (2020-08-25)](https://github.com/laravel/ui/compare/v2.1.0...v2.2.0)

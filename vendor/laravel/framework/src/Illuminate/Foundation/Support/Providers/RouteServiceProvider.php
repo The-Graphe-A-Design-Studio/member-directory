@@ -2,6 +2,10 @@
 
 namespace Illuminate\Foundation\Support\Providers;
 
+<<<<<<< HEAD
+=======
+use Closure;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Contracts\Routing\UrlGenerator;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
@@ -22,12 +26,46 @@ class RouteServiceProvider extends ServiceProvider
     protected $namespace;
 
     /**
+<<<<<<< HEAD
+=======
+     * The callback that should be used to load the application's routes.
+     *
+     * @var \Closure|null
+     */
+    protected $loadRoutesUsing;
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+        $this->booted(function () {
+            $this->setRootControllerNamespace();
+
+            if ($this->routesAreCached()) {
+                $this->loadCachedRoutes();
+            } else {
+                $this->loadRoutes();
+
+                $this->app->booted(function () {
+                    $this->app['router']->getRoutes()->refreshNameLookups();
+                    $this->app['router']->getRoutes()->refreshActionLookups();
+                });
+            }
+        });
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Bootstrap any application services.
      *
      * @return void
      */
     public function boot()
     {
+<<<<<<< HEAD
         $this->setRootControllerNamespace();
 
         if ($this->routesAreCached()) {
@@ -40,6 +78,22 @@ class RouteServiceProvider extends ServiceProvider
                 $this->app['router']->getRoutes()->refreshActionLookups();
             });
         }
+=======
+        //
+    }
+
+    /**
+     * Register the callback that will be used to load the application's routes.
+     *
+     * @param  \Closure  $routesCallback
+     * @return $this
+     */
+    protected function routes(Closure $routesCallback)
+    {
+        $this->loadRoutesUsing = $routesCallback;
+
+        return $this;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -83,7 +137,13 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function loadRoutes()
     {
+<<<<<<< HEAD
         if (method_exists($this, 'map')) {
+=======
+        if (! is_null($this->loadRoutesUsing)) {
+            $this->app->call($this->loadRoutesUsing);
+        } elseif (method_exists($this, 'map')) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $this->app->call([$this, 'map']);
         }
     }

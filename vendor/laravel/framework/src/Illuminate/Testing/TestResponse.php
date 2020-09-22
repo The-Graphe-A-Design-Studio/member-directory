@@ -493,14 +493,19 @@ class TestResponse implements ArrayAccess
      */
     public function assertJson(array $data, $strict = false)
     {
+<<<<<<< HEAD
         PHPUnit::assertArraySubset(
             $data, $this->decodeResponseJson(), $strict, $this->assertJsonMessage($data)
         );
+=======
+        $this->decodeResponseJson()->assertSubset($data, $strict);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         return $this;
     }
 
     /**
+<<<<<<< HEAD
      * Get the assertion message for assertJson.
      *
      * @param  array  $data
@@ -519,6 +524,8 @@ class TestResponse implements ArrayAccess
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Assert that the expected value and type exists at the given path in the response.
      *
      * @param  string  $path
@@ -527,7 +534,11 @@ class TestResponse implements ArrayAccess
      */
     public function assertJsonPath($path, $expect)
     {
+<<<<<<< HEAD
         PHPUnit::assertSame($expect, $this->json($path));
+=======
+        $this->decodeResponseJson()->assertPath($path, $expect);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         return $this;
     }
@@ -540,11 +551,28 @@ class TestResponse implements ArrayAccess
      */
     public function assertExactJson(array $data)
     {
+<<<<<<< HEAD
         $actual = json_encode(Arr::sortRecursive(
             (array) $this->decodeResponseJson()
         ));
 
         PHPUnit::assertEquals(json_encode(Arr::sortRecursive($data)), $actual);
+=======
+        $this->decodeResponseJson()->assertExact($data);
+
+        return $this;
+    }
+
+    /**
+     * Assert that the response has the similar JSON as given.
+     *
+     * @param  array  $data
+     * @return $this
+     */
+    public function assertSimilarJson(array $data)
+    {
+        $this->decodeResponseJson()->assertSimilar($data);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         return $this;
     }
@@ -557,6 +585,7 @@ class TestResponse implements ArrayAccess
      */
     public function assertJsonFragment(array $data)
     {
+<<<<<<< HEAD
         $actual = json_encode(Arr::sortRecursive(
             (array) $this->decodeResponseJson()
         ));
@@ -572,6 +601,9 @@ class TestResponse implements ArrayAccess
                 "[{$actual}]."
             );
         }
+=======
+        $this->decodeResponseJson()->assertFragment($data);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         return $this;
     }
@@ -585,6 +617,7 @@ class TestResponse implements ArrayAccess
      */
     public function assertJsonMissing(array $data, $exact = false)
     {
+<<<<<<< HEAD
         if ($exact) {
             return $this->assertJsonMissingExact($data);
         }
@@ -604,6 +637,9 @@ class TestResponse implements ArrayAccess
                 "[{$actual}]."
             );
         }
+=======
+        $this->decodeResponseJson()->assertMissing($data, $exact);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         return $this;
     }
@@ -616,6 +652,7 @@ class TestResponse implements ArrayAccess
      */
     public function assertJsonMissingExact(array $data)
     {
+<<<<<<< HEAD
         $actual = json_encode(Arr::sortRecursive(
             (array) $this->decodeResponseJson()
         ));
@@ -652,6 +689,11 @@ class TestResponse implements ArrayAccess
             $needle.'}',
             $needle.',',
         ];
+=======
+        $this->decodeResponseJson()->assertMissingExact($data);
+
+        return $this;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -663,6 +705,7 @@ class TestResponse implements ArrayAccess
      */
     public function assertJsonStructure(array $structure = null, $responseData = null)
     {
+<<<<<<< HEAD
         if (is_null($structure)) {
             return $this->assertExactJson($this->json());
         }
@@ -686,6 +729,9 @@ class TestResponse implements ArrayAccess
                 PHPUnit::assertArrayHasKey($value, $responseData);
             }
         }
+=======
+        $this->decodeResponseJson()->assertStructure($structure, $responseData);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         return $this;
     }
@@ -699,6 +745,7 @@ class TestResponse implements ArrayAccess
      */
     public function assertJsonCount(int $count, $key = null)
     {
+<<<<<<< HEAD
         if (! is_null($key)) {
             PHPUnit::assertCount(
                 $count, data_get($this->json(), $key),
@@ -712,6 +759,9 @@ class TestResponse implements ArrayAccess
             $this->json(),
             "Failed to assert that the response count matched the expected {$count}"
         );
+=======
+        $this->decodeResponseJson()->assertCount($count, $key);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         return $this;
     }
@@ -810,6 +860,7 @@ class TestResponse implements ArrayAccess
     /**
      * Validate and return the decoded response JSON.
      *
+<<<<<<< HEAD
      * @param  string|null  $key
      * @return mixed
      *
@@ -818,6 +869,17 @@ class TestResponse implements ArrayAccess
     public function decodeResponseJson($key = null)
     {
         $decodedResponse = json_decode($this->getContent(), true);
+=======
+     * @return \Illuminate\Testing\AssertableJsonString
+     *
+     * @throws \Throwable
+     */
+    public function decodeResponseJson()
+    {
+        $testJson = new AssertableJsonString($this->getContent());
+
+        $decodedResponse = $testJson->json();
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         if (is_null($decodedResponse) || $decodedResponse === false) {
             if ($this->exception) {
@@ -827,7 +889,11 @@ class TestResponse implements ArrayAccess
             }
         }
 
+<<<<<<< HEAD
         return data_get($decodedResponse, $key);
+=======
+        return $testJson;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -838,7 +904,11 @@ class TestResponse implements ArrayAccess
      */
     public function json($key = null)
     {
+<<<<<<< HEAD
         return $this->decodeResponseJson($key);
+=======
+        return $this->decodeResponseJson()->json($key);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

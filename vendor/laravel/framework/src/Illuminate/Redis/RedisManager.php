@@ -238,6 +238,22 @@ class RedisManager implements Factory
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Disconnect the given connection and remove from local cache.
+     *
+     * @param  string|null  $name
+     * @return void
+     */
+    public function purge($name = null)
+    {
+        $name = $name ?: 'default';
+
+        unset($this->connections[$name]);
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Register a custom driver creator Closure.
      *
      * @param  string  $driver

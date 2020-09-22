@@ -3,6 +3,10 @@
 namespace Illuminate\Database\Console\Factories;
 
 use Illuminate\Console\GeneratorCommand;
+<<<<<<< HEAD
+=======
+use Illuminate\Support\Str;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Symfony\Component\Console\Input\InputOption;
 
 class FactoryMakeCommand extends GeneratorCommand
@@ -60,8 +64,13 @@ class FactoryMakeCommand extends GeneratorCommand
     protected function buildClass($name)
     {
         $namespaceModel = $this->option('model')
+<<<<<<< HEAD
                         ? $this->qualifyClass($this->option('model'))
                         : trim($this->rootNamespace(), '\\').'\\Model';
+=======
+                        ? $this->qualifyModel($this->option('model'))
+                        : $this->qualifyModel('Model');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         $model = class_basename($namespaceModel);
 
@@ -91,6 +100,11 @@ class FactoryMakeCommand extends GeneratorCommand
             ['\\', '/'], '', $this->argument('name')
         );
 
+<<<<<<< HEAD
+=======
+        $name = Str::finish($name, 'Factory');
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         return $this->laravel->databasePath()."/factories/{$name}.php";
     }
 

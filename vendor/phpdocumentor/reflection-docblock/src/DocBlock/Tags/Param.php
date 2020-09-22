@@ -18,11 +18,18 @@ use phpDocumentor\Reflection\DocBlock\DescriptionFactory;
 use phpDocumentor\Reflection\Type;
 use phpDocumentor\Reflection\TypeResolver;
 use phpDocumentor\Reflection\Types\Context as TypeContext;
+<<<<<<< HEAD
 use phpDocumentor\Reflection\Utils;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Webmozart\Assert\Assert;
 use function array_shift;
 use function array_unshift;
 use function implode;
+<<<<<<< HEAD
+=======
+use function preg_split;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use function strpos;
 use function substr;
 use const PREG_SPLIT_DELIM_CAPTURE;
@@ -38,22 +45,32 @@ final class Param extends TagWithType implements Factory\StaticMethod
     /** @var bool determines whether this is a variadic argument */
     private $isVariadic;
 
+<<<<<<< HEAD
     /** @var bool determines whether this is passed by reference */
     private $isReference;
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     public function __construct(
         ?string $variableName,
         ?Type $type = null,
         bool $isVariadic = false,
+<<<<<<< HEAD
         ?Description $description = null,
         bool $isReference = false
+=======
+        ?Description $description = null
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     ) {
         $this->name         = 'param';
         $this->variableName = $variableName;
         $this->type         = $type;
         $this->isVariadic   = $isVariadic;
         $this->description  = $description;
+<<<<<<< HEAD
         $this->isReference  = $isReference;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     public static function create(
@@ -69,6 +86,7 @@ final class Param extends TagWithType implements Factory\StaticMethod
         [$firstPart, $body] = self::extractTypeFromBody($body);
 
         $type         = null;
+<<<<<<< HEAD
         $parts        = Utils::pregSplit('/(\s+)/Su', $body, 2, PREG_SPLIT_DELIM_CAPTURE);
         $variableName = '';
         $isVariadic   = false;
@@ -76,12 +94,22 @@ final class Param extends TagWithType implements Factory\StaticMethod
 
         // if the first item that is encountered is not a variable; it is a type
         if ($firstPart && !self::strStartsWithVariable($firstPart)) {
+=======
+        $parts        = preg_split('/(\s+)/Su', $body, 2, PREG_SPLIT_DELIM_CAPTURE);
+        Assert::isArray($parts);
+        $variableName = '';
+        $isVariadic   = false;
+
+        // if the first item that is encountered is not a variable; it is a type
+        if ($firstPart && $firstPart[0] !== '$') {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $type = $typeResolver->resolve($firstPart, $context);
         } else {
             // first part is not a type; we should prepend it to the parts array for further processing
             array_unshift($parts, $firstPart);
         }
 
+<<<<<<< HEAD
         // if the next item starts with a $ or ...$ or &$ or &...$ it must be the variable name
         if (isset($parts[0]) && self::strStartsWithVariable($parts[0])) {
             $variableName = array_shift($parts);
@@ -103,12 +131,32 @@ final class Param extends TagWithType implements Factory\StaticMethod
                 $isVariadic   = true;
                 $isReference  = true;
                 $variableName = substr($variableName, 5);
+=======
+        // if the next item starts with a $ or ...$ it must be the variable name
+        if (isset($parts[0]) && (strpos($parts[0], '$') === 0 || strpos($parts[0], '...$') === 0)) {
+            $variableName = array_shift($parts);
+            array_shift($parts);
+
+            Assert::notNull($variableName);
+
+            if (strpos($variableName, '...') === 0) {
+                $isVariadic   = true;
+                $variableName = substr($variableName, 3);
+            }
+
+            if (strpos($variableName, '$') === 0) {
+                $variableName = substr($variableName, 1);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             }
         }
 
         $description = $descriptionFactory->create(implode('', $parts), $context);
 
+<<<<<<< HEAD
         return new static($variableName, $type, $isVariadic, $description, $isReference);
+=======
+        return new static($variableName, $type, $isVariadic, $description);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -128,6 +176,7 @@ final class Param extends TagWithType implements Factory\StaticMethod
     }
 
     /**
+<<<<<<< HEAD
      * Returns whether this tag is passed by reference.
      */
     public function isReference() : bool
@@ -136,10 +185,13 @@ final class Param extends TagWithType implements Factory\StaticMethod
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Returns a string representation for this tag.
      */
     public function __toString() : string
     {
+<<<<<<< HEAD
         if ($this->description) {
             $description = $this->description->render();
         } else {
@@ -168,5 +220,11 @@ final class Param extends TagWithType implements Factory\StaticMethod
                strpos($str, '&$') === 0
                ||
                strpos($str, '&...$') === 0;
+=======
+        return ($this->type ? $this->type . ' ' : '')
+            . ($this->isVariadic() ? '...' : '')
+            . ($this->variableName !== null ? '$' . $this->variableName : '')
+            . ($this->description ? ' ' . $this->description : '');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

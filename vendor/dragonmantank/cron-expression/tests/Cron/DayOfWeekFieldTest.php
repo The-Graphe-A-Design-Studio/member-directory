@@ -1,10 +1,19 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 namespace Cron\Tests;
 
 use Cron\DayOfWeekField;
 use DateTime;
 use DateTimeImmutable;
+<<<<<<< HEAD
+=======
+use InvalidArgumentException;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,6 +31,10 @@ class DayOfWeekFieldTest extends TestCase
         $this->assertTrue($f->validate('01'));
         $this->assertTrue($f->validate('00'));
         $this->assertTrue($f->validate('*'));
+<<<<<<< HEAD
+=======
+        $this->assertTrue($f->validate('?'));
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $this->assertFalse($f->validate('*/3,1,1-12'));
         $this->assertTrue($f->validate('SUN-2'));
         $this->assertFalse($f->validate('1.'));
@@ -65,22 +78,38 @@ class DayOfWeekFieldTest extends TestCase
 
     /**
      * @covers \Cron\DayOfWeekField::isSatisfiedBy
+<<<<<<< HEAD
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage Weekday must be a value between 0 and 7. 12 given
      */
     public function testValidatesHashValueWeekday()
     {
+=======
+     */
+    public function testValidatesHashValueWeekday()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('Weekday must be a value between 0 and 7. 12 given');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $f = new DayOfWeekField();
         $this->assertTrue($f->isSatisfiedBy(new DateTime(), '12#1'));
     }
 
     /**
      * @covers \Cron\DayOfWeekField::isSatisfiedBy
+<<<<<<< HEAD
      * @expectedException InvalidArgumentException
      * @expectedExceptionMessage There are never more than 5 or less than 1 of a given weekday in a month
      */
     public function testValidatesHashValueNth()
     {
+=======
+     */
+    public function testValidatesHashValueNth()
+    {
+        $this->expectException(InvalidArgumentException::class);
+        $this->expectExceptionMessage('There are never more than 5 or less than 1 of a given weekday in a month');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $f = new DayOfWeekField();
         $this->assertTrue($f->isSatisfiedBy(new DateTime(), '3#6'));
     }
@@ -131,7 +160,12 @@ class DayOfWeekFieldTest extends TestCase
     /**
      * @see https://github.com/mtdowling/cron-expression/issues/47
      */
+<<<<<<< HEAD
     public function testIssue47() {
+=======
+    public function testIssue47()
+    {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $f = new DayOfWeekField();
         $this->assertFalse($f->validate('mon,'));
         $this->assertFalse($f->validate('mon-'));
@@ -149,6 +183,26 @@ class DayOfWeekFieldTest extends TestCase
     {
         $f = new DayOfWeekField();
         $this->assertTrue($f->validate('MON-FRI'));
+<<<<<<< HEAD
         $this->assertSame([1,2,3,4,5], $f->getRangeForExpression('MON-FRI', 7));
+=======
+        $this->assertSame([1, 2, 3, 4, 5], $f->getRangeForExpression('MON-FRI', 7));
+    }
+
+    /**
+     * Incoming literals should ignore case
+     *
+     * @author Chris Tankersley <chris@ctankersley.com?
+     * @since 2019-07-29
+     * @see https://github.com/dragonmantank/cron-expression/issues/24
+     */
+    public function testLiteralsIgnoreCasingProperly()
+    {
+        $f = new DayOfWeekField();
+        $this->assertTrue($f->validate('MON'));
+        $this->assertTrue($f->validate('Mon'));
+        $this->assertTrue($f->validate('mon'));
+        $this->assertTrue($f->validate('Mon,Wed,Fri'));
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

@@ -369,6 +369,20 @@ class UrlGenerator implements UrlGeneratorContract
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Determine if the given request has a valid signature for a relative URL.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return bool
+     */
+    public function hasValidRelativeSignature(Request $request)
+    {
+        return $this->hasValidSignature($request, false);
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Determine if the signature from the given request matches the URL.
      *
      * @param  \Illuminate\Http\Request  $request

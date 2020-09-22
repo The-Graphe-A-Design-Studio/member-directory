@@ -5,6 +5,10 @@ namespace Illuminate\Support\Facades;
 use Illuminate\Support\Testing\Fakes\MailFake;
 
 /**
+<<<<<<< HEAD
+=======
+ * @method static \Illuminate\Mail\Mailer mailer(string|null $name = null)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
  * @method static \Illuminate\Mail\PendingMail bcc($users)
  * @method static \Illuminate\Mail\PendingMail to($users)
  * @method static \Illuminate\Support\Collection queued(string $mailable, \Closure|string $callback = null)

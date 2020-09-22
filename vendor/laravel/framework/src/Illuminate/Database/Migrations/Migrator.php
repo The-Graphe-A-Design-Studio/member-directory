@@ -199,14 +199,22 @@ class Migrator
 
         $this->runMigration($migration, 'up');
 
+<<<<<<< HEAD
         $runTime = round(microtime(true) - $startTime, 2);
+=======
+        $runTime = number_format((microtime(true) - $startTime) * 1000, 2);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         // Once we have run a migrations class, we will log that it was run in this
         // repository so that we don't try to run it next time we do a migration
         // in the application. A migration repository keeps the migrate order.
         $this->repository->log($name, $batch);
 
+<<<<<<< HEAD
         $this->note("<info>Migrated:</info>  {$name} ({$runTime} seconds)");
+=======
+        $this->note("<info>Migrated:</info>  {$name} ({$runTime}ms)");
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -362,14 +370,22 @@ class Migrator
 
         $this->runMigration($instance, 'down');
 
+<<<<<<< HEAD
         $runTime = round(microtime(true) - $startTime, 2);
+=======
+        $runTime = number_format((microtime(true) - $startTime) * 1000, 2);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         // Once we have successfully run the migration "down" we will remove it from
         // the migration repository so it will be considered to have not been run
         // by the application then will be able to fire by any later operation.
         $this->repository->delete($migration);
 
+<<<<<<< HEAD
         $this->note("<info>Rolled back:</info>  {$name} ({$runTime} seconds)");
+=======
+        $this->note("<info>Rolled back:</info>  {$name} ({$runTime}ms)");
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -609,6 +625,29 @@ class Migrator
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Determine if any migrations have been run.
+     *
+     * @return bool
+     */
+    public function hasRunAnyMigrations()
+    {
+        return $this->repositoryExists() && count($this->repository->getRan()) > 0;
+    }
+
+    /**
+     * Delete the migration repository data store.
+     *
+     * @return void
+     */
+    public function deleteRepository()
+    {
+        return $this->repository->deleteRepository();
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the file system instance.
      *
      * @return \Illuminate\Filesystem\Filesystem

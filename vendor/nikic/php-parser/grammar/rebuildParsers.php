@@ -117,28 +117,48 @@ function resolveMacros($code) {
                 $matches['args']
             );
 
+<<<<<<< HEAD
             if ('attributes' === $name) {
+=======
+            if ('attributes' == $name) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 assertArgs(0, $args, $name);
                 return '$this->startAttributeStack[#1] + $this->endAttributes';
             }
 
+<<<<<<< HEAD
             if ('stackAttributes' === $name) {
+=======
+            if ('stackAttributes' == $name) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 assertArgs(1, $args, $name);
                 return '$this->startAttributeStack[' . $args[0] . ']'
                      . ' + $this->endAttributeStack[' . $args[0] . ']';
             }
 
+<<<<<<< HEAD
             if ('init' === $name) {
                 return '$$ = array(' . implode(', ', $args) . ')';
             }
 
             if ('push' === $name) {
+=======
+            if ('init' == $name) {
+                return '$$ = array(' . implode(', ', $args) . ')';
+            }
+
+            if ('push' == $name) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 assertArgs(2, $args, $name);
 
                 return $args[0] . '[] = ' . $args[1] . '; $$ = ' . $args[0];
             }
 
+<<<<<<< HEAD
             if ('pushNormalizing' === $name) {
+=======
+            if ('pushNormalizing' == $name) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 assertArgs(2, $args, $name);
 
                 return 'if (is_array(' . $args[1] . ')) { $$ = array_merge(' . $args[0] . ', ' . $args[1] . '); }'
@@ -151,20 +171,32 @@ function resolveMacros($code) {
                 return 'is_array(' . $args[0] . ') ? ' . $args[0] . ' : array(' . $args[0] . ')';
             }
 
+<<<<<<< HEAD
             if ('parseVar' === $name) {
+=======
+            if ('parseVar' == $name) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 assertArgs(1, $args, $name);
 
                 return 'substr(' . $args[0] . ', 1)';
             }
 
+<<<<<<< HEAD
             if ('parseEncapsed' === $name) {
+=======
+            if ('parseEncapsed' == $name) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 assertArgs(3, $args, $name);
 
                 return 'foreach (' . $args[0] . ' as $s) { if ($s instanceof Node\Scalar\EncapsedStringPart) {'
                      . ' $s->value = Node\Scalar\String_::parseEscapeSequences($s->value, ' . $args[1] . ', ' . $args[2] . '); } }';
             }
 
+<<<<<<< HEAD
             if ('makeNop' === $name) {
+=======
+            if ('makeNop' == $name) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 assertArgs(3, $args, $name);
 
                 return '$startAttributes = ' . $args[1] . ';'
@@ -182,7 +214,11 @@ function resolveMacros($code) {
                     . ' else { ' . $args[0] . ' = null; }';
             }
 
+<<<<<<< HEAD
             if ('strKind' === $name) {
+=======
+            if ('strKind' == $name) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 assertArgs(1, $args, $name);
 
                 return '(' . $args[0] . '[0] === "\'" || (' . $args[0] . '[1] === "\'" && '
@@ -190,7 +226,11 @@ function resolveMacros($code) {
                      . '? Scalar\String_::KIND_SINGLE_QUOTED : Scalar\String_::KIND_DOUBLE_QUOTED)';
             }
 
+<<<<<<< HEAD
             if ('prependLeadingComments' === $name) {
+=======
+            if ('prependLeadingComments' == $name) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 assertArgs(1, $args, $name);
 
                 return '$attrs = $this->startAttributeStack[#1]; $stmts = ' . $args[0] . '; '

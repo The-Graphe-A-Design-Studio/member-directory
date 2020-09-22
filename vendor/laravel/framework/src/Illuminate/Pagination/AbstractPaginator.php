@@ -112,14 +112,22 @@ abstract class AbstractPaginator implements Htmlable
      *
      * @var string
      */
+<<<<<<< HEAD
     public static $defaultView = 'pagination::bootstrap-4';
+=======
+    public static $defaultView = 'pagination::tailwind';
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * The default "simple" pagination view.
      *
      * @var string
      */
+<<<<<<< HEAD
     public static $defaultSimpleView = 'pagination::simple-bootstrap-4';
+=======
+    public static $defaultSimpleView = 'pagination::simple-tailwind';
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
     /**
      * Determine if the given value is a valid page number.
@@ -564,6 +572,20 @@ abstract class AbstractPaginator implements Htmlable
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Indicate that Bootstrap 4 styling should be used for generated links.
+     *
+     * @return void
+     */
+    public static function useBootstrap()
+    {
+        static::defaultView('pagination::bootstrap-4');
+        static::defaultSimpleView('pagination::simple-bootstrap-4');
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Indicate that Bootstrap 3 styling should be used for generated links.
      *
      * @return void

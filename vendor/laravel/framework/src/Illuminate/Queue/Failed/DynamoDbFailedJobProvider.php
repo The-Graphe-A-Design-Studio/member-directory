@@ -7,7 +7,10 @@ use DateTimeInterface;
 use Exception;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Date;
+<<<<<<< HEAD
 use Illuminate\Support\Str;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 class DynamoDbFailedJobProvider implements FailedJobProviderInterface
 {
@@ -58,7 +61,11 @@ class DynamoDbFailedJobProvider implements FailedJobProviderInterface
      */
     public function log($connection, $queue, $payload, $exception)
     {
+<<<<<<< HEAD
         $id = (string) Str::orderedUuid();
+=======
+        $id = json_decode($payload, true)['uuid'];
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         $failedAt = Date::now();
 
@@ -96,7 +103,13 @@ class DynamoDbFailedJobProvider implements FailedJobProviderInterface
             'ScanIndexForward' => false,
         ]);
 
+<<<<<<< HEAD
         return collect($results['Items'])->map(function ($result) {
+=======
+        return collect($results['Items'])->sortByDesc(function ($result) {
+            return (int) $result['failed_at']['N'];
+        })->map(function ($result) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             return (object) [
                 'id' => $result['uuid']['S'],
                 'connection' => $result['connection']['S'],

@@ -55,6 +55,7 @@ class Handler extends ExceptionHandler
     {
         return parent::render($request, $exception);
     }
+<<<<<<< HEAD
     
     /**
      * Convert an authentication exception into a response.
@@ -63,6 +64,9 @@ class Handler extends ExceptionHandler
      * @param  \Illuminate\Auth\AuthenticationException  $exception
      * @return \Symfony\Component\HttpFoundation\Response
      */
+=======
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         if($request->expectsJson()) {

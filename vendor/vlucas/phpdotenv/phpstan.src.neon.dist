@@ -1,6 +1,7 @@
 parameters:
   level: max
   ignoreErrors:
+<<<<<<< HEAD
     - '#Anonymous function should have native return typehint ".+".#'
     - '#Call to function is_string\(\) with string will always evaluate to true.#'
     - '#Variable \$defaults might not be defined.#'
@@ -8,3 +9,8 @@ parameters:
     - '/^Parameter \#2 \$writers of class Dotenv\\Repository\\[a-zA-Z]*Repository[a-zA-Z]* constructor expects/'
     - '#Parameter \#1 \$name of method Dotenv\\Repository\\AbstractRepository::set\(\) expects string, string\|null given.#'
     - '#Parameter \#.+ of method Dotenv\\Repository\\AbstractRepository::offset.+ should be contravariant .+#'
+=======
+    - '#Unable to resolve the template type#'
+    - '#Anonymous function should have native return typehint ".+".#'
+    - '#Only booleans are allowed in a negated boolean, int\|false given.#'
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd

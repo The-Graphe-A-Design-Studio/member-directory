@@ -3,8 +3,15 @@
 namespace Illuminate\Support\Testing\Fakes;
 
 use Closure;
+<<<<<<< HEAD
 use Illuminate\Contracts\Bus\QueueingDispatcher;
 use Illuminate\Support\Arr;
+=======
+use Illuminate\Bus\PendingBatch;
+use Illuminate\Contracts\Bus\QueueingDispatcher;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Support\Traits\ReflectsClosures;
 use PHPUnit\Framework\Assert as PHPUnit;
 
@@ -41,6 +48,16 @@ class BusFake implements QueueingDispatcher
     protected $commandsAfterResponse = [];
 
     /**
+<<<<<<< HEAD
+=======
+     * The batches that have been dispatched.
+     *
+     * @var array
+     */
+    protected $batches = [];
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Create a new bus fake instance.
      *
      * @param  \Illuminate\Contracts\Bus\QueueingDispatcher  $dispatcher
@@ -176,6 +193,23 @@ class BusFake implements QueueingDispatcher
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Assert if a batch was dispatched based on a truth-test callback.
+     *
+     * @param  callable  $callback
+     * @return void
+     */
+    public function assertBatched(callable $callback)
+    {
+        PHPUnit::assertTrue(
+            $this->batched($callback)->count() > 0,
+            'The expected batch was not dispatched.'
+        );
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get all of the jobs matching a truth-test callback.
      *
      * @param  string  $command
@@ -220,6 +254,26 @@ class BusFake implements QueueingDispatcher
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Get all of the pending batches matching a truth-test callback.
+     *
+     * @param  callable  $callback
+     * @return \Illuminate\Support\Collection
+     */
+    public function batched(callable $callback)
+    {
+        if (empty($this->batches)) {
+            return collect();
+        }
+
+        return collect($this->batches)->filter(function ($batch) use ($callback) {
+            return $callback($batch);
+        });
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Determine if there are any stored commands for a given class.
      *
      * @param  string  $command
@@ -259,6 +313,27 @@ class BusFake implements QueueingDispatcher
     /**
      * Dispatch a command to its appropriate handler in the current process.
      *
+<<<<<<< HEAD
+=======
+     * Queuable jobs will be dispatched to the "sync" queue.
+     *
+     * @param  mixed  $command
+     * @param  mixed  $handler
+     * @return mixed
+     */
+    public function dispatchSync($command, $handler = null)
+    {
+        if ($this->shouldFakeJob($command)) {
+            $this->commands[get_class($command)][] = $command;
+        } else {
+            return $this->dispatcher->dispatchSync($command, $handler);
+        }
+    }
+
+    /**
+     * Dispatch a command to its appropriate handler in the current process.
+     *
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @param  mixed  $command
      * @param  mixed  $handler
      * @return mixed
@@ -303,6 +378,43 @@ class BusFake implements QueueingDispatcher
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Attempt to find the batch with the given ID.
+     *
+     * @param  string  $batchId
+     * @return \Illuminate\Bus\Batch|null
+     */
+    public function findBatch(string $batchId)
+    {
+    }
+
+    /**
+     * Create a new batch of queueable jobs.
+     *
+     * @param  \Illuminate\Support\Collection|array  $jobs
+     * @return \Illuminate\Bus\PendingBatch
+     */
+    public function batch($jobs)
+    {
+        return new PendingBatchFake($this, Collection::wrap($jobs));
+    }
+
+    /**
+     * Record the fake pending batch dispatch.
+     *
+     * @param  \Illuminate\Bus\PendingBatch $pendingBatch
+     * @return \Illuminate\Bus\Batch
+     */
+    public function recordPendingBatch(PendingBatch $pendingBatch)
+    {
+        $this->batches[] = $pendingBatch;
+
+        return (new BatchRepositoryFake)->store($pendingBatch);
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Determine if an command should be faked or actually dispatched.
      *
      * @param  mixed  $command

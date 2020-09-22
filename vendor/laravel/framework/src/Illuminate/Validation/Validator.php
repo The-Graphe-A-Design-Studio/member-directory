@@ -314,15 +314,30 @@ class Validator implements ValidatorContract
         $originalData = [];
 
         foreach ($data as $key => $value) {
+<<<<<<< HEAD
             $originalData[$this->replacePlaceholderInString($key)] = is_array($value)
                         ? $this->replacePlaceholders($value)
                         : $value;
+=======
+            if (is_array($value)) {
+                $value = $this->replacePlaceholders($value);
+            }
+
+            $key = str_replace(
+                [$this->dotPlaceholder, '__asterisk__'],
+                ['.', '*'],
+                $key
+            );
+
+            $originalData[$key] = $value;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
 
         return $originalData;
     }
 
     /**
+<<<<<<< HEAD
      * Replace the placeholders in the given string.
      *
      * @param  string  $value
@@ -338,6 +353,8 @@ class Validator implements ValidatorContract
     }
 
     /**
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Add an after validation callback.
      *
      * @param  callable|string  $callback
@@ -729,10 +746,13 @@ class Validator implements ValidatorContract
      */
     protected function validateUsingCustomRule($attribute, $value, $rule)
     {
+<<<<<<< HEAD
         $attribute = $this->replacePlaceholderInString($attribute);
 
         $value = is_array($value) ? $this->replacePlaceholders($value) : $value;
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         if (! $rule->passes($attribute, $value)) {
             $this->failedRules[$attribute][get_class($rule)] = [];
 
@@ -756,6 +776,7 @@ class Validator implements ValidatorContract
      */
     protected function shouldStopValidating($attribute)
     {
+<<<<<<< HEAD
         $cleanedAttribute = $this->replacePlaceholderInString($attribute);
 
         if ($this->hasRule($attribute, ['Bail'])) {
@@ -764,6 +785,14 @@ class Validator implements ValidatorContract
 
         if (isset($this->failedRules[$cleanedAttribute]) &&
             array_key_exists('uploaded', $this->failedRules[$cleanedAttribute])) {
+=======
+        if ($this->hasRule($attribute, ['Bail'])) {
+            return $this->messages->has($attribute);
+        }
+
+        if (isset($this->failedRules[$attribute]) &&
+            array_key_exists('uploaded', $this->failedRules[$attribute])) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             return true;
         }
 
@@ -771,8 +800,13 @@ class Validator implements ValidatorContract
         // and that rule already failed then we should stop validation at this point
         // as now there is no point in calling other rules with this field empty.
         return $this->hasRule($attribute, $this->implicitRules) &&
+<<<<<<< HEAD
                isset($this->failedRules[$cleanedAttribute]) &&
                array_intersect(array_keys($this->failedRules[$cleanedAttribute]), $this->implicitRules);
+=======
+               isset($this->failedRules[$attribute]) &&
+               array_intersect(array_keys($this->failedRules[$attribute]), $this->implicitRules);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

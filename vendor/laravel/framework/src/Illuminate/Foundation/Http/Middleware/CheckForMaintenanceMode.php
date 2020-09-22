@@ -2,6 +2,7 @@
 
 namespace Illuminate\Foundation\Http\Middleware;
 
+<<<<<<< HEAD
 use Closure;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Http\Exceptions\MaintenanceModeException;
@@ -83,4 +84,9 @@ class CheckForMaintenanceMode
 
         return false;
     }
+=======
+class CheckForMaintenanceMode extends PreventRequestsDuringMaintenance
+{
+    //
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

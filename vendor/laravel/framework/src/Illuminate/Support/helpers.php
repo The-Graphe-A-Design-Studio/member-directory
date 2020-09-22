@@ -3,7 +3,10 @@
 use Illuminate\Contracts\Support\DeferringDisplayableValue;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Arr;
+<<<<<<< HEAD
 use Illuminate\Support\Collection;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Support\Env;
 use Illuminate\Support\HigherOrderTapProxy;
 use Illuminate\Support\Optional;
@@ -98,6 +101,7 @@ if (! function_exists('class_uses_recursive')) {
     }
 }
 
+<<<<<<< HEAD
 if (! function_exists('collect')) {
     /**
      * Create a collection from the given value.
@@ -241,6 +245,8 @@ if (! function_exists('data_set')) {
     }
 }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 if (! function_exists('e')) {
     /**
      * Encode HTML special characters in a string.
@@ -290,6 +296,7 @@ if (! function_exists('filled')) {
     }
 }
 
+<<<<<<< HEAD
 if (! function_exists('head')) {
     /**
      * Get the first element of an array. Useful for method chaining.
@@ -316,6 +323,8 @@ if (! function_exists('last')) {
     }
 }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 if (! function_exists('object_get')) {
     /**
      * Get an item from an object using "dot" notation.
@@ -520,6 +529,7 @@ if (! function_exists('transform')) {
     }
 }
 
+<<<<<<< HEAD
 if (! function_exists('value')) {
     /**
      * Return the default value of the given value.
@@ -533,6 +543,8 @@ if (! function_exists('value')) {
     }
 }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 if (! function_exists('windows_os')) {
     /**
      * Determine whether the current environment is Windows based.

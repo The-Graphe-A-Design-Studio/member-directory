@@ -96,6 +96,7 @@ final class Source extends BaseTag implements Factory\StaticMethod
 
     public function __toString() : string
     {
+<<<<<<< HEAD
         if ($this->description) {
             $description = $this->description->render();
         } else {
@@ -113,5 +114,10 @@ final class Source extends BaseTag implements Factory\StaticMethod
             . ($description !== ''
                 ? ($startingLine || $startingLine === '0' || $lineCount !== '' ? ' ' : '') . $description
                 : '');
+=======
+        return $this->startingLine
+            . ($this->lineCount !== null ? ' ' . $this->lineCount : '')
+            . ($this->description ? ' ' . (string) $this->description : '');
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

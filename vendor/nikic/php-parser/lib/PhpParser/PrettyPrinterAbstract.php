@@ -1375,7 +1375,10 @@ abstract class PrettyPrinterAbstract
             'Stmt_Unset->vars' => ', ',
             'Stmt_Use->uses' => ', ',
             'MatchArm->conds' => ', ',
+<<<<<<< HEAD
             'AttributeGroup->attrs' => ', ',
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
             // statement lists
             'Expr_Closure->stmts' => "\n",
@@ -1396,6 +1399,7 @@ abstract class PrettyPrinterAbstract
             'Stmt_Function->stmts' => "\n",
             'Stmt_If->stmts' => "\n",
             'Stmt_Namespace->stmts' => "\n",
+<<<<<<< HEAD
             'Stmt_Class->attrGroups' => "\n",
             'Stmt_Interface->attrGroups' => "\n",
             'Stmt_Trait->attrGroups' => "\n",
@@ -1407,6 +1411,8 @@ abstract class PrettyPrinterAbstract
             'Expr_Closure->attrGroups' => ' ',
             'Expr_ArrowFunction->attrGroups' => ' ',
             'Param->attrGroups' => ' ',
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             'Stmt_Switch->cases' => "\n",
             'Stmt_TraitUse->adaptations' => "\n",
             'Stmt_TryCatch->stmts' => "\n",

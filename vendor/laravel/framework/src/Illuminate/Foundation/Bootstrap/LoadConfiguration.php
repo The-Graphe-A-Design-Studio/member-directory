@@ -24,7 +24,11 @@ class LoadConfiguration
         // First we will see if we have a cache configuration file. If we do, we'll load
         // the configuration items from that file so that it is very quick. Otherwise
         // we will need to spin through every configuration file and load them all.
+<<<<<<< HEAD
         if (file_exists($cached = $app->getCachedConfigPath())) {
+=======
+        if (is_file($cached = $app->getCachedConfigPath())) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $items = require $cached;
 
             $loadedFromCache = true;

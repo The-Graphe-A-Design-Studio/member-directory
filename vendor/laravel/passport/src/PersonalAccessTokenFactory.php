@@ -2,10 +2,18 @@
 
 namespace Laravel\Passport;
 
+<<<<<<< HEAD
 use Laminas\Diactoros\Response;
 use Laminas\Diactoros\ServerRequest;
 use Lcobucci\JWT\Parser as JwtParser;
 use League\OAuth2\Server\AuthorizationServer;
+=======
+use Lcobucci\JWT\Parser as JwtParser;
+use League\OAuth2\Server\AuthorizationServer;
+use Nyholm\Psr7\Response;
+use Nyholm\Psr7\ServerRequest;
+use Psr\Http\Message\ServerRequestInterface;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
 class PersonalAccessTokenFactory
 {
@@ -89,6 +97,7 @@ class PersonalAccessTokenFactory
      * @param  \Laravel\Passport\Client  $client
      * @param  mixed  $userId
      * @param  array  $scopes
+<<<<<<< HEAD
      * @return \Laminas\Diactoros\ServerRequest
      */
     protected function createRequest($client, $userId, array $scopes)
@@ -96,6 +105,15 @@ class PersonalAccessTokenFactory
         $secret = Passport::$hashesClientSecrets ? Passport::$personalAccessClientSecret : $client->secret;
 
         return (new ServerRequest)->withParsedBody([
+=======
+     * @return \Psr\Http\Message\ServerRequestInterface
+     */
+    protected function createRequest($client, $userId, array $scopes)
+    {
+        $secret = Passport::$hashesClientSecrets ? $this->clients->getPersonalAccessClientSecret() : $client->secret;
+
+        return (new ServerRequest('POST', 'not-important'))->withParsedBody([
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             'grant_type' => 'personal_access',
             'client_id' => $client->id,
             'client_secret' => $secret,
@@ -107,10 +125,17 @@ class PersonalAccessTokenFactory
     /**
      * Dispatch the given request to the authorization server.
      *
+<<<<<<< HEAD
      * @param  \Laminas\Diactoros\ServerRequest  $request
      * @return array
      */
     protected function dispatchRequestToAuthorizationServer(ServerRequest $request)
+=======
+     * @param  \Psr\Http\Message\ServerRequestInterface  $request
+     * @return array
+     */
+    protected function dispatchRequestToAuthorizationServer(ServerRequestInterface $request)
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     {
         return json_decode($this->server->respondToAccessTokenRequest(
             $request, new Response

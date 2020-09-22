@@ -526,6 +526,7 @@ class MockConfiguration
             return true;
         });
 
+<<<<<<< HEAD
         // In HHVM, class methods can be annotated with the built-in
         // <<__Memoize>> attribute (similar to a Python decorator),
         // which builds an LRU cache of method arguments and their
@@ -554,6 +555,8 @@ class MockConfiguration
             });
         }
 
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         return $this->allMethods = $methods;
     }
 

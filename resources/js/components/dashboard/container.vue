@@ -1,4 +1,5 @@
 <template>
+<<<<<<< HEAD
   <div>
     Hello
     <br />Name:
@@ -236,4 +237,18 @@ export default {
     },
   },
 };
+=======
+    <div>
+        Hello
+        <br>
+        Hello
+        <br>
+        You've found the dashboard page
+    </div>
+</template>
+<script>
+export default {
+    
+}
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 </script>

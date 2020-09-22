@@ -4,7 +4,11 @@ namespace PhpParser\Lexer\TokenEmulator;
 
 use PhpParser\Lexer\Emulative;
 
+<<<<<<< HEAD
 final class NullsafeTokenEmulator extends TokenEmulator
+=======
+final class NullsafeTokenEmulator implements TokenEmulatorInterface
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 {
     public function getPhpVersion(): string
     {
@@ -22,6 +26,7 @@ final class NullsafeTokenEmulator extends TokenEmulator
         // the tokens array on the way
         $line = 1;
         for ($i = 0, $c = count($tokens); $i < $c; ++$i) {
+<<<<<<< HEAD
             if ($tokens[$i] === '?' && isset($tokens[$i + 1]) && $tokens[$i + 1][0] === \T_OBJECT_OPERATOR) {
                 array_splice($tokens, $i, 2, [
                     [\T_NULLSAFE_OBJECT_OPERATOR, '?->', $line]
@@ -51,6 +56,17 @@ final class NullsafeTokenEmulator extends TokenEmulator
                 continue;
             }
 
+=======
+            if (isset($tokens[$i + 1])) {
+                if ($tokens[$i] === '?' && $tokens[$i + 1][0] === \T_OBJECT_OPERATOR) {
+                    array_splice($tokens, $i, 2, [
+                        [\T_NULLSAFE_OBJECT_OPERATOR, '?->', $line]
+                    ]);
+                    $c--;
+                    continue;
+                }
+            }
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             if (\is_array($tokens[$i])) {
                 $line += substr_count($tokens[$i][1], "\n");
             }

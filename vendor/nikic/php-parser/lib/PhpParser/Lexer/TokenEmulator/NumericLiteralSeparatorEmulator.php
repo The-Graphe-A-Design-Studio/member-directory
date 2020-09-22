@@ -4,7 +4,11 @@ namespace PhpParser\Lexer\TokenEmulator;
 
 use PhpParser\Lexer\Emulative;
 
+<<<<<<< HEAD
 final class NumericLiteralSeparatorEmulator extends TokenEmulator
+=======
+final class NumericLiteralSeparatorEmulator implements TokenEmulatorInterface
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 {
     const BIN = '(?:0b[01]+(?:_[01]+)*)';
     const HEX = '(?:0x[0-9a-f]+(?:_[0-9a-f]+)*)';

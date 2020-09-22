@@ -12,19 +12,48 @@
     "devDependencies": {
         "axios": "^0.19",
         "bootstrap": "^4.0.0",
+<<<<<<< HEAD
         "cross-env": "^7.0",
+=======
+        "case-sensitive-paths-webpack-plugin": "^2.3.0",
+        "cross-env": "^7.0",
+        "deepmerge": "^4.2.2",
+        "fibers": "^5.0.0",
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         "jquery": "^3.2",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",
         "popper.js": "^1.12",
         "resolve-url-loader": "^2.3.1",
+<<<<<<< HEAD
         "sass": "^1.20.1",
         "sass-loader": "^8.0.0",
+=======
+        "sass": "^1.26.10",
+        "sass-loader": "^8.0.2",
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+<<<<<<< HEAD
         "vue-router": "^3.4.3",
         "vuetify": "^2.3.10"
+=======
+        "-": "0.0.1",
+        "@mdi/font": "^5.5.55",
+        "@vue/test-utils": "^1.1.0",
+        "file-loader": "^6.1.0",
+        "g": "^2.0.1",
+        "import": "0.0.6",
+        "material-design-icons-iconfont": "^6.1.0",
+        "node-gyp": "^7.1.0",
+        "vue-loader": "^15.9.3",
+        "vue-router": "^3.4.3",
+        "vuetify": "^2.3.10",
+        "vuetify-loader": "^1.4.3",
+        "vuex": "^3.5.1",
+        "webpack": "^4.44.1"
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

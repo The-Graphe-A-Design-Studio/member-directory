@@ -15,7 +15,13 @@ class ListenCommand extends Command
      */
     protected $signature = 'queue:listen
                             {connection? : The name of connection}
+<<<<<<< HEAD
                             {--delay=0 : The number of seconds to delay failed jobs}
+=======
+                            {--name=default : The name of the worker}
+                            {--delay=0 : The number of seconds to delay failed jobs (Deprecated)}
+                            {--backoff=0 : The number of seconds to wait before retrying a job that encountered an uncaught exception}
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                             {--force : Force the worker to run even in maintenance mode}
                             {--memory=128 : The memory limit in megabytes}
                             {--queue= : The queue to listen on}
@@ -91,10 +97,25 @@ class ListenCommand extends Command
      */
     protected function gatherOptions()
     {
+<<<<<<< HEAD
         return new ListenerOptions(
             $this->option('env'), $this->option('delay'),
             $this->option('memory'), $this->option('timeout'),
             $this->option('sleep'), $this->option('tries'),
+=======
+        $backoff = $this->hasOption('backoff')
+                ? $this->option('backoff')
+                : $this->option('delay');
+
+        return new ListenerOptions(
+            $this->option('name'),
+            $this->option('env'),
+            $backoff,
+            $this->option('memory'),
+            $this->option('timeout'),
+            $this->option('sleep'),
+            $this->option('tries'),
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
             $this->option('force')
         );
     }

@@ -121,6 +121,16 @@ class BladeCompiler extends Compiler implements CompilerInterface
     protected $classComponentAliases = [];
 
     /**
+<<<<<<< HEAD
+=======
+     * The array of class component namespaces to autoload from.
+     *
+     * @var array
+     */
+    protected $classComponentNamespaces = [];
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Indicates if component tags should be compiled.
      *
      * @var bool
@@ -318,7 +328,11 @@ class BladeCompiler extends Compiler implements CompilerInterface
         }
 
         return (new ComponentTagCompiler(
+<<<<<<< HEAD
             $this->classComponentAliases, $this
+=======
+            $this->classComponentAliases, $this->classComponentNamespaces, $this
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         ))->compile($value);
     }
 
@@ -586,6 +600,31 @@ class BladeCompiler extends Compiler implements CompilerInterface
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Register a class-based component namespace.
+     *
+     * @param  string  $namespace
+     * @param  string  $prefix
+     * @return void
+     */
+    public function componentNamespace($namespace, $prefix)
+    {
+        $this->classComponentNamespaces[$prefix] = $namespace;
+    }
+
+    /**
+     * Get the registered class component namespaces.
+     *
+     * @return array
+     */
+    public function getClassComponentNamespaces()
+    {
+        return $this->classComponentNamespaces;
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Register a component alias directive.
      *
      * @param  string  $path
@@ -616,7 +655,11 @@ class BladeCompiler extends Compiler implements CompilerInterface
      */
     public function include($path, $alias = null)
     {
+<<<<<<< HEAD
         return $this->aliasInclude($path, $alias);
+=======
+        $this->aliasInclude($path, $alias);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**

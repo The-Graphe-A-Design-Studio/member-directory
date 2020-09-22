@@ -222,6 +222,7 @@ class Encrypter implements EncrypterContract
      */
     protected function validMac(array $payload)
     {
+<<<<<<< HEAD
         $calculated = $this->calculateMac($payload, $bytes = random_bytes(16));
 
         return hash_equals(
@@ -240,6 +241,10 @@ class Encrypter implements EncrypterContract
     {
         return hash_hmac(
             'sha256', $this->hash($payload['iv'], $payload['value']), $bytes, true
+=======
+        return hash_equals(
+            $this->hash($payload['iv'], $payload['value']), $payload['mac']
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         );
     }
 

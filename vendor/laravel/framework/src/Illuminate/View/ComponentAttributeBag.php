@@ -126,8 +126,13 @@ class ComponentAttributeBag implements ArrayAccess, Htmlable, IteratorAggregate
      */
     public function whereDoesntStartWith($string)
     {
+<<<<<<< HEAD
         return $this->filter(function ($value, $key) use ($string) {
             return ! Str::startsWith($key, $string);
+=======
+        return $this->reject(function ($value, $key) use ($string) {
+            return Str::startsWith($key, $string);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         });
     }
 
@@ -173,7 +178,11 @@ class ComponentAttributeBag implements ArrayAccess, Htmlable, IteratorAggregate
         $attributes = [];
 
         $attributeDefaults = array_map(function ($value) {
+<<<<<<< HEAD
             if (is_null($value) || is_bool($value)) {
+=======
+            if (is_object($value) || is_null($value) || is_bool($value)) {
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
                 return $value;
             }
 
@@ -196,6 +205,19 @@ class ComponentAttributeBag implements ArrayAccess, Htmlable, IteratorAggregate
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Get all of the raw attributes.
+     *
+     * @return array
+     */
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Set the underlying attributes.
      *
      * @param  array  $attributes
@@ -203,6 +225,18 @@ class ComponentAttributeBag implements ArrayAccess, Htmlable, IteratorAggregate
      */
     public function setAttributes(array $attributes)
     {
+<<<<<<< HEAD
+=======
+        if (isset($attributes['attributes']) &&
+            $attributes['attributes'] instanceof self) {
+            $parentBag = $attributes['attributes'];
+
+            unset($attributes['attributes']);
+
+            $attributes = $parentBag->merge($attributes);
+        }
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $this->attributes = $attributes;
     }
 

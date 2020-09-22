@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 namespace Cron\Tests;
 
 use Cron\DayOfMonthField;
@@ -22,6 +27,10 @@ class DayOfMonthFieldTest extends TestCase
         $this->assertTrue($f->validate('*'));
         $this->assertTrue($f->validate('L'));
         $this->assertTrue($f->validate('5W'));
+<<<<<<< HEAD
+=======
+        $this->assertTrue($f->validate('?'));
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $this->assertTrue($f->validate('01'));
         $this->assertFalse($f->validate('5W,L'));
         $this->assertFalse($f->validate('1.'));
@@ -65,13 +74,21 @@ class DayOfMonthFieldTest extends TestCase
 
     /**
      * Day of the month cannot accept a 0 value, it must be between 1 and 31
+<<<<<<< HEAD
      * See Github issue #120
+=======
+     * See Github issue #120.
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      *
      * @since 2017-01-22
      */
     public function testDoesNotAccept0Date()
     {
         $f = new DayOfMonthField();
+<<<<<<< HEAD
         $this->assertFalse($f->validate(0));
+=======
+        $this->assertFalse($f->validate('0'));
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 }

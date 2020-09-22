@@ -2,9 +2,13 @@
 
 namespace Illuminate\Support;
 
+<<<<<<< HEAD
 use Dotenv\Repository\Adapter\EnvConstAdapter;
 use Dotenv\Repository\Adapter\PutenvAdapter;
 use Dotenv\Repository\Adapter\ServerConstAdapter;
+=======
+use Dotenv\Repository\Adapter\PutenvAdapter;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Dotenv\Repository\RepositoryBuilder;
 use PhpOption\Option;
 
@@ -54,6 +58,7 @@ class Env
     public static function getRepository()
     {
         if (static::$repository === null) {
+<<<<<<< HEAD
             $adapters = array_merge(
                 [new EnvConstAdapter, new ServerConstAdapter],
                 static::$putenv ? [new PutenvAdapter] : []
@@ -64,6 +69,15 @@ class Env
                 ->withWriters($adapters)
                 ->immutable()
                 ->make();
+=======
+            $builder = RepositoryBuilder::createWithDefaultAdapters();
+
+            if (static::$putenv) {
+                $builder = $builder->addAdapter(PutenvAdapter::class);
+            }
+
+            static::$repository = $builder->immutable()->make();
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         }
 
         return static::$repository;

@@ -15,7 +15,11 @@
         }
     ],
     "require": {
+<<<<<<< HEAD
         "php": ">=7.1",
+=======
+        "php": "^7.1",
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         "psr/http-message": "^1.0",
         "php-http/message-factory": "^1.0",
         "psr/http-factory": "^1.0"

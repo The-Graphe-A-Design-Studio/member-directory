@@ -181,7 +181,10 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'dart' => 'application/vnd.dart',
         'dataless' => 'application/vnd.fdsn.seed',
         'davmount' => 'application/davmount+xml',
+<<<<<<< HEAD
         'dbf' => 'application/vnd.dbf',
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         'dbk' => 'application/docbook+xml',
         'dcr' => 'application/x-director',
         'dcurl' => 'text/vnd.curl.dcurl',
@@ -469,7 +472,10 @@ class GeneratedExtensionToMimeTypeMap implements ExtensionToMimeTypeMap
         'ksp' => 'application/vnd.kde.kspread',
         'ktr' => 'application/vnd.kahootz',
         'ktx' => 'image/ktx',
+<<<<<<< HEAD
         'ktx2' => 'image/ktx2',
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         'ktz' => 'application/vnd.kahootz',
         'kwd' => 'application/vnd.kde.kword',
         'kwt' => 'application/vnd.kde.kword',

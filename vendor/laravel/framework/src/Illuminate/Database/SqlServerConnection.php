@@ -8,6 +8,11 @@ use Illuminate\Database\Query\Grammars\SqlServerGrammar as QueryGrammar;
 use Illuminate\Database\Query\Processors\SqlServerProcessor;
 use Illuminate\Database\Schema\Grammars\SqlServerGrammar as SchemaGrammar;
 use Illuminate\Database\Schema\SqlServerBuilder;
+<<<<<<< HEAD
+=======
+use Illuminate\Filesystem\Filesystem;
+use RuntimeException;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Throwable;
 
 class SqlServerConnection extends Connection
@@ -87,6 +92,22 @@ class SqlServerConnection extends Connection
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Get the schema state for the connection.
+     *
+     * @param  \Illuminate\Filesystem\Filesystem|null  $files
+     * @param  callable|null  $processFactory
+     *
+     * @throws \RuntimeException
+     */
+    public function getSchemaState(Filesystem $files = null, callable $processFactory = null)
+    {
+        throw new RuntimeException('Schema dumping is not supported when using SQL Server.');
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the default post processor instance.
      *
      * @return \Illuminate\Database\Query\Processors\SqlServerProcessor

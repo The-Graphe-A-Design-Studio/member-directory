@@ -4,7 +4,11 @@
     </IfModule>
 
     RewriteEngine On
+<<<<<<< HEAD
 
+=======
+    
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

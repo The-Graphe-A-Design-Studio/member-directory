@@ -7,6 +7,10 @@ use Illuminate\Database\Query\Grammars\PostgresGrammar as QueryGrammar;
 use Illuminate\Database\Query\Processors\PostgresProcessor;
 use Illuminate\Database\Schema\Grammars\PostgresGrammar as SchemaGrammar;
 use Illuminate\Database\Schema\PostgresBuilder;
+<<<<<<< HEAD
+=======
+use Illuminate\Database\Schema\PostgresSchemaState;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use PDO;
 
 class PostgresConnection extends Connection
@@ -72,6 +76,21 @@ class PostgresConnection extends Connection
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Get the schema state for the connection.
+     *
+     * @param  \Illuminate\Filesystem\Filesystem|null  $files
+     * @param  callable|null  $processFactory
+     * @return \Illuminate\Database\Schema\PostgresSchemaState
+     */
+    public function getSchemaState(Filesystem $files = null, callable $processFactory = null)
+    {
+        return new PostgresSchemaState($this, $files, $processFactory);
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Get the default post processor instance.
      *
      * @return \Illuminate\Database\Query\Processors\PostgresProcessor

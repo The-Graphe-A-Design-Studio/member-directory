@@ -20,11 +20,14 @@
 
 namespace Mockery\Adapter\Phpunit;
 
+<<<<<<< HEAD
 if (class_exists('PHPUnit_Framework_TestCase') || version_compare(\PHPUnit\Runner\Version::id(), '8.0.0', '<')) {
     class_alias(MockeryTestCaseSetUpForV7AndPrevious::class, MockeryTestCaseSetUp::class);
 } else {
     class_alias(MockeryTestCaseSetUpForV8::class, MockeryTestCaseSetUp::class);
 }
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 abstract class MockeryTestCase extends \PHPUnit\Framework\TestCase
 {
     use MockeryPHPUnitIntegration;
@@ -37,6 +40,7 @@ abstract class MockeryTestCase extends \PHPUnit\Framework\TestCase
     protected function mockeryTestTearDown()
     {
     }
+<<<<<<< HEAD
 
     public function expectExceptionMessageRegEx($regularExpression)
     {
@@ -55,4 +59,6 @@ abstract class MockeryTestCase extends \PHPUnit\Framework\TestCase
 
         self::assertRegExp($pattern, $string, $message);
     }
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

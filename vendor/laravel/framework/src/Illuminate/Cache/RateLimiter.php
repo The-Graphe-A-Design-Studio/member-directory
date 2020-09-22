@@ -2,6 +2,10 @@
 
 namespace Illuminate\Cache;
 
+<<<<<<< HEAD
+=======
+use Closure;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Contracts\Cache\Repository as Cache;
 use Illuminate\Support\InteractsWithTime;
 
@@ -17,6 +21,16 @@ class RateLimiter
     protected $cache;
 
     /**
+<<<<<<< HEAD
+=======
+     * The configured limit object resolvers.
+     *
+     * @var array
+     */
+    protected $limiters = [];
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Create a new rate limiter instance.
      *
      * @param  \Illuminate\Contracts\Cache\Repository  $cache
@@ -28,6 +42,34 @@ class RateLimiter
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Register a named limiter configuration.
+     *
+     * @param  string  $name
+     * @param  \Closure  $callback
+     * @return $this
+     */
+    public function for(string $name, Closure $callback)
+    {
+        $this->limiters[$name] = $callback;
+
+        return $this;
+    }
+
+    /**
+     * Get the given named rate limiter.
+     *
+     * @param  string  $name
+     * @return \Closure
+     */
+    public function limiter(string $name)
+    {
+        return $this->limiters[$name] ?? null;
+    }
+
+    /**
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * Determine if the given key has been "accessed" too many times.
      *
      * @param  string  $key

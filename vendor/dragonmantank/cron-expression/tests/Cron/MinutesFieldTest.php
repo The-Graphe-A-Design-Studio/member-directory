@@ -1,5 +1,10 @@
 <?php
 
+<<<<<<< HEAD
+=======
+declare(strict_types=1);
+
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 namespace Cron\Tests;
 
 use Cron\MinutesField;
@@ -21,6 +26,10 @@ class MinutesFieldTest extends TestCase
         $this->assertTrue($f->validate('1'));
         $this->assertTrue($f->validate('*'));
         $this->assertFalse($f->validate('*/3,1,1-12'));
+<<<<<<< HEAD
+=======
+        $this->assertFalse($f->validate('1/10'));
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -61,6 +70,10 @@ class MinutesFieldTest extends TestCase
      * Various bad syntaxes that are reported to work, but shouldn't.
      *
      * @author Chris Tankersley
+<<<<<<< HEAD
+=======
+     *
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
      * @since 2017-08-18
      */
     public function testBadSyntaxesShouldNotValidate()
@@ -70,4 +83,21 @@ class MinutesFieldTest extends TestCase
         $this->assertFalse($f->validate('1-2-3'));
         $this->assertFalse($f->validate('-1'));
     }
+<<<<<<< HEAD
+=======
+
+    /**
+     * Ranges that are invalid should not validate.
+     * In this case `0/5` would be invalid because `0` is not part of the minute range.
+     *
+     * @author Chris Tankersley
+     * @since 2019-07-29
+     * @see https://github.com/dragonmantank/cron-expression/issues/18
+     */
+    public function testInvalidRangeShouldNotValidate()
+    {
+        $f = new MinutesField();
+        $this->assertFalse($f->validate('0/5'));
+    }
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 }

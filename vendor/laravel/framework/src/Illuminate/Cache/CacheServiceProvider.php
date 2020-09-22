@@ -30,6 +30,11 @@ class CacheServiceProvider extends ServiceProvider implements DeferrableProvider
         $this->app->singleton('memcached.connector', function () {
             return new MemcachedConnector;
         });
+<<<<<<< HEAD
+=======
+
+        $this->app->singleton(RateLimiter::class);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -40,7 +45,11 @@ class CacheServiceProvider extends ServiceProvider implements DeferrableProvider
     public function provides()
     {
         return [
+<<<<<<< HEAD
             'cache', 'cache.store', 'cache.psr6', 'memcached.connector',
+=======
+            'cache', 'cache.store', 'cache.psr6', 'memcached.connector', RateLimiter::class,
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         ];
     }
 }

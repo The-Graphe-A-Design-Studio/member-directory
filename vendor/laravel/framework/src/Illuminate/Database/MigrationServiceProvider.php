@@ -2,6 +2,10 @@
 
 namespace Illuminate\Database;
 
+<<<<<<< HEAD
+=======
+use Illuminate\Contracts\Events\Dispatcher;
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Database\Console\Migrations\FreshCommand;
 use Illuminate\Database\Console\Migrations\InstallCommand;
@@ -116,7 +120,11 @@ class MigrationServiceProvider extends ServiceProvider implements DeferrableProv
     protected function registerMigrateCommand()
     {
         $this->app->singleton('command.migrate', function ($app) {
+<<<<<<< HEAD
             return new MigrateCommand($app['migrator']);
+=======
+            return new MigrateCommand($app['migrator'], $app[Dispatcher::class]);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         });
     }
 

@@ -405,6 +405,7 @@ class Lexer
     }
 
     private function defineCompatibilityTokens() {
+<<<<<<< HEAD
         static $compatTokensDefined = false;
         if ($compatTokensDefined) {
             return;
@@ -457,6 +458,35 @@ class Lexer
         }
 
         $compatTokensDefined = true;
+=======
+        // PHP 7.4
+        if (!defined('T_BAD_CHARACTER')) {
+            \define('T_BAD_CHARACTER', -1);
+        }
+        if (!defined('T_FN')) {
+            \define('T_FN', -2);
+        }
+        if (!defined('T_COALESCE_EQUAL')) {
+            \define('T_COALESCE_EQUAL', -3);
+        }
+
+        // PHP 8.0
+        if (!defined('T_NAME_QUALIFIED')) {
+            \define('T_NAME_QUALIFIED', -4);
+        }
+        if (!defined('T_NAME_FULLY_QUALIFIED')) {
+            \define('T_NAME_FULLY_QUALIFIED', -5);
+        }
+        if (!defined('T_NAME_RELATIVE')) {
+            \define('T_NAME_RELATIVE', -6);
+        }
+        if (!defined('T_MATCH')) {
+            \define('T_MATCH', -7);
+        }
+        if (!defined('T_NULLSAFE_OBJECT_OPERATOR')) {
+            \define('T_NULLSAFE_OBJECT_OPERATOR', -8);
+        }
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
     }
 
     /**
@@ -511,7 +541,10 @@ class Lexer
         $tokenMap[\T_NAME_RELATIVE] = Tokens::T_NAME_RELATIVE;
         $tokenMap[\T_MATCH] = Tokens::T_MATCH;
         $tokenMap[\T_NULLSAFE_OBJECT_OPERATOR] = Tokens::T_NULLSAFE_OBJECT_OPERATOR;
+<<<<<<< HEAD
         $tokenMap[\T_ATTRIBUTE] = Tokens::T_ATTRIBUTE;
+=======
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
 
         return $tokenMap;
     }

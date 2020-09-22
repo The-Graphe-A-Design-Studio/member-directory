@@ -19,11 +19,16 @@ class ViewServiceProvider extends ServiceProvider
     public function register()
     {
         $this->registerFactory();
+<<<<<<< HEAD
 
         $this->registerViewFinder();
 
         $this->registerBladeCompiler();
 
+=======
+        $this->registerViewFinder();
+        $this->registerBladeCompiler();
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         $this->registerEngineResolver();
     }
 
@@ -88,7 +93,13 @@ class ViewServiceProvider extends ServiceProvider
     public function registerBladeCompiler()
     {
         $this->app->singleton('blade.compiler', function ($app) {
+<<<<<<< HEAD
             return new BladeCompiler($app['files'], $app['config']['view.compiled']);
+=======
+            return tap(new BladeCompiler($app['files'], $app['config']['view.compiled']), function ($blade) {
+                $blade->component('dynamic-component', DynamicComponent::class);
+            });
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         });
     }
 
@@ -122,7 +133,11 @@ class ViewServiceProvider extends ServiceProvider
     public function registerFileEngine($resolver)
     {
         $resolver->register('file', function () {
+<<<<<<< HEAD
             return new FileEngine;
+=======
+            return new FileEngine($this->app['files']);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         });
     }
 
@@ -135,7 +150,11 @@ class ViewServiceProvider extends ServiceProvider
     public function registerPhpEngine($resolver)
     {
         $resolver->register('php', function () {
+<<<<<<< HEAD
             return new PhpEngine;
+=======
+            return new PhpEngine($this->app['files']);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         });
     }
 
@@ -148,7 +167,11 @@ class ViewServiceProvider extends ServiceProvider
     public function registerBladeEngine($resolver)
     {
         $resolver->register('blade', function () {
+<<<<<<< HEAD
             return new CompilerEngine($this->app['blade.compiler']);
+=======
+            return new CompilerEngine($this->app['blade.compiler'], $this->app['files']);
+>>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         });
     }
 }

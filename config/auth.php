@@ -46,11 +46,7 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
-<<<<<<< HEAD
-
-=======
         
->>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         'admin' => [
             'driver' => 'session',
             'provider' => 'admins',
@@ -119,11 +115,6 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
-<<<<<<< HEAD
-        
-=======
-
->>>>>>> 618d5a84e3460e9d830f42d69dd19295c6b2cbbd
         'admins' => [
             'provider' => 'admins',
             'table' => 'password_resets',
